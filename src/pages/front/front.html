@@ -1,0 +1,41 @@
+<!--
+  Generated template for the Front page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="grey-dark">
+    <button ion-button menuToggle right>
+      <ion-icon name="menu" color="secondary"></ion-icon>
+    </button>
+    <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="60">
+      <img src="assets/images/beerissimo_logo.png" class="title-image" />
+    </object>
+    <p class="logged-in-as">Logged in as {{this.myUserName}}</p>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item class="container" *ngFor="let file of mediaFiles">
+    <div class="info">
+      <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + file.filename">
+      <p *ngIf="file.media_type === 'audio'">
+        <a>Audio</a>
+      </p>
+      <p *ngIf="file.media_type === 'video'">
+        <a>Video</a>
+      </p>
+      <p>
+        {{file.user_id}}
+      </p>
+      <p>
+        @kaljalla
+      </p>
+    </div>
+
+
+  </ion-item>
+
+
+</ion-content>

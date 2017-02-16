@@ -1,0 +1,90 @@
+@import "./src/theme/mixings.scss";
+
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.content {
+  background: color($colors, grey-light);
+}
+
+.menu-holder{
+  background: color($colors, grey-dark);
+}
+
+.menu-item {
+  background: color($colors, grey-dark);
+  color: color($colors, secondary);
+  text-align: center;
+}
+
+.menu-item:hover {
+  background: color($colors, secondary);
+  color: white;
+  text-align: center;
+}
+
+.list-md .item-block .item-inner {
+    border-bottom: none;
+}
+
+.item-md.item-block .item-inner {
+  border-bottom: none;
+}
+
+.container {
+  overflow: auto;
+  background: color($colors, grey-light);
+  height: auto;
+  p {
+    overflow: hidden;
+  }
+
+  .label-md {
+    padding: 1em;
+    margin: 0;
+  }
+
+  .info {
+    margin: 0em auto 2em auto;
+    background-color: white;
+    clear: both;
+    border: $border-grey;
+    border-radius: 0.5%;
+    padding: 1em;
+    height: auto;
+    text-align: center;
+    width: 65%;
+    @media screen and (max-width:768px) {
+      width: 100%;
+    }
+
+    @include box-shadow-standard();
+  }
+
+}
+
+.title-image {
+  display: inline-block;
+}
+
+.logged-in-as {
+  color: white;
+  display: inline-block;
+  position: fixed;
+  top: 2em;
+  margin: 0;
+}
