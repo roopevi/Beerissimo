@@ -1,3 +1,4 @@
+import { SearchPage } from './../pages/search/search';
 import { ThumbnailPipe } from './../pipes/thumbnail';
 import { ProfilePage } from './../pages/profile/profile';
 import { LogoutPage } from './../pages/logout/logout';
@@ -21,7 +22,8 @@ import { Page2 } from '../pages/page2/page2';
     RegisterPage,
     LogoutPage,
     ProfilePage,
-    ThumbnailPipe
+    ThumbnailPipe,
+    SearchPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +35,8 @@ import { Page2 } from '../pages/page2/page2';
     LoginPage,
     RegisterPage,
     LogoutPage,
-    ProfilePage
+    ProfilePage,
+    SearchPage
   ],
 
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService]

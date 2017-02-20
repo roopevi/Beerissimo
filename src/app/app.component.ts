@@ -1,3 +1,4 @@
+import { SearchPage } from './../pages/search/search';
 import { ProfilePage } from './../pages/profile/profile';
 import { LogoutPage } from './../pages/logout/logout';
 import { RegisterPage } from './../pages/register/register';
@@ -27,6 +28,7 @@ export class MyApp {
     this.pages = [
       { title: 'Front', component: FrontPage},
       { title: 'Profile', component: ProfilePage },
+      { title: 'Search', component: SearchPage },
       { title: 'Login', component: LoginPage},
       { title: 'Register', component: RegisterPage},
       { title: 'Log out', component: LogoutPage}
