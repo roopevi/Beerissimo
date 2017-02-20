@@ -1,3 +1,4 @@
+import { ThumbnailPipe } from './../pipes/thumbnail';
 import { ProfilePage } from './../pages/profile/profile';
 import { LogoutPage } from './../pages/logout/logout';
 import { RegisterService } from './../providers/register-service';
@@ -19,7 +20,8 @@ import { Page2 } from '../pages/page2/page2';
     LoginPage,
     RegisterPage,
     LogoutPage,
-    ProfilePage
+    ProfilePage,
+    ThumbnailPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
