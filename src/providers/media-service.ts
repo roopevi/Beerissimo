@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 
 /*
@@ -20,6 +20,17 @@ export class MediaService {
 
   getMedia = () => {
     return this.http.get(this.url + '/tags/Beerissimo')
+      .map(
+      res =>
+        res.json()
+      );
+  };
+
+  getOwner = (userId: string) => {
+    this.token = JSON.parse(localStorage.getItem("user")).token;
+
+
+    return this.http.get(this.url + '/users/' + userId + '?token=' + this.token)
       .map(
       res =>
         res.json()
