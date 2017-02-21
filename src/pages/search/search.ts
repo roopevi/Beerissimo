@@ -17,6 +17,8 @@ export class SearchPage {
   searchQuery: string = '';
   items: string[];
   private mediaFiles: any[];
+  private arrayHidden:boolean;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) {
     this.getMedia();
@@ -35,9 +37,10 @@ export class SearchPage {
 
         if (prop == 'title') {
 
-          if (obj[prop].length > 0 || !(this.items.indexOf(obj[prop]) >= 0)) {
+          if (obj[prop].length != 0 && !(this.items.indexOf(obj[prop]) > -1)) {
             this.items.push(obj[prop].trim());
           }
+
         }
       }
     }
@@ -67,6 +70,7 @@ export class SearchPage {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+
     }
   }
 
