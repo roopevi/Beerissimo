@@ -17,7 +17,6 @@ export class SearchPage {
   searchQuery: string = '';
   items: string[];
   private mediaFiles: any[];
-  private arrayHidden:boolean;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) {
@@ -29,22 +28,7 @@ export class SearchPage {
   }
 
   initializeItems() {
-    this.items = [];
-
-    for (const key in this.mediaFiles) {
-      const obj = this.mediaFiles[key];
-      for (const prop in obj) {
-
-        if (prop == 'title') {
-
-          if (obj[prop].length != 0 && !(this.items.indexOf(obj[prop]) > -1)) {
-            this.items.push(obj[prop].trim());
-          }
-
-        }
-      }
-    }
-
+    this.items = this.mediaFiles;
   }
 
 
