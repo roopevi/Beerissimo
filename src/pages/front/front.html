@@ -1,6 +1,5 @@
 <!--
   Generated template for the Front page.
-
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -19,7 +18,7 @@
 <ion-content padding>
   <ion-item class="container" *ngFor="let file of mediaFiles">
     <div class="info">
-      <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + file.filename">
+      <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'medium')">
       <p *ngIf="file.media_type === 'audio'">
         <a>Audio</a>
       </p>

@@ -26,6 +26,10 @@ export class LoginService {
     console.log(this.user);
   }
 
+  getUser () {
+    return this.user;
+  }
+
   login = () => {
     return this.http.post(this.url + '/login', this.user)
      .subscribe(
