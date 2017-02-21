@@ -1,6 +1,7 @@
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Camera } from 'ionic-native';
 
 /*
   Generated class for the Upload page.
@@ -17,6 +18,7 @@ export class UploadPage {
   private file: File;
   private title: string = '';
   private description: string = '';
+  public base64Image: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public uploadService: UploadService) {}
 
@@ -35,6 +37,19 @@ export class UploadPage {
 
 
   }
+
+  takePicture() {
+    Camera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      targetWidth: 1000,
+      targetHeight: 1000
+    }).then((imageData) => {
+      this.base64Image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UploadPage');

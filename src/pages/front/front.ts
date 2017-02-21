@@ -53,7 +53,6 @@ export class FrontPage {
     this.allUsers.username = userName;
 
     this.cart.push(this.allUsers);
-
   }
 
   getOwner = (userId: any) => {

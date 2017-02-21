@@ -1,3 +1,6 @@
+import { UploadPage } from './../pages/upload/upload';
+import { SearchPage } from './../pages/search/search';
+import { ProfilePage } from './../pages/profile/profile';
 import { LogoutPage } from './../pages/logout/logout';
 import { RegisterPage } from './../pages/register/register';
 import { LoginPage } from './../pages/login/login';
@@ -5,9 +8,6 @@ import { FrontPage } from './../pages/front/front';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
 
 
 @Component({
@@ -28,8 +28,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Front', component: FrontPage},
-      { title: 'Page One', component: Page1 },
-      { title: 'Page Two', component: Page2 },
+      { title: 'Profile', component: ProfilePage },
+      {title: 'Upload', component: UploadPage},
+      { title: 'Search', component: SearchPage },
       { title: 'Login', component: LoginPage},
       { title: 'Register', component: RegisterPage},
       { title: 'Log out', component: LogoutPage}
