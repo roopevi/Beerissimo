@@ -34,7 +34,7 @@ export class FrontPage {
     this.mediaService.getMedia().subscribe(
       res => {
         this.mediaFiles = res;
-
+        this.mediaFiles.reverse();
         // for (const key in this.mediaFiles) {
         //   const obj = this.mediaFiles[key];
         //   for (const prop in obj) {

@@ -1,3 +1,4 @@
+import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -15,13 +16,27 @@ export class ProfilePage {
 
   private username: any;
   private grade: any;
+  private usersFiles:any[];
+  private userId:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
     this.getUserName();
     this.getGrade();
+
+    this.userId = JSON.parse(localStorage.getItem("user")).user_id;
+    this.getPostsByUser(this.userId);
+  }
+
+  getPostsByUser = (userId) => {
+    this.mediaService.getPostsByUser(userId).subscribe(
+      res => {
+        this.usersFiles = res;
+        this.usersFiles.reverse();
+      }
+    )
   }
 
   getUserName = () => {

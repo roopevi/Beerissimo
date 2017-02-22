@@ -36,4 +36,14 @@ export class MediaService {
       );
   };
 
+  getPostsByUser = (userId) => {
+    this.token = JSON.parse(localStorage.getItem("user")).token;
+
+    return this.http.get(this.url + '/media/user/' + userId + '?token=' + this.token)
+      .map(
+      res =>
+        res.json()
+      );
+  }
+
 }

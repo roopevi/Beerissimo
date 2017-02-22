@@ -18,6 +18,7 @@ export class SearchPage {
   items: string[];
   private mediaFiles: any[];
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) {
     this.getMedia();
   }
@@ -27,21 +28,7 @@ export class SearchPage {
   }
 
   initializeItems() {
-    this.items = [];
-
-    for (const key in this.mediaFiles) {
-      const obj = this.mediaFiles[key];
-      for (const prop in obj) {
-
-        if (prop == 'title') {
-
-          if (obj[prop].length > 0 || !(this.items.indexOf(obj[prop]) >= 0)) {
-            this.items.push(obj[prop].trim());
-          }
-        }
-      }
-    }
-
+    this.items = this.mediaFiles;
   }
 
 
@@ -67,6 +54,7 @@ export class SearchPage {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+
     }
   }
 
