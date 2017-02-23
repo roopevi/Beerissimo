@@ -15,16 +15,24 @@
 
 <ion-content padding>
   <div class="container">
+    <div class="register">
+      <br>
+      <h4>Register here!</h4>
+      <br>
     <label><b>Username</b></label>
+    <br>
     <input type="text" placeholder="Enter Username" [(ngModel)] = "username">
-    <br>
+    <br><br>
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" [(ngModel)] = "password">
     <br>
+    <input type="password" placeholder="Enter Password" [(ngModel)] = "password"  minlength="8">
+    <br><br>
     <label><b>E-mail</b></label>
-    <input type="email" placeholder="Enter E-mail address" [(ngModel)] = "email">
     <br>
+    <input type="email" placeholder="Enter E-mail address" [(ngModel)] = "email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+    <br><br>
     <button type="submit" (click)="register();">Register</button>
+  </div>
   </div>
 
 </ion-content>

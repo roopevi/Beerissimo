@@ -4,6 +4,7 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
 <ion-header>
 
   <ion-navbar>
@@ -14,13 +15,20 @@
 
 <ion-content padding>
   <div class="container">
+    <div class="login">
+    <br>
+    <h4>Login here!</h4>
+    <br>
     <label><b>Username</b></label>
+    <br>
     <input type="text" placeholder="Enter Username" [(ngModel)] = "username1">
-    <br>
+    <br><br>
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" [(ngModel)] = "password1">
     <br>
+    <input type="password" placeholder="Enter Password" [(ngModel)] = "password1">
+    <br><br>
     <button type="submit" (click)="login();">Login</button>
+    </div>
   </div>
 
 </ion-content>

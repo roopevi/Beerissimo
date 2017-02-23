@@ -1,3 +1,37 @@
 page-register {
+     .container {
+    //padding-top: 15em;
+    //padding-left: 10em;
+     //min-height: 768px;
+     //height: 100%;
+     //max-width: 100%;
+    
+     //min-width: 530px;
 
+     padding-top: 5em;
+     min-height: 768px;
+     height: 100%;
+     max-width: 100%;
+     margin: 0;
+     text-align: center;
+     
+     
+    background-image: url(../assets/images/beer2.jpg);
+     }
+     .register {
+         text-align: left;
+         margin: 0 auto;
+         border-style: none;
+         max-width: 50%;
+         height: 50%;
+         text-align: center;
+         border-radius: 1em;
+         opacity: 0.8;
+         width: 300px;
+   
+    
+    background-color: #ffffff;
+    
+         
+     }
 }
