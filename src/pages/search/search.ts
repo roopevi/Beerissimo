@@ -14,13 +14,13 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  searchQuery: string = '';
-  items: string[];
+  items: any[];
   private mediaFiles: any[];
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) {
     this.getMedia();
+    this.initializeItems()
   }
 
   ionViewDidLoad() {
@@ -28,7 +28,14 @@ export class SearchPage {
   }
 
   initializeItems() {
-    this.items = this.mediaFiles;
+
+    if (this.mediaFiles) {
+
+      this.items = this.mediaFiles.filter(function (element) {
+        return element.title.length > 0;
+      });
+
+    }
   }
 
 
@@ -36,7 +43,6 @@ export class SearchPage {
     this.mediaService.getMedia().subscribe(
       res => {
         this.mediaFiles = res;
-        this.initializeItems();
       }
     )
   }
@@ -44,17 +50,19 @@ export class SearchPage {
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
 
     // set val to the value of the searchbar
     let val = ev.target.value;
 
+
+    this.getMedia();
+    this.initializeItems();
+
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-
     }
   }
 
