@@ -1,3 +1,8 @@
+import { UploadService } from './../providers/upload-service';
+import { UploadPage } from './../pages/upload/upload';
+import { SearchPage } from './../pages/search/search';
+import { ThumbnailPipe } from './../pipes/thumbnail';
+import { ProfilePage } from './../pages/profile/profile';
 import { LogoutPage } from './../pages/logout/logout';
 import { RegisterService } from './../providers/register-service';
 import { MediaService } from './../providers/media-service';
@@ -8,18 +13,18 @@ import { FrontPage } from './../pages/front/front';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2,
     FrontPage,
     LoginPage,
     RegisterPage,
-    LogoutPage
+    LogoutPage,
+    ProfilePage,
+    ThumbnailPipe,
+    SearchPage,
+    UploadPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -27,15 +32,16 @@ import { Page2 } from '../pages/page2/page2';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2,
     FrontPage,
     LoginPage,
     RegisterPage,
-    LogoutPage
+    LogoutPage,
+    ProfilePage,
+    SearchPage,
+    UploadPage
   ],
 
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService, UploadService]
 
 })
 export class AppModule { }

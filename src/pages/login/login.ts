@@ -23,8 +23,8 @@ export class LoginPage {
 
   private username1: string = '';
   private password1: string = '';
-  
- 
+
+
 
   ngOnInit() {
   }
