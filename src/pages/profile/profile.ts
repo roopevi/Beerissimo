@@ -16,8 +16,10 @@ export class ProfilePage {
 
   private username: any;
   private grade: any;
+  private mediaFiles: any[];
   private usersFiles:any[];
   private userId:any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
 
@@ -31,10 +33,15 @@ export class ProfilePage {
   }
 
   getPostsByUser = (userId) => {
-    this.mediaService.getPostsByUser(userId).subscribe(
+    this.mediaService.getMedia().subscribe(
       res => {
-        this.usersFiles = res;
-        this.usersFiles.reverse();
+        this.mediaFiles = res;
+        this.mediaFiles.reverse();
+
+        this.usersFiles = this.mediaFiles.filter(function(element) {
+          return element.user_id == userId;
+        });
+
       }
     )
   }
