@@ -35,7 +35,9 @@ export class ProfilePage {
         this.mediaFiles.reverse();
 
         this.mediaFiles = this.mediaFiles.filter(function (element) {
-          return element.user_id == userId;
+          if (element.title.trim() != '' || element.description.trim() != '') {
+            return element.user_id == userId;
+          }
         });
 
         console.log(this.mediaFiles.length);
