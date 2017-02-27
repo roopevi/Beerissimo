@@ -28,10 +28,6 @@ export class LoginPage {
   
   }
   
-  
-
-  private username1: string = '';
-  private password1: string = '';
 
 
 
@@ -39,20 +35,20 @@ switchToMenu = () => {
   this.navCtrl.setRoot(FrontPage);
 }
 
-    switchToMenu2 = (user) => {
-    this.navCtrl.setRoot(FrontPage,user);
 
-    }
-
-  login = () => {
+  login = (value) => {
     const user = {
-      username: this.username1,
-      password: this.password1
+      username: value.username,
+      password: value.password
     };
-
+    console.log(user);
+    console.log(value);
     this.loginService.setUser(user);
-    this.loginService.login();
-    this.switchToMenu2(user.username);
+    this.loginService.login().subscribe( res => {
+      this.switchToMenu();
+    });
+    
+    
   }
 
   logout = () => {

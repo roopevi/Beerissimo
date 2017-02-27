@@ -33,7 +33,7 @@ export class LoginService {
 
   login = () => {
     return this.http.post(this.url + '/login', this.user)
-     .subscribe(
+     .map(
        resp => {
          console.log(resp.json());
          // convert user object to string and save userdata to local storage
@@ -41,6 +41,7 @@ export class LoginService {
          this.user.token = resp.json().token;
          localStorage.setItem('user', JSON.stringify(this.user));
          // navigate to front
+         
 
        },
        error => {

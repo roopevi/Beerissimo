@@ -1,3 +1,5 @@
+import { FrontPage } from './../pages/front/front';
+import { NavController } from 'ionic-angular';
 import { LoginService } from './login-service';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';

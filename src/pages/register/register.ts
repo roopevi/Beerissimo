@@ -41,9 +41,11 @@ export class RegisterPage {
       res => {
         this.response = res;
         console.log(this.response);
+        
       }
     );
     //this.switchToMenu();
+    this.navCtrl.setRoot(FrontPage);
   }
 
 }
