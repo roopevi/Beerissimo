@@ -46,4 +46,11 @@ export class MediaService {
       );
   }
 
+  getSingleMedia = (fileId) => {
+    return this.http.get(this.url + '/media/' + fileId).map(
+      res =>
+        res.json()
+    );
+  }
+
 }

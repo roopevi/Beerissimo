@@ -1,3 +1,4 @@
+import { FrontPage } from './../front/front';
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController} from 'ionic-angular';
@@ -41,7 +42,10 @@ export class UploadPage {
 
     this.uploadService.upload(formData).subscribe(data => {
       console.log(data);
+      this.navCtrl.setRoot(FrontPage);
+      
     });
+    
   }
 
   takePicture(){
@@ -66,6 +70,7 @@ export class UploadPage {
       this.username = 'user';
     }
   }
+
 
   /*public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({

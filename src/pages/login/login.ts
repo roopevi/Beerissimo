@@ -25,9 +25,9 @@ export class LoginPage {
   }
 
   ionViewWillEnter() {
-  
+
   }
-  
+
 
 
 
@@ -47,8 +47,8 @@ switchToMenu = () => {
     this.loginService.login().subscribe( res => {
       this.switchToMenu();
     });
-    
-    
+
+
   }
 
   logout = () => {

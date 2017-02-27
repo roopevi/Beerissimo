@@ -1,3 +1,5 @@
+import { LoginPage } from './../login/login';
+import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginService } from './../../providers/login-service';
 import { MediaService } from './../../providers/media-service';
 import { Http } from '@angular/http';
@@ -34,15 +36,16 @@ export class FrontPage {
 
   }
 
-  
- 
-  
+
+
+
 
   getAllMedia = () => {
     this.mediaService.getMedia().subscribe(
       res => {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
+
 
         this.mediaFiles = this.mediaFiles.filter(function(element) {
           if (element.title.trim() != '' || element.description.trim() != '') {
@@ -74,7 +77,13 @@ export class FrontPage {
       this.myUserName = (localStorage.getItem('user'));
     }
   }
-  
 
 
+  openPost = (fileId) => {
+      this.navCtrl.push(MediaplayerPage, {
+        firstPassed: fileId,
+      });
+  }
 }
+
+

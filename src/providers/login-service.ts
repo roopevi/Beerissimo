@@ -31,7 +31,7 @@ export class LoginService {
     return this.user;
   }
 
-  login = () => {
+  login = () => {console.log('logging in', this.user);
     return this.http.post(this.url + '/login', this.user)
      .map(
        resp => {
@@ -41,7 +41,7 @@ export class LoginService {
          this.user.token = resp.json().token;
          localStorage.setItem('user', JSON.stringify(this.user));
          // navigate to front
-         
+         return resp;
 
        },
        error => {
