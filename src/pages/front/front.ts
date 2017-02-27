@@ -1,3 +1,5 @@
+import { LoginPage } from './../login/login';
+import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginService } from './../../providers/login-service';
 import { MediaService } from './../../providers/media-service';
 import { Http } from '@angular/http';
@@ -35,6 +37,7 @@ export class FrontPage {
       res => {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
+        console.log(res);
         // for (const key in this.mediaFiles) {
         //   const obj = this.mediaFiles[key];
         //   for (const prop in obj) {
@@ -77,5 +80,11 @@ export class FrontPage {
     }
   }
 
-
+  openPost = (fileId) => {
+      this.navCtrl.push(MediaplayerPage, {
+        firstPassed: fileId,
+      });
+  }
 }
+
+

@@ -1,3 +1,4 @@
+import { MediaplayerPage } from './../pages/mediaplayer/mediaplayer';
 import { UploadService } from './../providers/upload-service';
 import { UploadPage } from './../pages/upload/upload';
 import { SearchPage } from './../pages/search/search';
@@ -24,7 +25,8 @@ import { MyApp } from './app.component';
     ProfilePage,
     ThumbnailPipe,
     SearchPage,
-    UploadPage
+    UploadPage,
+    MediaplayerPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -38,7 +40,8 @@ import { MyApp } from './app.component';
     LogoutPage,
     ProfilePage,
     SearchPage,
-    UploadPage
+    UploadPage,
+    MediaplayerPage
   ],
 
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService, UploadService]

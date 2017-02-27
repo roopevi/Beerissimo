@@ -1,5 +1,6 @@
 <!--
-  Generated template for the Front page.
+  Generated template for the Mediaplayer page.
+
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -15,26 +16,15 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
-  <ion-item class="container" *ngFor="let file of mediaFiles">
-    <div class="info">
-      <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'small')" (click)="openPost(file.file_id)">
-      <p *ngIf="file.media_type === 'audio'">
-        <a>Audio</a>
-      </p>
-      <p *ngIf="file.media_type === 'video'">
-        <a>Video</a>
-      </p>
-      <p>
-        {{file.user_id}}
-      </p>
-      <p>
-        @kaljalla
-      </p>
+  <ion-item>
+    <div class="post-content">
+      <h2 id="username">{{user.username}}</h2>
+      <h2 id="title">{{mediaFile.title}}</h2>
+      <img [alt]="mediaFile.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename">
+      <h3>{{mediaFile.description}}</h3>
     </div>
-
-
   </ion-item>
-
 
 </ion-content>

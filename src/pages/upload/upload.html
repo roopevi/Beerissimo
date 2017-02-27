@@ -15,7 +15,7 @@
   <div class="container">
     <div class="info">
       <form class="upload-form" #uploadForm="ngForm" (ngSubmit)="uploadPost($event, uploadForm.value)">
-        <ion-input type="text" name="title" ngModel placeholder="What are you drinking?"></ion-input>
+        <ion-input type="text" name="title" ngModel placeholder="What are you drinking?" required></ion-input>
         <br>
         <ion-textarea autosize placeholder="How was your beer?" name="description" ngModel></ion-textarea>
         <br>
@@ -23,7 +23,6 @@
         <br>
         <button ion-button (click)="takePicture()">Take a picture</button>
         <br>
-        <!--<button ion-button (click)="takePicture()">Take a Picture</button>-->
         <img [src]="base64Image" *ngIf="base64Image" />
         <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
       </form>
