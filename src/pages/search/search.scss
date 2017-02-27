@@ -3,7 +3,8 @@
 page-search {
   ion-list.list {
     border: $border-grey;
-    margin: 0.7em;
+    margin: 0.65em;
+    border-radius: 0.5%;
     @include box-shadow-standard();
 
     ion-item {
