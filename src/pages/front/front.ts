@@ -19,10 +19,9 @@ export class FrontPage {
   private mediaFiles: any[];
   private myUserName: any;
   private userData: any = {};
-  private cart: any = [];
-  private username:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) {}
 
   ionViewDidLoad() {
     this.getUserName();
