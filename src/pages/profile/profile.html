@@ -25,8 +25,8 @@
       <p class="grade">{{this.grade}}</p>
       <div class="my-beers">
         <h3>My list of beers</h3>
-        <ion-list>
-          <ion-item *ngFor="let file of usersFiles">
+        <ion-list *ngIf="mediaFiles?.length > 0">
+          <ion-item *ngFor="let file of mediaFiles">
             <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'small')">
             <p>
               <span class="heading">{{file.title}}</span><br/>

@@ -19,15 +19,14 @@ export class FrontPage {
   private mediaFiles: any[];
   private myUserName: any;
   private userData: any = {};
-  private allUsers: any = {};
   private cart: any = [];
+  private username:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
 
   ionViewDidLoad() {
     this.getUserName();
     this.getAllMedia();
-    console.log(this.cart);
   }
 
   getAllMedia = () => {
@@ -35,34 +34,17 @@ export class FrontPage {
       res => {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
-        // for (const key in this.mediaFiles) {
-        //   const obj = this.mediaFiles[key];
-        //   for (const prop in obj) {
-
-        //     if (prop == 'user_id') {
-        //       this.userData = this.getOwner(obj[prop]);
-        //     }
-        //   }
-        // }
       }
     )
   };
 
-  inserOwner = (userId: any, userName: any) => {
-    this.allUsers.id = userId;
-    this.allUsers.username = userName;
-
-    this.cart.push(this.allUsers);
-  }
-
   getOwner = (userId: any) => {
     this.mediaService.getOwner(userId).subscribe(
       res => {
-        const dataFromServer = res;
-        const username = dataFromServer.username
-        const userId = dataFromServer.user_id
-
-        this.inserOwner(userId, username)
+        this.userData = res.filter(function(element){
+          this.username = element.username;
+          return this.username;
+        });
 
       }
     );

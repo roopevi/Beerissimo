@@ -17,8 +17,7 @@ export class ProfilePage {
   private username: any;
   private grade: any;
   private mediaFiles: any[];
-  private usersFiles:any[];
-  private userId:any;
+  private userId: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
@@ -38,10 +37,9 @@ export class ProfilePage {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
-        this.usersFiles = this.mediaFiles.filter(function(element) {
+        this.mediaFiles = this.mediaFiles.filter(function (element) {
           return element.user_id == userId;
         });
-
       }
     )
   }
@@ -61,4 +59,6 @@ export class ProfilePage {
       this.grade = 'not defined';
     }
   }
+
+
 }
