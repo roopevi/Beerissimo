@@ -1,3 +1,4 @@
+import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -75,6 +76,12 @@ export class SearchPage {
     } else {
       this.myUserName = 'user';
     }
+  }
+
+  openPost = (fileId) => {
+    this.navCtrl.push(MediaplayerPage, {
+      firstPassed: fileId,
+    });
   }
 
 }
