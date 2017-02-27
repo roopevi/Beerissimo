@@ -16,17 +16,14 @@ export class ProfilePage {
 
   private username: any;
   private grade: any;
-  private mediaFiles: any[];
+  public mediaFiles: any[];
   private userId: any;
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
     this.getUserName();
     this.getGrade();
-
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
   }
@@ -40,6 +37,8 @@ export class ProfilePage {
         this.mediaFiles = this.mediaFiles.filter(function (element) {
           return element.user_id == userId;
         });
+
+        console.log(this.mediaFiles.length);
       }
     )
   }

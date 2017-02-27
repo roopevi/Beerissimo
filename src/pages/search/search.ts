@@ -26,6 +26,7 @@ export class SearchPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
+    this.getUserName();
   }
 
   initializeItems() {
