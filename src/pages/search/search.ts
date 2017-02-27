@@ -16,6 +16,7 @@ export class SearchPage {
 
   items: any[];
   private mediaFiles: any[];
+  private myUserName: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) {
@@ -54,15 +55,24 @@ export class SearchPage {
     // set val to the value of the searchbar
     let val = ev.target.value;
 
-
     this.getMedia();
     this.initializeItems();
 
     // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
+    if (val && val.trim().length > 0) {
       this.items = this.items.filter((item) => {
         return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    } else {
+      this.items = [];
+    }
+  }
+
+  getUserName = () => {
+    if (localStorage.getItem('user')) {
+      this.myUserName = JSON.parse(localStorage.getItem("user")).username;
+    } else {
+      this.myUserName = 'user';
     }
   }
 
