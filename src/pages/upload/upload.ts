@@ -21,8 +21,14 @@ export class UploadPage {
   private title: string = '';
   private description: string = '';
   public base64Image: string;
+  private username: any;
 
   constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,public uploadService: UploadService) {}
+
+  ionViewDidLoad() {
+    this.getUserName();
+    console.log('ionViewDidLoad UploadPage');
+  }
 
   uploadPost = (event: any, value: any) => {
     const fileElement = event.target.querySelector('input[type=file]');
@@ -53,6 +59,14 @@ export class UploadPage {
     });
   }
 
+  getUserName = () => {
+    if (localStorage.getItem('user')) {
+      this.username = JSON.parse(localStorage.getItem("user")).username;
+    } else {
+      this.username = 'user';
+    }
+  }
+
   /*public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
@@ -77,12 +91,5 @@ export class UploadPage {
     });
     actionSheet.present();
   }*/
-
-
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UploadPage');
-  }
 
 }
