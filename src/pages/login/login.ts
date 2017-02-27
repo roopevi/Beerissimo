@@ -15,19 +15,34 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) { }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  ionViewWillEnter() {
+  
+  }
+  
+  
+
   private username1: string = '';
   private password1: string = '';
 
 
-  switchToMenu = () => {
-    this.navCtrl.setRoot(FrontPage);
-  }
+
+switchToMenu = () => {
+  this.navCtrl.setRoot(FrontPage);
+}
+
+    switchToMenu2 = (user) => {
+    this.navCtrl.setRoot(FrontPage,user);
+
+    }
 
   login = () => {
     const user = {
@@ -37,7 +52,7 @@ export class LoginPage {
 
     this.loginService.setUser(user);
     this.loginService.login();
-    this.switchToMenu();
+    this.switchToMenu2(user.username);
   }
 
   logout = () => {

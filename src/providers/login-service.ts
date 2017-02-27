@@ -21,6 +21,7 @@ export class LoginService {
     console.log('Hello LoginService Provider');
   }
 
+
   setUser = (user) => {
     this.user = user;
     console.log(this.user);

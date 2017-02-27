@@ -23,10 +23,18 @@ export class FrontPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) {}
 
-  ionViewDidLoad() {
-    this.getUserName();
-    this.getAllMedia();
+
+
+  
+  ionViewWillEnter() {
+        this.getUserName();
+        this.getAllMedia();
+
   }
+
+  
+ 
+  
 
   getAllMedia = () => {
     this.mediaService.getMedia().subscribe(
@@ -55,14 +63,12 @@ export class FrontPage {
     );
   }
 
-
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
-    } else {
-      this.myUserName = 'user';
     }
   }
+  
 
 
 }
