@@ -11,7 +11,7 @@
 
 <ion-content>
   <div class="container">
-    <div class="login">
+    <form class="login" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     <br>
     <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="120">
       <img src="assets/images/beerissimo_logo.png" class="title-image" />
@@ -19,16 +19,19 @@
     <br>
     <h4>Login here!</h4>
     <br>
+    <p *ngFor='let item of response'>
+        {{item}}
+      </p>
     <label><b>Username</b></label>
     <br>
-    <input type="text" placeholder="Enter Username" [(ngModel)] = "username1">
+    <input type="text" placeholder="Enter Username" name="username1" ngModel>
     <br><br>
     <label><b>Password</b></label>
     <br>
-    <input type="password" placeholder="Enter Password" [(ngModel)] = "password1">
+    <input type="password" placeholder="Enter Password" name="password1" ngModel>
     <br><br>
-    <button ion-button type="submit" (click)="login();">Login</button>
-    </div>
+    <button ion-button type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
   </div>
 
 </ion-content>
