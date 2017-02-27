@@ -6,20 +6,16 @@
 -->
 
 <ion-header>
-  <ion-navbar color="grey-dark">
-    <button ion-button menuToggle right>
-      <ion-icon name="menu" color="secondary"></ion-icon>
-    </button>
-    <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="60">
-      <img src="assets/images/beerissimo_logo.png" class="title-image" />
-    </object>
-    <p class="logged-in-as">Logged in as {{this.myUserName}}</p>
-  </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <div class="container">
     <div class="login">
+    <br>
+    <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="120">
+      <img src="assets/images/beerissimo_logo.png" class="title-image" />
+    </object>
     <br>
     <h4>Login here!</h4>
     <br>
@@ -31,7 +27,7 @@
     <br>
     <input type="password" placeholder="Enter Password" [(ngModel)] = "password1">
     <br><br>
-    <button type="submit" (click)="login();">Login</button>
+    <button ion-button type="submit" (click)="login();">Login</button>
     </div>
   </div>
 

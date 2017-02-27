@@ -19,7 +19,7 @@ export class RegisterService {
 
   register = () => {
     return this.http.post(this.url + '/users', this.user)
-      .subscribe(
+      .map(
       resp => {
         const originalData = this.user;
         const dataFromServer = resp.json();
@@ -30,9 +30,6 @@ export class RegisterService {
 
         this.loginService.setUser(originalData);
         this.loginService.login();
-      },
-      error => {
-        console.log(error);
       }
       );
   }

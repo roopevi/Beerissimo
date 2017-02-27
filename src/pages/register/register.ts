@@ -20,6 +20,7 @@ export class RegisterPage {
   private email: string = '';
   private username: string = '';
   private password: string = '';
+  private response: any;
 
   switchToMenu = () => {
     this.navCtrl.setRoot(FrontPage);
@@ -29,15 +30,20 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  register = () => {
+  register = (value) => {
     const user = {
-      username: this.username,
-      password: this.password,
-      email: this.email
+      username: value.username,
+      password: value.password,
+      email: value.email
     };
     this.registerService.setUser(user);
-    this.registerService.register();
-    this.switchToMenu();
+    this.registerService.register().subscribe(
+      res => {
+        this.response = res;
+        console.log(this.response);
+      }
+    );
+    //this.switchToMenu();
   }
 
 }
