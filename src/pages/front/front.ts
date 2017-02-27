@@ -33,6 +33,12 @@ export class FrontPage {
       res => {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
+
+        this.mediaFiles = this.mediaFiles.filter(function(element) {
+          if (element.title.trim() != '' || element.description.trim() != '') {
+            return element;
+          }
+        });
       }
     )
   };
