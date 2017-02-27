@@ -16,25 +16,31 @@ export class ProfilePage {
 
   private username: any;
   private grade: any;
-  private usersFiles:any[];
-  private userId:any;
+  public mediaFiles: any[];
+  private userId: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
     this.getUserName();
     this.getGrade();
-
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
   }
 
   getPostsByUser = (userId) => {
-    this.mediaService.getPostsByUser(userId).subscribe(
+    this.mediaService.getMedia().subscribe(
       res => {
-        this.usersFiles = res;
-        this.usersFiles.reverse();
+        this.mediaFiles = res;
+        this.mediaFiles.reverse();
+
+        this.mediaFiles = this.mediaFiles.filter(function (element) {
+          if (element.title.trim() != '' || element.description.trim() != '') {
+            return element.user_id == userId;
+          }
+        });
+
+        console.log(this.mediaFiles.length);
       }
     )
   }
@@ -54,4 +60,6 @@ export class ProfilePage {
       this.grade = 'not defined';
     }
   }
+
+
 }

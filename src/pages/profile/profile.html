@@ -12,7 +12,7 @@
     <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="60">
       <img src="assets/images/beerissimo_logo.png" class="title-image" />
     </object>
-    <p class="logged-in-as">Logged in as {{this.myUserName}}</p>
+    <p class="logged-in-as">Logged in as {{this.username}}</p>
   </ion-navbar>
 </ion-header>
 
@@ -25,8 +25,8 @@
       <p class="grade">{{this.grade}}</p>
       <div class="my-beers">
         <h3>My list of beers</h3>
-        <ion-list>
-          <ion-item *ngFor="let file of usersFiles">
+        <ion-list *ngIf="mediaFiles?.length >= 1">
+          <ion-item *ngFor="let file of mediaFiles">
             <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'small')">
             <p>
               <span class="heading">{{file.title}}</span><br/>
@@ -34,8 +34,8 @@
               <span class="alc">4.5%</span>
             </p>
           </ion-item>
-
         </ion-list>
+        <p *ngIf="mediaFiles?.length < 1">You don't seem to have any beers yet..</p>
       </div>
     </div>
   </ion-item>

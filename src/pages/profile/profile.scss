@@ -2,7 +2,7 @@
 
 page-profile {
 
-  .profile-pic {
+.profile-pic {
   border: $border-orange;
 }
 
@@ -76,6 +76,7 @@ page-profile {
 
         p {
           margin: 0;
+          display: inline-block;
 
           span {
 

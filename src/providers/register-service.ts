@@ -1,3 +1,5 @@
+import { FrontPage } from './../pages/front/front';
+import { NavController } from 'ionic-angular';
 import { LoginService } from './login-service';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
@@ -19,7 +21,7 @@ export class RegisterService {
 
   register = () => {
     return this.http.post(this.url + '/users', this.user)
-      .subscribe(
+      .map(
       resp => {
         const originalData = this.user;
         const dataFromServer = resp.json();
@@ -30,9 +32,6 @@ export class RegisterService {
 
         this.loginService.setUser(originalData);
         this.loginService.login();
-      },
-      error => {
-        console.log(error);
       }
       );
   }
