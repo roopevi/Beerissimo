@@ -27,13 +27,9 @@ export class FrontPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) {}
 
 
-  ionViewWillEnter() {
+  ionViewDidLoad() {
     this.getAllMedia();
     this.getUserName();
-  }
-
-  ionViewDidLoad() {
-
   }
 
   getAllMedia = () => {
@@ -42,11 +38,10 @@ export class FrontPage {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
-        for(var i = 0; i < this.mediaFiles.length; i++) {
-          var singleFile = this.mediaFiles[i];
-          this.userName = singleFile.user_id;
-          console.log(this.userName);
+        if (this.mediaFiles != null) {
+          this.getUserToPost();
         }
+
 
         this.mediaFiles = this.mediaFiles.filter(function(element) {
           if (element.title.trim() != '' || element.description.trim() != '') {
@@ -57,17 +52,21 @@ export class FrontPage {
     )
   };
 
-  getOwner = (userId: any) => {
-    this.mediaService.getOwner(userId).subscribe(
-      res => {
-        this.userData = res.filter(function(element){
-          this.username = element.username;
-          return this.username;
-        });
-
-      }
-    );
+  getUserToPost = () => {
+    for(let user of this.mediaFiles) {
+      this.mediaService.getOwner(user.user_id).subscribe (
+        res => {
+          for (let i in this.mediaFiles) {
+            if (this.mediaFiles[i].user_id == res.user_id) {
+              this.mediaFiles[i].username = res.username;
+            }
+          }
+        }
+      )
+    }
   }
+
+
 
   getUserName = () => {
     if (localStorage.getItem('user')) {
