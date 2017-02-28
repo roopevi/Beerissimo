@@ -56,6 +56,11 @@
       <p>Likes: {{this.favourites}}</p>
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
+
     </div>
   </ion-item>
+  <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)">
+      <ion-textarea autosize placeholder="Add comment" name="comment" ngModel></ion-textarea>
+      <button ion-button type="submit" [disabled]="!commentForm.valid">POST</button>
+  </form>
 </ion-content>

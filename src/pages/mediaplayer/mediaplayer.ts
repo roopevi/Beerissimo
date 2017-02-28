@@ -20,6 +20,8 @@ export class MediaplayerPage {
   private thisPostLiked: boolean;
   buttonText: string;
   private favourites = 0;
+  private comments: any = [];
+  private commentCredentials = { file_id: '', comment: '' };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaService: MediaService) {
     this.firstParam = navParams.get('firstPassed');
@@ -51,7 +53,6 @@ export class MediaplayerPage {
   }
 
   getFileFavourites = (fileId) => {
-
 
     this.mediaService.getFavourites(fileId).subscribe(
       res => {
@@ -86,5 +87,32 @@ export class MediaplayerPage {
         this.ionViewDidLoad();
       });
   }
+
+  makeComment = (value: any) => {
+    console.log(value.comment);
+    this.commentCredentials.file_id = this.firstParam;
+    console.log(this.commentCredentials.file_id);
+    this.commentCredentials.comment = value.comment;
+    console.log(this.commentCredentials);
+    this.mediaService.postComment(this.commentCredentials).subscribe (
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  showComment = (fileId) => {
+    this.mediaService.getComment(fileId).subscribe(
+      res => {
+        this.comments = res;
+        console.log(res);
+      }
+    )
+  }
+
+
 
 }

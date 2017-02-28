@@ -96,4 +96,24 @@ export class MediaService {
       }
       );
   }
+
+  postComment = (comment: any) => {
+    return this.http.post(this.url + `/comments?token=` + JSON.parse(localStorage.getItem('user')).token, comment).map(
+      res => {
+        res.json()
+      }
+    )
+  }
+
+  getComment = (fileId) => {
+    return this.http.get(this.url + 'comments/file/' + fileId).map(
+      res => {
+        return res;
+      },
+        error => {
+          return error;
+        }
+
+    )
+  }
 }
