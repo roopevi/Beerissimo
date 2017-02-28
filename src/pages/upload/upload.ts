@@ -1,3 +1,4 @@
+import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
@@ -43,9 +44,8 @@ export class UploadPage {
     this.uploadService.upload(formData).subscribe(data => {
       console.log(data);
       this.navCtrl.setRoot(FrontPage);
-      
     });
-    
+
   }
 
   takePicture(){

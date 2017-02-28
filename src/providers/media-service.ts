@@ -13,6 +13,10 @@ export class MediaService {
   private url: string = 'http://media.mw.metropolia.fi/wbma';
   private token: any;
 
+  private favouriteFile: any = {
+    'file_id': null
+  };
+
   constructor(public http: Http) {
     console.log('Hello MediaService Provider');
   }
@@ -53,4 +57,43 @@ export class MediaService {
     );
   }
 
+
+  getFavourites = (fileId) => {
+
+    return this.http.get(this.url + '/favourites/file/' + fileId)
+      .map(
+      res =>
+        res.json()
+      );
+  };
+
+  addToFavourites = (fileId) => {
+    this.token = JSON.parse(localStorage.getItem("user")).token;
+    this.favouriteFile.file_id = fileId;
+
+    let headers = new Headers({ 'x-access-token': this.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.url + '/favourites', this.favouriteFile, options)
+      .map(
+      res => {
+        return res;
+      }
+      );
+
+  }
+
+  deleteFromFavourites = (fileId) => {
+    this.token = JSON.parse(localStorage.getItem("user")).token;
+
+    let headers = new Headers({ 'x-access-token': this.token });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(this.url + '/favourites/file/' + fileId, options)
+      .map(
+      res => {
+        return res;
+      }
+      );
+  }
 }
