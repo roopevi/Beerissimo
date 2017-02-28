@@ -20,6 +20,7 @@
 <ion-content padding>
   <ion-item *ngIf="mediaFile.media_type === 'image'">
     <div class="post-content">
+
       <h2 id="username">{{user.username}}</h2>
       <h2 id="title">{{mediaFile.title}}</h2>
       <img [alt]="mediaFile.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename">
