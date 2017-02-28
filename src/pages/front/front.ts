@@ -24,12 +24,16 @@ export class FrontPage {
   private userName: any = [];
 
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) {}
 
 
   ionViewDidLoad() {
     this.getAllMedia();
     this.getUserName();
+   
+
+    
   }
 
   getAllMedia = () => {
@@ -84,6 +88,8 @@ export class FrontPage {
         firstPassed: fileId,
       });
   }
+
+  
 }
 
 
