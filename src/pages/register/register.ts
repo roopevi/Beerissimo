@@ -1,3 +1,4 @@
+import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { RegisterService } from './../../providers/register-service';
 import { Component } from '@angular/core';
@@ -15,7 +16,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, private loginService: LoginService) {}
 
   private email: string = '';
   private username: string = '';
@@ -38,14 +39,26 @@ export class RegisterPage {
     };
     this.registerService.setUser(user);
     this.registerService.register().subscribe(
-      res => {
-        this.response = res;
-        console.log(this.response);
+      resp => {
+         const originalData = user;
+        
+        console.log(user, resp);
+        
+        // convert user object to string and save userdata to local storage
+        delete originalData['email'];
+        console.log(originalData);
+        this.loginService.setUser(originalData);
+        this.loginService.login().subscribe(
+          resp => {
+            console.log(resp);
+            this.switchToMenu();
+          }
+        );
 
       }
     );
-    //this.switchToMenu();
-    this.navCtrl.setRoot(FrontPage);
+    this.switchToMenu();
+    
   }
 
 }

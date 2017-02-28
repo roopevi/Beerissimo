@@ -1,3 +1,26 @@
-page-search {
+@import "./src/theme/mixings.scss";
 
+page-search {
+  ion-list.list {
+    border: $border-grey;
+    margin: 0.65em;
+    border-radius: 0.5%;
+    @include box-shadow-standard();
+
+    ion-item {
+
+      p {
+        color: $highlight-blue;
+      }
+
+      &:hover {
+        background: $highlight-blue;
+
+
+        p {
+          color: white;
+        }
+      }
+    }
+  }
 }

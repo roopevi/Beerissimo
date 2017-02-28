@@ -21,19 +21,7 @@ export class RegisterService {
 
   register = () => {
     return this.http.post(this.url + '/users', this.user)
-      .map(
-      resp => {
-        const originalData = this.user;
-        const dataFromServer = resp.json();
-
-        this.user = dataFromServer;
-        // convert user object to string and save userdata to local storage
-        delete originalData['email'];
-
-        this.loginService.setUser(originalData);
-        this.loginService.login();
-      }
-      );
+      .map(resp => resp.json());
   }
 
 }
