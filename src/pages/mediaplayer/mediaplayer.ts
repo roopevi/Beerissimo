@@ -17,20 +17,22 @@ export class MediaplayerPage {
   private mediaFile: any = [];
   private user: any = [];
   public firstParam: any;
+  private thisPostLiked: boolean;
+  buttonText: string;
+  private favourites = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaService: MediaService) {
     this.firstParam = navParams.get('firstPassed');
   }
 
   ionViewDidLoad() {
-
-    console.log(this.firstParam);
+    this.thisPostLiked = false;
     console.log('ionViewDidLoad MediaplayerPage');
     this.viewPost(this.firstParam);
   }
 
-  getName (user: any) {
-    this.mediaService.getOwner(user).subscribe (
+  getName(user: any) {
+    this.mediaService.getOwner(user).subscribe(
       resp => {
         this.user = resp;
         console.log(resp);
@@ -39,12 +41,50 @@ export class MediaplayerPage {
   }
 
   viewPost = (fileId) => {
-    this.mediaService.getSingleMedia(fileId).subscribe (
+    this.mediaService.getSingleMedia(fileId).subscribe(
       res => {
         this.mediaFile = res;
         this.getName(this.mediaFile.user_id);
+        this.getFileFavourites(fileId);
       }
     )
+  }
+
+  getFileFavourites = (fileId) => {
+
+
+    this.mediaService.getFavourites(fileId).subscribe(
+      res => {
+        this.favourites = res.length;
+        for (const key in res) {
+          const obj = res[key];
+          for (const prop in obj) {
+            if (prop === 'user_id') {
+              if (obj[prop] === JSON.parse(localStorage.getItem("user")).user_id) {
+                this.thisPostLiked = true;
+                this.buttonText = 'Unlike';
+              }
+              this.buttonText = 'Like';
+            }
+          }
+        }
+      }
+    );
+  }
+
+  addFavourite = (fileId) => {
+    this.mediaService.addToFavourites(fileId).subscribe(
+      res => {
+        this.ionViewDidLoad();
+      }
+    );
+  }
+
+  deleteFavourite = (fileId) => {
+    this.mediaService.deleteFromFavourites(fileId).subscribe(
+      res => {
+        this.ionViewDidLoad();
+      });
   }
 
 }
