@@ -18,6 +18,7 @@
     </object>
       <br>
       <h4>Register here!</h4>
+      <p class="error" *ngIf="loginFailed">{{this.errorMessage}}</p>
       <br>
       <p *ngFor='let item of response'>
         {{item}}

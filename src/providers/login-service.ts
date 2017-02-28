@@ -24,7 +24,6 @@ export class LoginService {
 
   setUser = (user) => {
     this.user = user;
-    console.log(this.user);
   }
 
   getUser () {
@@ -35,7 +34,6 @@ export class LoginService {
     return this.http.post(this.url + '/login', this.user)
      .map(
        resp => {
-         console.log(resp.json());
          // convert user object to string and save userdata to local storage
          this.user = resp.json().user;
          this.user.token = resp.json().token;
@@ -45,7 +43,7 @@ export class LoginService {
 
        },
        error => {
-         console.log(error);
+         return error;
        }
      );
   }

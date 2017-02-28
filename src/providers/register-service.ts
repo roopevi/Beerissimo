@@ -21,7 +21,13 @@ export class RegisterService {
 
   register = () => {
     return this.http.post(this.url + '/users', this.user)
-      .map(resp => resp.json());
+      .map(
+      resp => {
+        return resp;
+      }, error => {
+        return error;
+      }
+      );
   }
 
 }
