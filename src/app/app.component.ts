@@ -17,7 +17,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = FrontPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 

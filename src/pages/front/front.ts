@@ -29,7 +29,6 @@ export class FrontPage {
 
   ionViewDidLoad() {
     this.getAllMedia();
-    this.getUserName();
   }
 
   getAllMedia = () => {
