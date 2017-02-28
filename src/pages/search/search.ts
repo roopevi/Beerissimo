@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
@@ -74,7 +75,7 @@ export class SearchPage {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
     } else {
-      this.myUserName = 'user';
+      this.navCtrl.setRoot(LoginPage);
     }
   }
 

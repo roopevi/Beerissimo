@@ -20,14 +20,14 @@ export class FrontPage {
 
   private mediaFiles: any[];
   private myUserName: any;
-  private userData: any = {};
-  private userName: any = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) {}
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
 
 
   ionViewDidLoad() {
+    this.getUserName();
     this.getAllMedia();
   }
 
@@ -37,12 +37,14 @@ export class FrontPage {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
-        if (this.mediaFiles != null) {
+        if (this.mediaFiles != null && localStorage.getItem('user')) {
           this.getUserToPost();
+        } else {
+          this.navCtrl.setRoot(LoginPage);
         }
 
 
-        this.mediaFiles = this.mediaFiles.filter(function(element) {
+        this.mediaFiles = this.mediaFiles.filter(function (element) {
           if (element.title.trim() != '' || element.description.trim() != '') {
             return element;
           }
@@ -52,8 +54,8 @@ export class FrontPage {
   };
 
   getUserToPost = () => {
-    for(let user of this.mediaFiles) {
-      this.mediaService.getOwner(user.user_id).subscribe (
+    for (let user of this.mediaFiles) {
+      this.mediaService.getOwner(user.user_id).subscribe(
         res => {
           for (let i in this.mediaFiles) {
             if (this.mediaFiles[i].user_id == res.user_id) {
@@ -72,17 +74,19 @@ export class FrontPage {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
       console.log('näkyyks tää');
     }
-    else{
-      this.myUserName = (localStorage.getItem('user'));
+    else {
+      this.navCtrl.setRoot(LoginPage);
     }
   }
 
 
   openPost = (fileId) => {
-      this.navCtrl.push(MediaplayerPage, {
-        firstPassed: fileId,
-      });
+    this.navCtrl.push(MediaplayerPage, {
+      firstPassed: fileId,
+    });
   }
+
+
 }
 
 

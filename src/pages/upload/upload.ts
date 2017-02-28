@@ -1,8 +1,9 @@
+import { LoginPage } from './../login/login';
 import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController} from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { Camera, File } from 'ionic-native';
 
 /*
@@ -25,7 +26,7 @@ export class UploadPage {
   public base64Image: string;
   private username: any;
 
-  constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,public uploadService: UploadService) {}
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService) { }
 
   ionViewDidLoad() {
     this.getUserName();
@@ -48,18 +49,18 @@ export class UploadPage {
 
   }
 
-  takePicture(){
+  takePicture() {
     Camera.getPicture({
-        destinationType: Camera.DestinationType.DATA_URL,
-        quality: 100,
-        allowEdit: true,
-        targetWidth: 1000,
-        targetHeight: 1000
+      destinationType: Camera.DestinationType.DATA_URL,
+      quality: 100,
+      allowEdit: true,
+      targetWidth: 1000,
+      targetHeight: 1000
     }).then((imageData) => {
       // imageData is a base64 encoded string
-        this.base64Image = "data:image/jpeg;base64," + imageData;
+      this.base64Image = "data:image/jpeg;base64," + imageData;
     }, (err) => {
-        console.log(err);
+      console.log(err);
     });
   }
 
@@ -67,7 +68,7 @@ export class UploadPage {
     if (localStorage.getItem('user')) {
       this.username = JSON.parse(localStorage.getItem("user")).username;
     } else {
-      this.username = 'user';
+      this.navCtrl.setRoot(LoginPage);
     }
   }
 

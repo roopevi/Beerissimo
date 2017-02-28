@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -49,7 +50,7 @@ export class ProfilePage {
     if (localStorage.getItem('user')) {
       this.username = JSON.parse(localStorage.getItem("user")).username;
     } else {
-      this.username = 'user';
+      this.navCtrl.setRoot(LoginPage);
     }
   }
 

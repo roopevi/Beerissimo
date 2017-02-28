@@ -24,11 +24,11 @@
       </p>
     <label><b>Username</b></label>
     <br>
-    <input type="text" placeholder="Enter Username" name="username" ngModel>
+    <input type="text" placeholder="Enter Username" name="username" ngModel minlength="1" required>
     <br><br>
     <label><b>Password</b></label>
     <br>
-    <input type="password" placeholder="Enter Password" name="password" ngModel>
+    <input type="password" placeholder="Enter Password" name="password" ngModel minlength="1" required>
     <br><br>
     <button ion-button type="submit" [disabled]="!loginForm.valid">Login</button>
     </form>

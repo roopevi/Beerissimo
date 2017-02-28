@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -20,12 +21,14 @@ export class MediaplayerPage {
   private thisPostLiked: boolean;
   buttonText: string;
   private favourites = 0;
+  private myUserName: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaService: MediaService) {
     this.firstParam = navParams.get('firstPassed');
   }
 
   ionViewDidLoad() {
+    this.getUserName();
     this.thisPostLiked = false;
     console.log('ionViewDidLoad MediaplayerPage');
     this.viewPost(this.firstParam);
@@ -85,6 +88,16 @@ export class MediaplayerPage {
       res => {
         this.ionViewDidLoad();
       });
+  }
+
+  getUserName = () => {
+    if (localStorage.getItem('user')) {
+      this.myUserName = JSON.parse(localStorage.getItem("user")).username;
+      console.log('näkyyks tää');
+    }
+    else {
+      this.navCtrl.setRoot(LoginPage);
+    }
   }
 
 }
