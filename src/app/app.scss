@@ -17,6 +17,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+
 .content {
   background: color($colors, grey-light);
 }
@@ -49,6 +50,8 @@
   overflow: auto;
   background: color($colors, grey-light);
   height: auto;
+  margin: 0;
+  padding: 0;
   p {
     overflow: hidden;
   }
@@ -65,6 +68,7 @@
     border: $border-grey;
     border-radius: 0.5%;
     padding: 1em;
+    margin: 0em auto 0.6em auto;
     height: auto;
     text-align: center;
     width: 55%;

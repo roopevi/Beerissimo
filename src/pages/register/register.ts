@@ -16,12 +16,14 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, private loginService: LoginService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, private loginService: LoginService) { }
 
   private email: string = '';
   private username: string = '';
   private password: string = '';
   private response: any;
+  private errorMessage: any = 'Login failed';
+  private loginFailed: boolean = false;
 
   switchToMenu = () => {
     this.navCtrl.setRoot(FrontPage);
@@ -40,25 +42,31 @@ export class RegisterPage {
     this.registerService.setUser(user);
     this.registerService.register().subscribe(
       resp => {
-         const originalData = user;
-        
+        const originalData = user;
+
         console.log(user, resp);
-        
+
         // convert user object to string and save userdata to local storage
         delete originalData['email'];
         console.log(originalData);
         this.loginService.setUser(originalData);
         this.loginService.login().subscribe(
-          resp => {
-            console.log(resp);
+          res => {
+            this.loginFailed = false;
             this.switchToMenu();
+          },
+          error => {
+            const errorCode = error.status;
+            if (errorCode === 401) {
+              this.loginFailed = true;
+            }
           }
         );
 
       }
     );
     this.switchToMenu();
-    
+
   }
 
 }

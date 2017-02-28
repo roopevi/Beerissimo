@@ -16,6 +16,8 @@ import { NavController, NavParams } from 'ionic-angular';
 export class LoginPage {
 
 
+  private errorMessage: any = 'Login failed';
+  private loginFailed: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) { }
 
@@ -24,16 +26,9 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  ionViewWillEnter() {
-
+  switchToMenu = () => {
+    this.navCtrl.setRoot(FrontPage);
   }
-
-
-
-
-switchToMenu = () => {
-  this.navCtrl.setRoot(FrontPage);
-}
 
 
   login = (value) => {
@@ -41,12 +36,20 @@ switchToMenu = () => {
       username: value.username,
       password: value.password
     };
-    console.log(user);
-    console.log(value);
+
     this.loginService.setUser(user);
-    this.loginService.login().subscribe( res => {
-      this.switchToMenu();
-    });
+    this.loginService.login().subscribe(
+      res => {
+        this.loginFailed = false;
+        this.switchToMenu();
+      },
+      error => {
+        const errorCode = error.status;
+        if (errorCode === 401) {
+          this.loginFailed = true;
+        }
+      }
+    );
 
 
   }
