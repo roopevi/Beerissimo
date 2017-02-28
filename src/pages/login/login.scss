@@ -9,7 +9,7 @@ page-login {
      //min-width: 530px;
 
      padding-top: 5em;
-     min-height: 768px;
+    
      height: 100%;
      max-width: 100%;
      margin: 0;
@@ -17,7 +17,16 @@ page-login {
      background-repeat: no-repeat;
      
      
-    background-image: url(../assets/images/beer2.jpg);
+    @media screen and (min-width:768px) {
+      background-image: url(../assets/images/beer2_1366.jpg);
+      min-height: 600px;
+    }
+     @media screen and (max-width:768px) {
+       background-image: url(../assets/images/beer2_768.jpg);
+       min-height: 600px;
+       
+     
+    }
      }
      .login {
          text-align: left;
@@ -29,6 +38,12 @@ page-login {
          border-radius: 1em;
          width: 300px;
          padding: 0em 1em 1em 1em;
+        
+         @media screen and (max-width:768px) {
+       
+            max-width: 90%;
+         }
+     
    
     
     background-color: rgba(255, 255, 255, 0.8);
