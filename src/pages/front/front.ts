@@ -21,24 +21,20 @@ export class FrontPage {
   private mediaFiles: any[];
   private myUserName: any;
   private userData: any = {};
+  private userName: any = [];
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) {}
 
 
+  ionViewWillEnter() {
+    this.getAllMedia();
+    this.getUserName();
+  }
 
   ionViewDidLoad() {
-    this.getAllMedia();
-     this.getUserName();
 
   }
-  ionViewDidEnter() {
-
-  }
-
-
-
-
 
   getAllMedia = () => {
     this.mediaService.getMedia().subscribe(
@@ -46,6 +42,11 @@ export class FrontPage {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
+        for(var i = 0; i < this.mediaFiles.length; i++) {
+          var singleFile = this.mediaFiles[i];
+          this.userName = singleFile.user_id;
+          console.log(this.userName);
+        }
 
         this.mediaFiles = this.mediaFiles.filter(function(element) {
           if (element.title.trim() != '' || element.description.trim() != '') {
