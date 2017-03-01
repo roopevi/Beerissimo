@@ -98,6 +98,7 @@ export class MediaplayerPage {
     this.mediaService.postComment(this.commentCredentials).subscribe (
       res => {
         console.log(res);
+        this.showComments();
       },
       error => {
         console.log(error);
@@ -110,7 +111,6 @@ export class MediaplayerPage {
       res => {
         console.log(res);
         this.comments = res;
-
       }
     );
   }
