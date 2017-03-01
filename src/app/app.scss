@@ -46,6 +46,14 @@
   border-bottom: none;
 }
 
+.toolbar-md-grey-dark .bar-button-default-md {
+  color: $orange;
+}
+
+.toolbar-md-grey-dark .bar-button-default-md:hover {
+  color: $orange;
+}
+
 .container {
   overflow: auto;
   background: color($colors, grey-light);

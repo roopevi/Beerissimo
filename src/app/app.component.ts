@@ -1,4 +1,3 @@
-import { MediaplayerPage } from './../pages/mediaplayer/mediaplayer';
 import { UploadPage } from './../pages/upload/upload';
 import { SearchPage } from './../pages/search/search';
 import { ProfilePage } from './../pages/profile/profile';
@@ -17,7 +16,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = FrontPage;
 
   pages: Array<{title: string, component: any}>;
 
