@@ -32,8 +32,8 @@ export class UploadService {
         const tag: string = 'Beerissimo';
 
         this.addTag(this.id, tag);
-        console.log(dataFromServer);
 
+        return resp;
       }
     );
   }

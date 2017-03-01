@@ -21,12 +21,12 @@
         <br>
         <input type="file" name="file" accept="image/*|video/*" ngModel>
         <br>
-        <button ion-button (click)="takePicture()">Take a picture</button>
         <br>
-        <img [src]="base64Image" *ngIf="base64Image" />
+
         <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
       </form>
+      <img [src]="base64Image" />
+      <a ion-button (click)="takePicture()">Take a picture</a>
     </div>
   </div>
-
 </ion-content>
