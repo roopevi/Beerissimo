@@ -72,7 +72,6 @@ export class FrontPage {
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
-      console.log('näkyyks tää');
     }
     else {
       this.navCtrl.setRoot(LoginPage);
