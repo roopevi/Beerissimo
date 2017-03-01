@@ -17,4 +17,45 @@ page-mediaplayer {
       margin-left: auto;
       margin-right: auto;
     }
+
+    .comment-box {
+      //margin: 0em auto 2em auto;
+      background-color: $orange;
+      clear: both;
+      border: $border-grey;
+      border-radius: 0.5%;
+      padding: 1em;
+      //margin: 0em auto 0.6em auto;
+      height: auto;
+      text-align: center;
+      width: 55%;
+
+      @media screen and (max-width:768px) {
+        width: 100%;
+      }
+    }
+
+    .comment-list {
+      background-color: white;
+      border-top: 2px solid $grey-dark;
+
+      h2:first-child {
+        margin: 10px 0 0 10px;
+      }
+
+      ion-input {
+        border: 1px solid $grey;
+        width: 95%;
+        margin-left: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+
+      button {
+        margin-left: 10px;
+      }
+    }
+    .comment-form {
+      background-color: white;
+    }
 }
