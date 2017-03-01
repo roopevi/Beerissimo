@@ -1,3 +1,4 @@
+import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
@@ -62,5 +63,10 @@ export class ProfilePage {
     }
   }
 
+  openPost = (fileId) => {
+    this.navCtrl.push(MediaplayerPage, {
+      firstPassed: fileId,
+    });
+  }
 
 }

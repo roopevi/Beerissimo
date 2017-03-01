@@ -34,6 +34,7 @@ export class MediaplayerPage {
     this.thisPostLiked = false;
     console.log('ionViewDidLoad MediaplayerPage');
     this.viewPost(this.firstParam);
+    this.showComments();
   }
 
   getName(user: any) {
@@ -42,7 +43,7 @@ export class MediaplayerPage {
         this.user = resp;
         console.log(resp);
       }
-    )
+    );
   }
 
   viewPost = (fileId) => {
@@ -52,7 +53,7 @@ export class MediaplayerPage {
         this.getName(this.mediaFile.user_id);
         this.getFileFavourites(fileId);
       }
-    )
+    );
   }
 
   getFileFavourites = (fileId) => {
@@ -92,28 +93,26 @@ export class MediaplayerPage {
   }
 
   makeComment = (value: any) => {
-    console.log(value.comment);
     this.commentCredentials.file_id = this.firstParam;
-    console.log(this.commentCredentials.file_id);
     this.commentCredentials.comment = value.comment;
-    console.log(this.commentCredentials);
     this.mediaService.postComment(this.commentCredentials).subscribe (
       res => {
         console.log(res);
+        this.showComments();
       },
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
-  showComment = (fileId) => {
-    this.mediaService.getComment(fileId).subscribe(
+  showComments = () => {
+    this.mediaService.getComment(this.firstParam).subscribe(
       res => {
-        this.comments = res;
         console.log(res);
+        this.comments = res;
       }
-    )
+    );
   }
 
 

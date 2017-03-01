@@ -1,4 +1,3 @@
-import { MediaplayerPage } from './../pages/mediaplayer/mediaplayer';
 import { UploadPage } from './../pages/upload/upload';
 import { SearchPage } from './../pages/search/search';
 import { ProfilePage } from './../pages/profile/profile';

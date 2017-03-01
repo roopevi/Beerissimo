@@ -63,4 +63,8 @@
       <ion-textarea autosize placeholder="Add comment" name="comment" ngModel></ion-textarea>
       <button ion-button type="submit" [disabled]="!commentForm.valid">POST</button>
   </form>
+
+  <ion-item *ngFor="let comment of comments">
+    <p>{{comment.comment}}</p>
+  </ion-item>
 </ion-content>
