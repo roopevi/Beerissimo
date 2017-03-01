@@ -28,6 +28,25 @@
       <p>Likes: {{this.favourites}}</p>
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
+      <br>
+      <ion-list class="comment-list">
+        <h2>Comments:</h2>
+        <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)">
+          <ion-item>
+            <ion-input placeholder="Add comment" name="comment" type="text" ngModel required></ion-input>
+          </ion-item>
+          <button ion-button type="submit" [disabled]="!commentForm.valid">
+            <ion-icon ios="ios-send" md="md-send"></ion-icon>
+          </button>
+        </form>
+        <ion-item *ngFor="let comment of comments">
+          <div class="comment-box">
+            <h3>{{comment.username}}</h3>
+            <p>{{comment.comment}}</p>
+            <p>{{comment.time_added}}</p>
+          </div>
+    </ion-item>
+      </ion-list>
     </div>
   </ion-item>
 
@@ -61,8 +80,8 @@
     </div>
   </ion-item>
 
-  <ion-list class="comment-list">
-    <h2>Comments:</h2>
+  <!--<ion-list class="comment-list">
+
       <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)">
         <ion-input placeholder="Add comment" name="comment" ngModel required></ion-input>
           <button ion-button type="submit" [disabled]="!commentForm.valid">
@@ -77,6 +96,6 @@
         <p>{{comment.time_added}}</p>
       </div>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 
 </ion-content>

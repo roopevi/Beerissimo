@@ -36,24 +36,36 @@ page-mediaplayer {
     }
 
     .comment-list {
+      margin-top: 2em;
       background-color: white;
-      border-top: 2px solid $grey-dark;
+      border-top: 1.5px solid $grey;
 
       h2:first-child {
         margin: 10px 0 0 10px;
       }
 
-      ion-input {
-        border: 1px solid $grey;
-        width: 95%;
-        margin-left: 10px;
-        margin-top: 20px;
-        border-radius: 5px;
+      button {
+        height: 35px;
+        width: 35px;
+        box-shadow: none;
+        background-color: white;
+        margin-top: 25px;
+        margin-left: 3px;
       }
 
-      button {
-        margin-left: 10px;
+      .button-md:hover:not(.disable-hover) {
+        background-color: white;
       }
+
+      ion-icon {
+        color: $highlight-blue;
+        font-size: 3em;
+      }
+
+      ion-icon:hover {
+        opacity: 0.7;
+      }
+
     }
     .comment-form {
       background-color: white;

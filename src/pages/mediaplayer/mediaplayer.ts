@@ -111,6 +111,7 @@ export class MediaplayerPage {
       res => {
         console.log(res);
         this.comments = res;
+        this.getUserToComment();
       }
     );
   }
@@ -124,6 +125,24 @@ export class MediaplayerPage {
     else {
       this.navCtrl.setRoot(LoginPage);
     }
+  }
+
+  getUserToComment = () => {
+    for (let user of this.comments) {
+      this.mediaService.getOwner(user.user_id).subscribe(
+        res => {
+          for (let i in this.comments) {
+            if (this.comments[i].user_id == res.user_id) {
+              this.comments[i].username = res.username;
+            }
+          }
+        }
+      )
+    }
+  }
+
+  onSubmit (): void {
+    this.commentCredentials.comment = '';
   }
 
 }
