@@ -31,9 +31,9 @@
       <br>
       <ion-list class="comment-list">
         <h2>Comments:</h2>
-        <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)">
+        <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)" (ngSubmit)="onSubmit()" >
           <ion-item>
-            <ion-input placeholder="Add comment" name="comment" type="text" ngModel required></ion-input>
+            <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
           </ion-item>
           <button ion-button type="submit" [disabled]="!commentForm.valid">
             <ion-icon ios="ios-send" md="md-send"></ion-icon>
