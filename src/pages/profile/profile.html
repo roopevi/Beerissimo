@@ -28,6 +28,8 @@
         <ion-list *ngIf="mediaFiles?.length >= 1">
           <ion-item *ngFor="let file of mediaFiles">
             <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'small')" (click)="openPost(file.file_id)">
+            <a *ngIf="file.media_type === 'video'" (click)="openPost(file.file_id)"><ion-icon name="videocam"></ion-icon></a>
+            <a *ngIf="file.media_type === 'audio'" (click)="openPost(file.file_id)"><ion-icon name="musical-notes"></ion-icon></a>
             <p>
               <span class="heading">{{file.title}}</span><br/>
               <span class="type">{{file.description}}</span><br/>

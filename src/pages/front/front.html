@@ -20,10 +20,10 @@
     <div class="info">
       <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'small')" (click)="openPost(file.file_id)">
       <p *ngIf="file.media_type === 'audio'">
-        <a>Audio</a>
+        <a (click)="openPost(file.file_id)">Audio <ion-icon name="musical-notes"></ion-icon></a>
       </p>
       <p *ngIf="file.media_type === 'video'">
-        <a>Video</a>
+        <a (click)="openPost(file.file_id)">Video <ion-icon name="videocam"></ion-icon></a>
       </p>
       <p>
         {{file.username}}
