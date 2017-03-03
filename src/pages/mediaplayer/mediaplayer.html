@@ -15,8 +15,11 @@
     <p class="logged-in-as">Logged in as {{this.myUserName}}</p>
   </ion-navbar>
 </ion-header>
+
+
 <ion-content padding>
-  <ion-item class="container post-content" *ngIf="mediaFile.media_type === 'image'">
+  <ion-item class="container" *ngIf="mediaFile.media_type === 'image'">
+    <div class="post-content">
 
       <h2 id="username">{{user.username}}</h2>
       <h2 id="title">{{mediaFile.title}}</h2>
@@ -44,6 +47,41 @@
           </div>
         </ion-item>
       </ion-list>
+    </div>
+  </ion-item>
+
+  <ion-item class="container" *ngIf="mediaFile.media_type === 'video'">
+    <div class="post-content">
+      <h2 id="username">{{user.username}}</h2>
+      <h2 id="title">{{mediaFile.title}}</h2>
+      <video controls>
+        <source [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename" [type]="mediaFile.mime_type"> Your browser does not support the video tag.
+      </video>
+      <h3>{{mediaFile.description}}</h3>
+      <p>Likes: {{this.favourites}}</p>
+      <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
+      <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
+      <br>
+      <ion-list class="comment-list">
+        <h2>Comments:</h2>
+        <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)" (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
+          </ion-item>
+          <button ion-button type="submit" [disabled]="!commentForm.valid">
+            <ion-icon ios="ios-send" md="md-send"></ion-icon>
+          </button>
+        </form>
+        <ion-item *ngFor="let comment of comments">
+          <div class="comment-box">
+            <h3>{{comment.username}}</h3>
+            <p>{{comment.comment}}</p>
+            <p>{{comment.time_added}}</p>
+          </div>
+        </ion-item>
+      </ion-list>
+
+    </div>
   </ion-item>
 
 </ion-content>
