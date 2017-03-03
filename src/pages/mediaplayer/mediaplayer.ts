@@ -99,6 +99,7 @@ export class MediaplayerPage {
       res => {
         console.log(res);
         this.showComments();
+        this.onSubmit();
       },
       error => {
         console.log(error);
