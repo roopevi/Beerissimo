@@ -25,6 +25,7 @@ export class UploadPage {
   private description: string = '';
   public base64Image: string;
   private username: any;
+  private beerRating:any;
 
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService) { }
 
@@ -34,18 +35,27 @@ export class UploadPage {
   }
 
   uploadPost = (event: any, value: any) => {
+
+    event.preventDefault();
+
     const fileElement = event.target.querySelector('input[type=file]');
     const file = fileElement.files[0];
 
     const formData = new FormData();
-    formData.append('file', file);
+
+    if (this.base64Image) {
+      formData.append('file', this.dataURItoBlob(this.base64Image));
+    } else {
+      formData.append('file', file);
+    }
     formData.append('title', value.title);
     formData.append('description', value.description);
 
-    this.uploadService.upload(formData).subscribe(data => {
-      console.log(data);
-      this.navCtrl.setRoot(FrontPage);
-    });
+    this.uploadService.upload(formData, this.beerRating).subscribe(
+      resp => {
+        this.navCtrl.setRoot(FrontPage);
+      }
+    );
 
   }
 
@@ -59,6 +69,7 @@ export class UploadPage {
     }).then((imageData) => {
       // imageData is a base64 encoded string
       this.base64Image = "data:image/jpeg;base64," + imageData;
+
     }, (err) => {
       console.log(err);
     });
@@ -72,30 +83,31 @@ export class UploadPage {
     }
   }
 
+  changeValue = (event) => {
+    this.beerRating = event.value;
+    console.log(this.beerRating);
+  }
 
-  /*public presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Select Image Source',
-      buttons: [
-        {
-          text: 'Load from Device',
-          handler: () => {
-            this.takePicture(Camera.PictureSourceType.PHOTOLIBRARY);
-          }
-        },
-        {
-          text: 'Take a picture',
-          handler: () => {
-            this.takePicture(Camera.PictureSourceType.CAMERA);
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        }
-      ]
-    });
-    actionSheet.present();
-  }*/
+
+  dataURItoBlob = (dataURI: any) => {
+    'use strict'
+    var byteString,
+      mimestring
+
+    if (dataURI.split(',')[0].indexOf('base64') !== -1) {
+      byteString = atob(dataURI.split(',')[1])
+    } else {
+      byteString = decodeURI(dataURI.split(',')[1])
+    }
+
+    mimestring = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+    var content = new Array();
+    for (var i = 0; i < byteString.length; i++) {
+      content[i] = byteString.charCodeAt(i)
+    }
+
+    return new Blob([new Uint8Array(content)], { type: mimestring });
+  }
 
 }

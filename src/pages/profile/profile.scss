@@ -29,7 +29,7 @@ page-profile {
   }
 
   img{
-    max-width: 10em;
+    width: 10em;
     margin: 0 auto;
   }
 
@@ -63,21 +63,27 @@ page-profile {
         margin: 1em 0em;
         border-bottom: $border-grey;
 
+        a {
+          display: inline-block;
+          margin-right: 1.75em;
+          ion-icon {
+            font-size: 3em;
+            margin: 0 auto;
+          }
+        }
 
         &:last-child {
           border: none;
         }
 
         img {
-          max-height: 4em;
+          width: 3em;
           display: inline-block;
           margin: 0em 1.5em 0em 0em;
         }
 
         p {
-          margin: 0;
           display: inline-block;
-
           span {
 
             &.heading {

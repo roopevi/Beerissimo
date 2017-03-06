@@ -21,7 +21,7 @@ export class UploadService {
     this.token = this.loginService.getUser().token;
   }
 
-  upload = (formData: any) => {
+  upload = (formData: any, rating) => {
     return this.http.post(this.url + '/media?token=' + JSON.parse(localStorage.getItem('user')).token,
     formData).map(
       resp => {
@@ -32,8 +32,9 @@ export class UploadService {
         const tag: string = 'Beerissimo';
 
         this.addTag(this.id, tag);
-        console.log(dataFromServer);
+        this.addRating(this.id, rating)
 
+        return resp;
       }
     );
   }
@@ -45,6 +46,20 @@ export class UploadService {
     };
 
     return this.http.post(this.url + `/tags?token=` + JSON.parse(localStorage.getItem('user')).token, tagObject).subscribe(
+      resp => {
+        resp.json();
+        console.log(resp);
+      }
+    );
+  }
+
+  addRating = (id, rating) => {
+    const ratingObject = {
+      file_id: id,
+      rating: rating
+    }
+
+    return this.http.post(this.url + `/ratings?token=` + JSON.parse(localStorage.getItem('user')).token, ratingObject).subscribe(
       resp => {
         resp.json();
         console.log(resp);

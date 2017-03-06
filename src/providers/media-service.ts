@@ -50,6 +50,14 @@ export class MediaService {
       );
   }
 
+  getFileRating = (fileId) => {
+    return this.http.get(this.url + '/ratings/file/' + fileId)
+      .map(
+      res =>
+        res.json()
+      );
+  }
+
   getSingleMedia = (fileId) => {
     return this.http.get(this.url + '/media/' + fileId).map(
       res =>

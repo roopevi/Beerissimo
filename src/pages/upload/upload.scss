@@ -1,3 +1,19 @@
 page-upload {
 
+  .range-md .range-tick {
+    position: absolute;
+    top: 17px;
+    z-index: 1;
+    margin-left: -1px;
+    width: 2px;
+    height: 10px;
+    border-radius: 50%;
+    background: $grey-dark;
+    pointer-events: none;
+
+  }
+
+  .item-range ion-range {
+    width: 80%;
+  }
 }

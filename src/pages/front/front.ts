@@ -26,9 +26,13 @@ export class FrontPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
 
 
-  ionViewDidLoad() {
-    this.getUserName();
-    this.getAllMedia();
+  ionViewWillEnter() {
+    if (localStorage.getItem('user')) {
+      this.getAllMedia();
+      this.getUserName();
+    } else {
+      this.navCtrl.setRoot(LoginPage);
+    }
   }
 
   getAllMedia = () => {
@@ -37,12 +41,9 @@ export class FrontPage {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
-        if (this.mediaFiles != null && localStorage.getItem('user')) {
+        if (this.mediaFiles != null) {
           this.getUserToPost();
-        } else {
-          this.navCtrl.setRoot(LoginPage);
         }
-
 
         this.mediaFiles = this.mediaFiles.filter(function (element) {
           if (element.title.trim() != '' || element.description.trim() != '') {

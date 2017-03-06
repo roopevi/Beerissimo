@@ -1,7 +1,46 @@
 @import 'theme/variables.scss';
 
+.item-md.item-block .item-inner {
+  padding: 0;
+}
+
+ion-app.md [padding], ion-app.md [padding] .scroll-content {
+  padding: 0;
+}
+
 page-mediaplayer {
 
+    .post-content {
+      margin: 0em auto 2em auto;
+      background-color: white;
+      clear: both;
+      border: $border-grey;
+      border-radius: 0.5%;
+      padding: 1em;
+      margin: 0em auto 0.6em auto;
+      height: auto;
+      text-align: left;
+      width: 55%;
+      overflow: hidden;
+      white-space: normal;
+      @media screen and (max-width:768px) {
+        width: 100%;
+      }
+
+
+    }
+
+    .rating-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        float: left;
+        margin: 0 .75em 0 0;
+        color: $orange;
+      }
+    }
 
     #username {
       font-weight: bold;
@@ -16,5 +55,92 @@ page-mediaplayer {
       width: 300px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    video {
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .comment-box {
+      //margin: 0em auto 2em auto;
+      clear: both;
+      border-bottom: $border-grey;
+      text-align: left;
+      border-radius: 0.5%;
+      padding: 1em;
+      //margin: 0em auto 0.6em auto;
+      height: auto;
+      width: 55%;
+      padding: 0;
+      overflow: hidden;
+      white-space: normal;
+
+      @media screen and (max-width:768px) {
+        width: 100%;
+      }
+    }
+
+    .comment-list {
+      margin-top: 2em;
+      background-color: white;
+      border-top: 1.5px solid $grey;
+
+      h2:first-child {
+        margin: 10px 0 20px 0px;
+      }
+
+      .comment-input {
+
+        margin-left: auto;
+        margin-right: auto;
+        height: 3em;
+        text-align: center;
+
+        .item-md {
+          padding: 0;
+          width: 75%;
+          float: left;
+        }
+
+        .text-input-md {
+          padding: 0;
+          margin: 0;
+          width: 100%;
+        }
+
+        button {
+          height: 35px;
+          width: 35px;
+          box-shadow: none;
+          background-color: white;
+          margin-left: 1em;
+          float: left;
+        }
+
+        .button-md:hover:not(.disable-hover) {
+          background-color: white;
+        }
+
+        .ion-md-quote {
+          color: $orange;
+          font-size: 1em;
+          float: left;
+        }
+
+        .ion-md-send {
+          color: $highlight-blue;
+          font-size: 3em;
+        }
+
+        ion-icon:hover {
+          opacity: 0.7;
+        }
+      }
+
+    }
+    .comment-form {
+      background-color: white;
     }
 }

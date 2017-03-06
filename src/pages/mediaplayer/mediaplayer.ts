@@ -24,6 +24,7 @@ export class MediaplayerPage {
   private comments: any = [];
   private commentCredentials = { file_id: '', comment: '' };
   private myUserName: any;
+  private rating: any = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaService: MediaService) {
     this.firstParam = navParams.get('firstPassed');
@@ -37,7 +38,7 @@ export class MediaplayerPage {
     this.showComments();
   }
 
-  getName(user: any) {
+  getName = (user: any) => {
     this.mediaService.getOwner(user).subscribe(
       resp => {
         this.user = resp;
@@ -46,12 +47,23 @@ export class MediaplayerPage {
     );
   }
 
+  getRating = (fileId) => {
+    this.mediaService.getFileRating(fileId).subscribe(
+      resp => {
+        if (resp[0]) {
+          this.rating = resp[0].rating;
+        }
+      }
+    )
+  }
+
   viewPost = (fileId) => {
     this.mediaService.getSingleMedia(fileId).subscribe(
       res => {
         this.mediaFile = res;
         this.getName(this.mediaFile.user_id);
         this.getFileFavourites(fileId);
+        this.getRating(fileId);
       }
     );
   }
@@ -95,10 +107,11 @@ export class MediaplayerPage {
   makeComment = (value: any) => {
     this.commentCredentials.file_id = this.firstParam;
     this.commentCredentials.comment = value.comment;
-    this.mediaService.postComment(this.commentCredentials).subscribe (
+    this.mediaService.postComment(this.commentCredentials).subscribe(
       res => {
         console.log(res);
         this.showComments();
+        this.onSubmit();
       },
       error => {
         console.log(error);
@@ -111,6 +124,7 @@ export class MediaplayerPage {
       res => {
         console.log(res);
         this.comments = res;
+        this.getUserToComment();
       }
     );
   }
@@ -124,6 +138,24 @@ export class MediaplayerPage {
     else {
       this.navCtrl.setRoot(LoginPage);
     }
+  }
+
+  getUserToComment = () => {
+    for (let user of this.comments) {
+      this.mediaService.getOwner(user.user_id).subscribe(
+        res => {
+          for (let i in this.comments) {
+            if (this.comments[i].user_id == res.user_id) {
+              this.comments[i].username = res.username;
+            }
+          }
+        }
+      )
+    }
+  }
+
+  onSubmit(): void {
+    this.commentCredentials.comment = '';
   }
 
 }
