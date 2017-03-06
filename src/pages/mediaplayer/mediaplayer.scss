@@ -21,6 +21,8 @@ page-mediaplayer {
       height: auto;
       text-align: left;
       width: 55%;
+      overflow: hidden;
+      white-space: normal;
       @media screen and (max-width:768px) {
         width: 100%;
       }
@@ -59,6 +61,8 @@ page-mediaplayer {
       height: auto;
       width: 55%;
       padding: 0;
+      overflow: hidden;
+      white-space: normal;
 
       @media screen and (max-width:768px) {
         width: 100%;

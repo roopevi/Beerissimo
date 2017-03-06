@@ -1,3 +1,4 @@
+import { DatePipe } from './../pipes/date';
 import { MediaplayerPage } from './../pages/mediaplayer/mediaplayer';
 import { UploadService } from './../providers/upload-service';
 import { UploadPage } from './../pages/upload/upload';
@@ -24,6 +25,7 @@ import { MyApp } from './app.component';
     LogoutPage,
     ProfilePage,
     ThumbnailPipe,
+    DatePipe,
     SearchPage,
     UploadPage,
     MediaplayerPage

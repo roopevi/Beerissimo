@@ -18,16 +18,24 @@
         <ion-input type="text" name="title" ngModel placeholder="What are you drinking?" required></ion-input>
         <br>
         <ion-textarea autosize placeholder="How was your beer?" name="description" ngModel></ion-textarea>
+        <ion-item>
+          <ion-range min="1" max="5" step="1" color="secondary" pin="true" snaps="true" (ionChange)="changeValue($event)"></ion-range>
+        </ion-item>
         <br>
-        <input type="file" name="file" accept="image/*|video/*" ngModel>
+        <input [hidden] type="file" name="file" accept="image/*|video/*" ngModel>
         <br>
+        <button ion-button icon-left (click)="presentActionSheet()">
+          <ion-icon name="camera"></ion-icon>Add Image
+        </button>
         <br>
-
         <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
       </form>
       <img [src]="base64Image"/>
-      <a ion-button (click)="takePicture()">Take a picture</a>
-      <a ion-button (click)="getImage()">TEST</a>
+
+
+
+      <!--<a ion-button (click)="takePicture()">Take a picture</a>
+      <a ion-button (click)="chooseFromGallery()">TEST</a>-->
     </div>
   </div>
 </ion-content>

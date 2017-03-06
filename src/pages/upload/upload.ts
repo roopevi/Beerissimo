@@ -1,10 +1,9 @@
 import { LoginPage } from './../login/login';
-import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
-import { Camera, File, Crop } from 'ionic-native';
+import { NavController, ActionSheetController, Platform } from 'ionic-angular';
+import { Camera } from 'ionic-native';
 
 /*
   Generated class for the Upload page.
@@ -22,6 +21,8 @@ export class UploadPage {
 
   public base64Image: string;
   private username: any;
+  private beerRating:any;
+
 
 
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService,
@@ -49,14 +50,53 @@ export class UploadPage {
     formData.append('title', value.title);
     formData.append('description', value.description);
 
-    this.uploadService.upload(formData).subscribe(
+    this.uploadService.upload(formData, this.beerRating).subscribe(
       resp => {
         this.navCtrl.setRoot(FrontPage);
-      }, error => {
-
       }
     );
 
+  }
+
+  public presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Image Source',
+      buttons: [
+        {
+          text: 'Load from Gallery',
+          handler: () => {
+            this.chooseFromGallery();
+          }
+        },
+        {
+          text: 'Use Camera',
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  chooseFromGallery() {
+    Camera.getPicture({
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.DATA_URL,
+      quality: 100,
+      allowEdit: true,
+      targetHeight: 1000,
+      targetWidth: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+      this.base64Image = "data:image/jpeg;base64," + imageData;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   takePicture() {
@@ -83,6 +123,10 @@ export class UploadPage {
     }
   }
 
+  changeValue = (event) => {
+    this.beerRating = event.value;
+    console.log(this.beerRating);
+  }
 
 
   dataURItoBlob = (dataURI: any) => {
@@ -105,6 +149,8 @@ export class UploadPage {
 
     return new Blob([new Uint8Array(content)], { type: mimestring });
   }
+
+
 
 
 }
