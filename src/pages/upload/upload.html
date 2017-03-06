@@ -25,8 +25,9 @@
 
         <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
       </form>
-      <img [src]="base64Image" />
+      <img [src]="base64Image"/>
       <a ion-button (click)="takePicture()">Take a picture</a>
+      <a ion-button (click)="getImage()">TEST</a>
     </div>
   </div>
 </ion-content>

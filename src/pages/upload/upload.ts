@@ -3,8 +3,8 @@ import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import { Camera, File } from 'ionic-native';
+import { NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
+import { Camera, File, Crop } from 'ionic-native';
 
 /*
   Generated class for the Upload page.
@@ -20,13 +20,12 @@ import { Camera, File } from 'ionic-native';
 })
 export class UploadPage {
 
-  private file: File;
-  private title: string = '';
-  private description: string = '';
   public base64Image: string;
   private username: any;
 
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService) { }
+
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService,
+  public platform: Platform) { }
 
   ionViewDidLoad() {
     this.getUserName();
@@ -107,4 +106,7 @@ export class UploadPage {
     return new Blob([new Uint8Array(content)], { type: mimestring });
   }
 
+
 }
+
+

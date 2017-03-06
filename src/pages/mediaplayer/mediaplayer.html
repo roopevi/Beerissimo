@@ -1,6 +1,5 @@
 <!--
   Generated template for the Mediaplayer page.
-
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -26,53 +25,7 @@
       <img [alt]="mediaFile.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename">
       <h3>{{mediaFile.description}}</h3>
       <p>Likes: {{this.favourites}}</p>
-      <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
-      <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
-      <br>
-      <ion-list class="comment-list">
-        <h2>Comments:</h2>
-<<<<<<< HEAD
-        <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)" (ngSubmit)="onSubmit()" >
-          <div class="comment-input">
-            <ion-icon md="md-quote"></ion-icon>
-            <ion-item>
-              <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
-            </ion-item>
-            <ion-icon md="md-quote"></ion-icon>
-            <button ion-button type="submit" [disabled]="!commentForm.valid">
-              <ion-icon ios="ios-send" md="md-send"></ion-icon>
-            </button>
-          </div>
-=======
-        <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)" (ngSubmit)="onSubmit()">
-          <ion-item>
-            <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
-          </ion-item>
-          <button ion-button type="submit" [disabled]="!commentForm.valid">
-            <ion-icon ios="ios-send" md="md-send"></ion-icon>
-          </button>
->>>>>>> 40c9a755523c2c940b91e0dbdd359a46d4d149f8
-        </form>
-        <ion-item *ngFor="let comment of comments">
-          <div class="comment-box">
-            <h3>{{comment.username}}</h3>
-            <p>{{comment.comment}}</p>
-            <p>{{comment.time_added}}</p>
-          </div>
-        </ion-item>
-      </ion-list>
-    </div>
-  </ion-item>
-
-  <ion-item *ngIf="mediaFile.media_type === 'audio'">
-    <div class="post-content">
-      <h2 id="username">{{user.username}}</h2>
-      <h2 id="title">{{mediaFile.title}}</h2>
-      <audio controls>
-        <source [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename" [type]="mediaFile.mime_type"> Your browser does not support the audio tag.
-      </audio>
-      <h3>{{mediaFile.description}}</h3>
-      <p>Likes: {{this.favourites}}</p>
+      <p>Rating: {{this.rating}}</p>
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
       <br>
@@ -90,14 +43,14 @@
           <div class="comment-box">
             <h3>{{comment.username}}</h3>
             <p>{{comment.comment}}</p>
-            <p>{{comment.time_added}}</p>
+            <p>{{(comment.time_added | date: 'parse')}}</p>
           </div>
         </ion-item>
       </ion-list>
     </div>
   </ion-item>
 
-  <ion-item *ngIf="mediaFile.media_type === 'video'">
+  <ion-item class="container" *ngIf="mediaFile.media_type === 'video'">
     <div class="post-content">
       <h2 id="username">{{user.username}}</h2>
       <h2 id="title">{{mediaFile.title}}</h2>
@@ -106,6 +59,7 @@
       </video>
       <h3>{{mediaFile.description}}</h3>
       <p>Likes: {{this.favourites}}</p>
+
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
       <br>
@@ -130,23 +84,5 @@
 
     </div>
   </ion-item>
-
-  <!--<ion-list class="comment-list">
-
-      <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)">
-        <ion-input placeholder="Add comment" name="comment" ngModel required></ion-input>
-          <button ion-button type="submit" [disabled]="!commentForm.valid">
-            <ion-icon ios="ios-send" md="md-send"></ion-icon>
-          </button>
-      </form>
-
-    <ion-item *ngFor="let comment of comments">
-      <div class="comment-box">
-        <h3></h3>
-        <p>{{comment.comment}}</p>
-        <p>{{comment.time_added}}</p>
-      </div>
-    </ion-item>
-  </ion-list>-->
 
 </ion-content>
