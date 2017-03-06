@@ -1,10 +1,9 @@
 import { LoginPage } from './../login/login';
-import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import { Camera, File } from 'ionic-native';
+import { NavController, ActionSheetController, Platform } from 'ionic-angular';
+import { Camera } from 'ionic-native';
 
 /*
   Generated class for the Upload page.
@@ -20,14 +19,14 @@ import { Camera, File } from 'ionic-native';
 })
 export class UploadPage {
 
-  private file: File;
-  private title: string = '';
-  private description: string = '';
   public base64Image: string;
   private username: any;
   private beerRating:any;
 
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService) { }
+
+
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService,
+  public platform: Platform) { }
 
   ionViewDidLoad() {
     this.getUserName();
@@ -57,6 +56,47 @@ export class UploadPage {
       }
     );
 
+  }
+
+  public presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Image Source',
+      buttons: [
+        {
+          text: 'Load from Gallery',
+          handler: () => {
+            this.chooseFromGallery();
+          }
+        },
+        {
+          text: 'Use Camera',
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  chooseFromGallery() {
+    Camera.getPicture({
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.DATA_URL,
+      quality: 100,
+      allowEdit: true,
+      targetHeight: 1000,
+      targetWidth: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+      this.base64Image = "data:image/jpeg;base64," + imageData;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   takePicture() {
@@ -110,4 +150,9 @@ export class UploadPage {
     return new Blob([new Uint8Array(content)], { type: mimestring });
   }
 
+
+
+
 }
+
+
