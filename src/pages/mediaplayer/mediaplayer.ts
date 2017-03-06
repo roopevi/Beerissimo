@@ -24,6 +24,7 @@ export class MediaplayerPage {
   private comments: any = [];
   private commentCredentials = { file_id: '', comment: '' };
   private myUserName: any;
+  private rating: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaService: MediaService) {
     this.firstParam = navParams.get('firstPassed');
@@ -37,7 +38,7 @@ export class MediaplayerPage {
     this.showComments();
   }
 
-  getName(user: any) {
+  getName = (user: any) => {
     this.mediaService.getOwner(user).subscribe(
       resp => {
         this.user = resp;
@@ -46,12 +47,22 @@ export class MediaplayerPage {
     );
   }
 
+  getRating = (fileId) => {
+    this.mediaService.getFileRating(fileId).subscribe(
+      resp => {
+        this.rating = resp[0].rating;
+        console.log(this.rating);
+      }
+    )
+  }
+
   viewPost = (fileId) => {
     this.mediaService.getSingleMedia(fileId).subscribe(
       res => {
         this.mediaFile = res;
         this.getName(this.mediaFile.user_id);
         this.getFileFavourites(fileId);
+        this.getRating(fileId);
       }
     );
   }

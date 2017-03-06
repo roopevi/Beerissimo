@@ -25,6 +25,7 @@ export class UploadPage {
   private description: string = '';
   public base64Image: string;
   private username: any;
+  private beerRating:any;
 
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService) { }
 
@@ -50,11 +51,9 @@ export class UploadPage {
     formData.append('title', value.title);
     formData.append('description', value.description);
 
-    this.uploadService.upload(formData).subscribe(
+    this.uploadService.upload(formData, this.beerRating).subscribe(
       resp => {
         this.navCtrl.setRoot(FrontPage);
-      }, error => {
-
       }
     );
 
@@ -84,6 +83,10 @@ export class UploadPage {
     }
   }
 
+  changeValue = (event) => {
+    this.beerRating = event.value;
+    console.log(this.beerRating);
+  }
 
 
   dataURItoBlob = (dataURI: any) => {
