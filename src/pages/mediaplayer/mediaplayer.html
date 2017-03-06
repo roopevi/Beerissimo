@@ -26,7 +26,7 @@
       <img [alt]="mediaFile.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename">
       <h3>{{mediaFile.description}}</h3>
       <p>Likes: {{this.favourites}}</p>
-      <p>Rating: {{this.rating}}</p>
+      <p [hidden]="this.rating === 0">Rating: {{this.rating}}</p>
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
       <br>
