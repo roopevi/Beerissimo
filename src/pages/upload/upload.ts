@@ -26,7 +26,6 @@ export class UploadPage {
   public base64Image: string;
   private username: any;
   private beerRating:any;
-  private
 
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService) { }
 
