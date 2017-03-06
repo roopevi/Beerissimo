@@ -20,8 +20,9 @@
 <ion-content padding>
   <ion-item class="container">
     <div class="profile-wrapper">
-      <img class="profile-pic" (click)="changeProfilePic()" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (this.fileName)" />
-      <input type="file" name="file" accept="image/*|video/*" ngModel>
+      
+      <img class="profile-pic" (click)="presentPopover($event)" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (this.fileName)" />
+      
       <p class="username">{{this.username}}</p>
       <p class="grade">{{this.grade}}</p>
       <div class="my-beers">

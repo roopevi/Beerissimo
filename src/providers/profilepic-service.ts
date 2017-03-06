@@ -26,7 +26,8 @@ export class ProfilepicService {
         const dataFromServer = resp.json();
 
         this.id = dataFromServer.file_id;
-
+        console.log("pölölöö");
+        console.log(resp);
         const tag: string = 'BeerissimoProfilepic';
 
         this.addTag(this.id, tag);

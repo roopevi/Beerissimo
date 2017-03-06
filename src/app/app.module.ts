@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+import { PopoverPage } from './../pages/popover/popover';
 import { ProfilepicService } from './../providers/profilepic-service';
-=======
 import { DatePipe } from './../pipes/date';
->>>>>>> df5d1e75bc0ad9755fa035e73927331b7cf14b10
 import { MediaplayerPage } from './../pages/mediaplayer/mediaplayer';
 import { UploadService } from './../providers/upload-service';
 import { UploadPage } from './../pages/upload/upload';
@@ -32,7 +30,8 @@ import { MyApp } from './app.component';
     DatePipe,
     SearchPage,
     UploadPage,
-    MediaplayerPage
+    MediaplayerPage,
+    PopoverPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -47,7 +46,8 @@ import { MyApp } from './app.component';
     ProfilePage,
     SearchPage,
     UploadPage,
-    MediaplayerPage
+    MediaplayerPage,
+    PopoverPage
   ],
 
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService, UploadService, ProfilepicService]

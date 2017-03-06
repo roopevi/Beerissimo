@@ -1,9 +1,11 @@
+import { PopoverPage } from './../popover/popover';
 import { ProfilepicService } from './../../providers/profilepic-service';
 import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
+
 
 /*
   Generated class for the Profile page.
@@ -24,7 +26,7 @@ export class ProfilePage {
   private userId: any;
   private fileName: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, private profilepicService: ProfilepicService) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, private profilepicService: ProfilepicService, public popoverCtrl: PopoverController) { }
 
   ionViewDidLoad() {
     this.getUserName();
@@ -33,6 +35,13 @@ export class ProfilePage {
     this.getPostsByUser(this.userId);
     this.getProfilePic();
     
+  }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
   getPostsByUser = (userId) => {
@@ -76,23 +85,6 @@ export class ProfilePage {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
     });
-  }
-
-  
-    changeProfilePic = (event: any, value: any) => {
-    const fileElement = event.target.querySelector('input[type=file]');
-    const file = fileElement.files[0];
-
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('title', value.title);
-    formData.append('description', value.description);
-
-    this.profilepicService.changeProfilePic(formData).subscribe(data => {
-      console.log(data);
-      this.navCtrl.setRoot(ProfilePage);
-    });
-
   }
 
 }
