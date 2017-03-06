@@ -1,3 +1,4 @@
+import { ProfilepicService } from './../../providers/profilepic-service';
 import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
@@ -16,18 +17,22 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
+  private profilePic: any;
   private username: any;
   private grade: any;
   public mediaFiles: any[];
   private userId: any;
+  private fileName: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, private profilepicService: ProfilepicService) { }
 
   ionViewDidLoad() {
     this.getUserName();
     this.getGrade();
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
+    this.getProfilePic();
+    
   }
 
   getPostsByUser = (userId) => {
@@ -55,6 +60,10 @@ export class ProfilePage {
     }
   }
 
+  getProfilePic = () => {
+    this.fileName = "636fc5f1bf1e885804242198b9f3c64e.jpg";
+  }
+
   getGrade = () => {
     if (localStorage.getItem('user')) {
       this.grade = JSON.parse(localStorage.getItem("user")).full_name;
@@ -67,6 +76,23 @@ export class ProfilePage {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
     });
+  }
+
+  
+    changeProfilePic = (event: any, value: any) => {
+    const fileElement = event.target.querySelector('input[type=file]');
+    const file = fileElement.files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('title', value.title);
+    formData.append('description', value.description);
+
+    this.profilepicService.changeProfilePic(formData).subscribe(data => {
+      console.log(data);
+      this.navCtrl.setRoot(ProfilePage);
+    });
+
   }
 
 }

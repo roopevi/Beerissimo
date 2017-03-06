@@ -1,3 +1,4 @@
+import { ProfilepicService } from './../providers/profilepic-service';
 import { MediaplayerPage } from './../pages/mediaplayer/mediaplayer';
 import { UploadService } from './../providers/upload-service';
 import { UploadPage } from './../pages/upload/upload';
@@ -44,7 +45,7 @@ import { MyApp } from './app.component';
     MediaplayerPage
   ],
 
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService, UploadService]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, MediaService, LoginService, RegisterService, UploadService, ProfilepicService]
 
 })
 export class AppModule { }

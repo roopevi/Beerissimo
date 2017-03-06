@@ -32,6 +32,8 @@
     <input type="password" placeholder="Enter Password" name="password" ngModel minlength="1" required>
     <br><br>
     <button ion-button type="submit" [disabled]="!loginForm.valid">Login</button>
+    <br><br>
+    <a href="#" (click)="toRegisterPage()"> Don't have an account yet? Register here!</a>
     </form>
   </div>
 
