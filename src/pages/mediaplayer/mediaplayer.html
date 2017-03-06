@@ -1,6 +1,5 @@
 <!--
   Generated template for the Mediaplayer page.
-
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -33,7 +32,8 @@
         </ul>
       </ion-item>
       <p>Likes: {{this.favourites}}</p>
-
+      <p>Rating: {{this.rating}}</p>
+      <p [hidden]="this.rating === 0">Rating: {{this.rating}}</p>
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
       <br>
