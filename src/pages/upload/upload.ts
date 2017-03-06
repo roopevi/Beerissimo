@@ -22,6 +22,7 @@ export class UploadPage {
   public base64Image: string;
   private username: any;
   private beerRating:any;
+  private
 
 
 
