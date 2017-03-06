@@ -25,7 +25,6 @@
       <h2 id="title">{{mediaFile.title}}</h2>
       <img [alt]="mediaFile.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename">
       <h3>{{mediaFile.description}}</h3>
-      <p>Likes: {{this.favourites}}</p>
       <ion-item [hidden]="this.rating === 0">
         <ul class="rating-list" *ngFor="let n of [1,2,3,4,5]; let i = index;">
           <li *ngIf="i < this.rating">
@@ -33,6 +32,7 @@
           </li>
         </ul>
       </ion-item>
+      <p>Likes: {{this.favourites}}</p>
 
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
       <button ion-button *ngIf="this.thisPostLiked" (click)="deleteFavourite(mediaFile.file_id)">Unlike</button>
@@ -66,6 +66,13 @@
         <source [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + mediaFile.filename" [type]="mediaFile.mime_type"> Your browser does not support the video tag.
       </video>
       <h3>{{mediaFile.description}}</h3>
+      <ion-item [hidden]="this.rating === 0">
+        <ul class="rating-list" *ngFor="let n of [1,2,3,4,5]; let i = index;">
+          <li *ngIf="i < this.rating">
+            <ion-icon name="beer"></ion-icon>
+          </li>
+        </ul>
+      </ion-item>
       <p>Likes: {{this.favourites}}</p>
 
       <button ion-button *ngIf="!this.thisPostLiked" (click)="addFavourite(mediaFile.file_id)">Like</button>
