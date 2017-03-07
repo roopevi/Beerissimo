@@ -21,7 +21,7 @@
   <ion-item class="container">
     <div class="profile-wrapper">
       
-      <img class="profile-pic" (click)="presentPopover($event)" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (this.fileName)" />
+      <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" />
       
       <p class="username">{{this.username}}</p>
       <p class="grade">{{this.grade}}</p>

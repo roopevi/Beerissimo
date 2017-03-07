@@ -16,11 +16,15 @@
 <ion-list>
  <ion-item>Pölölöö</ion-item>
   <ion-item>
-  <a ion-button (click)="chooseFile()">Choose file</a>
+  <a ion-button (click)="presentActionSheet()">Choose file</a>
   </ion-item>
    <ion-item>
-  <button ion-button (click)="close()">Post</button>
   </ion-item>
+  <form class="pic-form" #picForm="ngForm" (ngSubmit)="changeProfilePic($event)">
+  <button ion-button (click)="changeProfilePic($event)">Post</button>
+  <input type="file" name="file" accept="image/*|video/*" ngModel>
+  <button ion-button type="submit">POSTI</button>
+  </form>
   <ion-item>
   <button ion-button (click)="close()">Cancel</button>
   </ion-item>

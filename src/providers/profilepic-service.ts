@@ -19,25 +19,7 @@ export class ProfilepicService {
     console.log('Hello ProfilepicService Provider');
   }
 
-  changeProfilePic = (formData: any) => {
-    return this.http.post(this.url + '/media?token=' + JSON.parse(localStorage.getItem('user')).token,
-    formData).map(
-      resp => {
-        const dataFromServer = resp.json();
-
-        this.id = dataFromServer.file_id;
-        console.log("pölölöö");
-        console.log(resp);
-        const tag: string = 'BeerissimoProfilepic';
-
-        this.addTag(this.id, tag);
-        console.log(dataFromServer);
-
-      }
-    );
-  }
-
-  addTag = (id, tag) => {
+    addTag = (id, tag) => {
     const tagObject = {
       file_id: id,
       tag: tag
@@ -50,6 +32,38 @@ export class ProfilepicService {
       }
     );
   }
+
+  changeProfilePic = (formData: any) => {
+    console.log(formData);
+    return this.http.post(this.url + '/media?token=' + JSON.parse(localStorage.getItem('user')).token,
+    formData).map(
+      resp => {
+
+        const dataFromServer = resp.json();
+        
+        this.id = dataFromServer.file_id;
+        console.log("pölölöö");
+        console.log(resp);
+        const tag: string = 'BeerissimoProfilepic';
+
+        this.addTag(this.id, tag);
+        console.log(dataFromServer);
+        localStorage.setItem('image', JSON.stringify(resp));
+        
+        
+
+        return this.id;
+
+      }
+    );
+  }
+
+  getProfilePic = (image) => {
+    let pic = image;
+    return pic;
+  }
+
+
 
 
 }

@@ -1,8 +1,9 @@
+import { MediaService } from './../../providers/media-service';
 import { Camera } from 'ionic-native';
 import { ProfilepicService } from './../../providers/profilepic-service';
 import { ProfilePage } from './../profile/profile';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ActionSheetController, Events } from 'ionic-angular';
 
 /*
   Generated class for the Popover page.
@@ -17,8 +18,9 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 export class PopoverPage {
 
   public base64Image: string;
+  private profilepicfilename: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private profilepicService: ProfilepicService) {}
+  constructor(public events: Events, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public navParams: NavParams, public viewCtrl: ViewController, private profilepicService: ProfilepicService, public mediaService: MediaService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PopoverPage');
@@ -28,7 +30,48 @@ export class PopoverPage {
     this.viewCtrl.dismiss();
   }
 
-  chooseFile = () => {
+  public presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Image Source',
+      buttons: [
+        {
+          text: 'Load from Gallery',
+          handler: () => {
+            this.chooseFromGallery();
+          }
+        },
+        {
+          text: 'Use Camera',
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  chooseFromGallery() {
+    Camera.getPicture({
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.DATA_URL,
+      quality: 100,
+      allowEdit: true,
+      targetHeight: 1000,
+      targetWidth: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+      this.base64Image = "data:image/jpeg;base64," + imageData;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  takePicture = () => {
         Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,
       quality: 100,
@@ -64,12 +107,13 @@ export class PopoverPage {
 
     return new Blob([new Uint8Array(content)], { type: mimestring });
   }
-  
+
   changeProfilePic = (event: any) => {
   
-    event.preventDefault();
+    //event.preventDefault();
 
     const fileElement = event.target.querySelector('input[type=file]');
+    console.log(fileElement);
     const file = fileElement.files[0];
 
     const formData = new FormData();
@@ -79,10 +123,24 @@ export class PopoverPage {
     } else {
       formData.append('file', file);
     }
-
+    console.log(formData);
     this.profilepicService.changeProfilePic(formData).subscribe(
       resp => {
-        this.navCtrl.setRoot(ProfilePage);
+        const file_id = resp;
+        this.mediaService.getSingleMedia(file_id).subscribe(
+          resp => {
+            console.log(resp);
+            this.profilepicfilename = resp.filename;
+            console.log(this.profilepicfilename);
+            localStorage.setItem('filename', JSON.stringify('http://media.mw.metropolia.fi/wbma/uploads/' + this.profilepicfilename));
+            //this.profilepicService.getProfilePic(this.profilepicfilename);
+            //this.navCtrl.setRoot(ProfilePage);
+            this.viewCtrl.dismiss();
+            this.events.publish('pic:changed');
+          }
+        );
+        console.log(file_id);
+        
       }
     );
   }
