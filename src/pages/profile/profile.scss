@@ -59,8 +59,8 @@ page-profile {
 
       ion-item {
         height: auto;
-        display: flex;
         margin: 1em 0em;
+        display: flex;
         border-bottom: $border-grey;
 
         a {
@@ -84,6 +84,9 @@ page-profile {
 
         p {
           display: inline-block;
+          white-space: normal;
+          max-width: 78%;
+
           span {
 
             &.heading {

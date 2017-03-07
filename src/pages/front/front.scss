@@ -1,5 +1,33 @@
+@import 'theme/variables.scss';
+
 page-front {
   .scroll-content {
     padding: 0 !important;
+  }
+
+  .loading-gif {
+    text-align: center;
+    padding-top: 4em;
+  }
+
+  .username {
+    text-align: left;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .time-added {
+    text-align: left;
+  }
+
+  .title {
+    margin-top: 1.5rem;
+    color: $highlight-blue;
+    text-align: left;
+    font-size: 2rem;
+  }
+
+  img {
+    margin-top: 0.5rem;
   }
 }
