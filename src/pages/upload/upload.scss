@@ -1,5 +1,10 @@
 page-upload {
 
+  .container .info {
+    width: 90%;
+    margin-top: 1em;
+  }
+
   .range-md .range-tick {
     position: absolute;
     top: 17px;
@@ -10,10 +15,13 @@ page-upload {
     border-radius: 50%;
     background: $grey-dark;
     pointer-events: none;
-
   }
 
   .item-range ion-range {
     width: 80%;
+  }
+
+  input[type="file"] {
+    display: none;
   }
 }
