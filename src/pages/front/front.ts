@@ -20,7 +20,7 @@ export class FrontPage {
 
   private mediaFiles: any[];
   private myUserName: any;
-
+  private rating: any = 0;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
@@ -85,6 +85,16 @@ export class FrontPage {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
     });
+  }
+
+  getRating = (fileId) => {
+    this.mediaService.getFileRating(fileId).subscribe(
+      resp => {
+        if (resp[0]) {
+          this.rating = resp[0].rating;
+        }
+      }
+    )
   }
 
 
