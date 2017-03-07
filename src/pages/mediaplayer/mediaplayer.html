@@ -41,7 +41,7 @@
           <ion-item>
             <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
           </ion-item>
-          <button ion-button type="submit" [disabled]="!commentForm.valid">
+          <button class="send" ion-button type="submit" [disabled]="!commentForm.valid">
             <ion-icon ios="ios-send" md="md-send"></ion-icon>
           </button>
         </form>
@@ -82,7 +82,7 @@
           <ion-item>
             <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
           </ion-item>
-          <button ion-button type="submit" [disabled]="!commentForm.valid">
+          <button class="send" ion-button type="submit" [disabled]="!commentForm.valid">
             <ion-icon ios="ios-send" md="md-send"></ion-icon>
           </button>
         </form>
