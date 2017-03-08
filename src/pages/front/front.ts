@@ -20,8 +20,7 @@ export class FrontPage {
 
   private mediaFiles: any[];
   private myUserName: any;
-  private rating: any = 0;
-
+  private amountOfComments: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
 
@@ -43,6 +42,7 @@ export class FrontPage {
 
         if (this.mediaFiles != null) {
           this.getUserToPost();
+          //this.getAmountOfComments();
         }
 
         this.mediaFiles = this.mediaFiles.filter(function (element) {
@@ -68,7 +68,16 @@ export class FrontPage {
     }
   }
 
-
+  getAmountOfComments = () => {
+    for (let file of this.mediaFiles) {
+      this.mediaService.getComment(file.file_id).subscribe(
+        res => {
+          this.amountOfComments = res.length;
+          console.log(this.amountOfComments);
+        }
+      )
+    }
+  }
 
   getUserName = () => {
     if (localStorage.getItem('user')) {
@@ -86,18 +95,6 @@ export class FrontPage {
       firstPassed: fileId,
     });
   }
-
-  getRating = (fileId) => {
-    this.mediaService.getFileRating(fileId).subscribe(
-      resp => {
-        if (resp[0]) {
-          this.rating = resp[0].rating;
-        }
-      }
-    )
-  }
-
-
 }
 
 

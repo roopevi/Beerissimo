@@ -59,9 +59,10 @@ page-profile {
 
       ion-item {
         height: auto;
-        display: flex;
         margin: 1em 0em;
         border-bottom: $border-grey;
+        white-space: normal;
+        overflow: hidden;
 
         a {
           display: inline-block;
@@ -84,6 +85,8 @@ page-profile {
 
         p {
           display: inline-block;
+          white-space: normal;
+          overflow: hidden;
           span {
 
             &.heading {

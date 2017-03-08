@@ -114,7 +114,6 @@ export class MediaService {
   }
 
   getComment = (fileId) => {
-    console.log(fileId);
     return this.http.get(this.url + '/comments/file/' + fileId).map(
       res =>
         res.json()
