@@ -141,6 +141,7 @@ page-mediaplayer {
           font-size: 3em;
         }
 
+
         ion-icon:hover {
           opacity: 0.7;
         }
@@ -151,11 +152,12 @@ page-mediaplayer {
       background-color: white;
 
       ion-item {
-          max-width: 65%;
+          max-width: 75%;
           float: left;
 
           button {
             display: inline !important;
+
           }
       }
 
@@ -163,6 +165,13 @@ page-mediaplayer {
         float: right;
         position: fixed;
         margin: 0.5em 0em 0em 2em;
+        background-color: white;
+        color: $highlight-blue;
+        box-shadow: none;
+
+        ion-icon {
+          font-size: 2em;
+        }
       }
     }
 }

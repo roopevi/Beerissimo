@@ -21,6 +21,7 @@ export class FrontPage {
   private mediaFiles: any[];
   private myUserName: any;
   private amountOfComments: any[];
+  private amountOfLikes: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
 
@@ -42,7 +43,8 @@ export class FrontPage {
 
         if (this.mediaFiles != null) {
           this.getUserToPost();
-          //this.getAmountOfComments();
+          this.getAmountOfComments();
+          this.getAmountOfLikes();
         }
 
         this.mediaFiles = this.mediaFiles.filter(function (element) {
@@ -54,6 +56,7 @@ export class FrontPage {
     )
   };
 
+  //Gets username for every post in front page
   getUserToPost = () => {
     for (let user of this.mediaFiles) {
       this.mediaService.getOwner(user.user_id).subscribe(
@@ -68,16 +71,30 @@ export class FrontPage {
     }
   }
 
+  //Gets amount of comments for every post in front page
   getAmountOfComments = () => {
     for (let file of this.mediaFiles) {
       this.mediaService.getComment(file.file_id).subscribe(
         res => {
           this.amountOfComments = res.length;
-          //console.log(this.amountOfComments);
+          file.amountOfComments = this.amountOfComments;
         }
       )
     }
   }
+
+  //gets amount of likes for every post in front page
+  getAmountOfLikes = () => {
+    for (let file of this.mediaFiles) {
+      this.mediaService.getFavourites(file.file_id).subscribe(
+        res => {
+          this.amountOfLikes = res.length;
+          console.log(this.amountOfLikes);
+          file.amountOfLikes = this.amountOfLikes;
+        });
+    }
+  }
+
 
   getUserName = () => {
     if (localStorage.getItem('user')) {

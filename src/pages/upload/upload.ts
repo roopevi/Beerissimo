@@ -4,6 +4,7 @@ import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { Camera } from 'ionic-native';
+import { Autosize } from 'ionic2-autosize';
 
 /*
   Generated class for the Upload page.
@@ -21,6 +22,7 @@ export class UploadPage {
   public base64Image: string;
   private username: any;
   private beerRating:any;
+  public video: string;
 
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService,
   public platform: Platform) { }
@@ -71,6 +73,12 @@ export class UploadPage {
           }
         },
         {
+          text: 'Add video',
+          handler: () => {
+            this.addVideo();
+          }
+        },
+        {
           text: 'Cancel',
           role: 'cancel'
         }
@@ -93,6 +101,19 @@ export class UploadPage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  addVideo() {
+    Camera.getPicture({
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.FILE_URI,
+      mediaType: Camera.MediaType.VIDEO,
+    }).then((videoData) => {
+      console.log(videoData);
+      this.video = videoData;
+    }, (err) => {
+      console.log(err);
+    })
   }
 
   takePicture() {

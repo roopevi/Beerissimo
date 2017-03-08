@@ -21,6 +21,27 @@ page-upload {
     width: 80%;
   }
 
+  .title {
+    border: 1px solid $orange;
+    padding: 1rem;
+    border-radius: 5px;
+    text-transform: none;
+
+    .text-input {
+      margin: 0;
+    }
+  }
+
+  ion-textarea {
+    border: 1px solid $orange;
+    padding: 1rem;
+    border-radius: 5px;
+
+    input[type="text"] {
+      margin: 0;
+    }
+  }
+
   input[type="file"] {
     display: none;
   }

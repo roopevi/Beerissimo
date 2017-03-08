@@ -34,6 +34,8 @@
       <p *ngIf="file.media_type === 'video'">
         <a (click)="openPost(file.file_id)">Video <ion-icon name="videocam"></ion-icon></a>
       </p>
+      <p>{{file.amountOfComments}}</p>
+      <p>{{file.amountOfLikes}}</p>
 
     </div>
 
