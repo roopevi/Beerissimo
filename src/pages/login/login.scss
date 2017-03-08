@@ -7,12 +7,12 @@ page-login {
      text-align: center;
      background-repeat: no-repeat;
     @media screen and (min-width:768px) {
-      background-image: url(../assets/images/beer2_1366.jpg);
-      min-height: 60em;
+      background-image: url(../assets/images/beerBar.jpg);
+      max-height: 94.6em;
     }
      @media screen and (max-width:768px) {
-       background-image: url(../assets/images/beer2_768.jpg);
-       min-height: 60em;
+       background-image: url(../assets/images/beerBar_medium.jpg);
+       max-height: 94.6em;
     }
      }
      .login {

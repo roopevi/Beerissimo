@@ -18,22 +18,18 @@ export class MyApp {
 
   rootPage: any = FrontPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
 
-
-
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Front', component: FrontPage},
+      { title: 'Front', component: FrontPage },
       { title: 'Profile', component: ProfilePage },
       { title: 'Upload', component: UploadPage },
       { title: 'Search', component: SearchPage },
-      { title: 'Login', component: LoginPage},
-      { title: 'Register', component: RegisterPage},
-      { title: 'Log out', component: LogoutPage}
+      { title: 'Log out', component: LogoutPage }
     ];
 
   }

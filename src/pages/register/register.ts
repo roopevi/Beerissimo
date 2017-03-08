@@ -3,7 +3,7 @@ import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { RegisterService } from './../../providers/register-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 /*
   Generated class for the Register page.
@@ -17,12 +17,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, private loginService: LoginService) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, private loginService: LoginService, private menu: MenuController) {
+    this.menu.swipeEnable(false, 'menu');
+  }
 
   private loginFailed: boolean = false;
 
   /*Navigate to FrontPage*/ 
   switchToMenu = () => {
+    this.menu.swipeEnable(true, 'menu');
     this.navCtrl.setRoot(FrontPage);
   }
 
