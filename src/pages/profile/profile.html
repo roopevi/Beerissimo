@@ -25,8 +25,6 @@
       <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" [hidden]="!fileName" />
       <button ion-button [hidden]="fileName" (click)="presentPopover($event)">Set profile picture</button>
 
-      <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" />
-
       <p class="username">{{this.username}}</p>
       <div class="my-beers">
         <h3>My list of beers</h3>
