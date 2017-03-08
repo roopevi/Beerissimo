@@ -11,10 +11,12 @@ export class RegisterService {
 
   constructor(private http: Http, private loginService: LoginService) { }
 
+  /*Gets values from register.ts.*/
   setUser = (user) => {
     this.user = user;
   }
 
+  /*Sends user information to API and returns the response*/
   register = () => {
     return this.http.post(this.url + '/users', this.user)
       .map(

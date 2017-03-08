@@ -2,7 +2,7 @@ import { RegisterPage } from './../register/register';
 import { FrontPage } from './../front/front';
 import { LoginService } from './../../providers/login-service';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 
 /*
   Generated class for the Login page.
@@ -17,29 +17,36 @@ import { NavController, NavParams } from 'ionic-angular';
 export class LoginPage {
 
   private loginFailed: boolean = false;
+  private errorMessage: string = "Login failed";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) { }
-
-
-  ionViewDidLoad() {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private menu: MenuController) {
+    this.menu.swipeEnable(false, 'menu');
   }
 
+  /*Navigate to FrontPage*/
   switchToMenu = () => {
+    this.menu.swipeEnable(true, 'menu');
     this.navCtrl.setRoot(FrontPage);
   }
 
+  /*Navigate to RegisterPage*/
   toRegisterPage = () => {
     this.navCtrl.setRoot(RegisterPage);
   }
 
-
+  /*Login function, takes values from login form as parameter*/
   login = (value) => {
+
+    /*Create reference to user*/
     const user = {
       username: value.username,
       password: value.password
     };
 
+    /*Create user object in LoginService*/
     this.loginService.setUser(user);
+
+    /*Login function. On success navigate to FrontPage. On error show error message*/
     this.loginService.login().subscribe(
       res => {
         this.loginFailed = false;
@@ -47,16 +54,10 @@ export class LoginPage {
       },
       error => {
         const errorCode = error.status;
-        if (errorCode === 401) {
+        if (errorCode) {
           this.loginFailed = true;
         }
       }
     );
   }
-
-  logout = () => {
-    localStorage.removeItem('user');
-    this.switchToMenu();
-  }
-
 }

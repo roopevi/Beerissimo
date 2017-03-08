@@ -27,6 +27,7 @@ export class FrontPage {
 
 
   ionViewWillEnter() {
+    /*If user object in login, load content. Otherwise navigate to login page*/
     if (localStorage.getItem('user')) {
       this.getAllMedia();
       this.getUserName();
@@ -35,18 +36,32 @@ export class FrontPage {
     }
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+      setTimeout(() => {
+        console.log('Async operation has ended');
+        refresher.complete();
+      }, 2000);
+  }
+
+
+  /*Get all media with media service.*/
+
   getAllMedia = () => {
     this.mediaService.getMedia().subscribe(
       res => {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
+        /*If mediaFiles exist, get usernames for posts.*/
         if (this.mediaFiles != null) {
           this.getUserToPost();
           this.getAmountOfComments();
           this.getAmountOfLikes();
         }
 
+        /*Filter out posts with empty titles or descriptions, if any exist.*/
         this.mediaFiles = this.mediaFiles.filter(function (element) {
           if (element.title.trim() != '' || element.description.trim() != '') {
             return element;
@@ -95,7 +110,7 @@ export class FrontPage {
     }
   }
 
-
+  /*Get username from local storage. If does not exist, navigate to login.*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
@@ -105,7 +120,7 @@ export class FrontPage {
     }
   }
 
-
+  /*Onclick navigate to MediaplayerPage*/
   openPost = (fileId) => {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
