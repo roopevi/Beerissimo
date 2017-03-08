@@ -1,29 +1,18 @@
 page-register {
      .container {
-    //padding-top: 15em;
-    //padding-left: 10em;
-     //min-height: 768px;
-     //height: 100%;
-     //max-width: 100%;
-
-     //min-width: 530px;
-
      padding-top: 5em;
-     min-height: 600px;
+     min-height: 60em;
      height: 100%;
      max-width: 100%;
      margin: 0;
      text-align: center;
-
-
     @media screen and (min-width:768px) {
       background-image: url(../assets/images/beer2_1366.jpg);
-      min-height: 600px;
+      min-height: 60em;
     }
      @media screen and (max-width:768px) {
        background-image: url(../assets/images/beer2_768.jpg);
-       min-height: 600px;
-
+       min-height: 60em;
     }
      }
      .register {
@@ -34,17 +23,11 @@ page-register {
          height: auto;
          text-align: center;
          border-radius: 1em;
-         width: 300px;
+         width: 30em;
          padding: 0em 1em 1em 1em;
-
          @media screen and (max-width:768px) {
-
             max-width: 90%;
          }
-
-
     background-color: rgba(255, 255, 255, 0.8);
-
-
      }
 }

@@ -7,11 +7,11 @@ page-upload {
 
   .range-md .range-tick {
     position: absolute;
-    top: 17px;
+    top: 1.7em;
     z-index: 1;
-    margin-left: -1px;
-    width: 2px;
-    height: 10px;
+    margin-left: -0.1em;
+    width: 0.2em;
+    height: 1em;
     border-radius: 50%;
     background: $grey-dark;
     pointer-events: none;
