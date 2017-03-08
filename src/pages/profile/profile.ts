@@ -19,7 +19,7 @@ import { NavController, NavParams, PopoverController, Events } from 'ionic-angul
 })
 export class ProfilePage {
 
-  private profilePic: any;
+  private profilePics: any[];
   private username: any;
   private grade: any;
   public mediaFiles: any[];
@@ -87,7 +87,33 @@ console.log(this.fileName);
    
     }
     else {
-      this.fileName = "http://media.mw.metropolia.fi/wbma/uploads/03642ac1c39f45beb0480714727be0a7.png";
+      //this.fileName = "http://media.mw.metropolia.fi/wbma/uploads/03642ac1c39f45beb0480714727be0a7.png";
+
+      this.profilepicService.getPicFromApi().subscribe(
+        res => {
+          this.profilePics = res;
+          this.profilePics.reverse();
+        console.log(res);
+        this.profilePics = this.profilePics.filter(function (element) {
+          if (element.user_id === JSON.parse(localStorage.getItem('user')).user_id) {
+            return element;
+            
+          }
+        
+        });
+        console.log(this.profilePics);
+
+        if (this.profilePics.length > 0) {
+        this.fileName = this.profilePics[0].filename;
+        console.log(this.fileName);
+        localStorage.setItem('filename', JSON.stringify('http://media.mw.metropolia.fi/wbma/uploads/' + this.fileName));
+        this.fileName = JSON.parse(localStorage.getItem('filename'));
+        }
+
+      }
+      
+      )
+      
     }
 
   }

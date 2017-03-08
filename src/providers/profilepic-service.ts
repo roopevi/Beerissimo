@@ -48,7 +48,7 @@ export class ProfilepicService {
 
         this.addTag(this.id, tag);
         console.log(dataFromServer);
-        localStorage.setItem('image', JSON.stringify(resp));
+        //localStorage.setItem('image', JSON.stringify(resp));
         
         
 
@@ -57,6 +57,14 @@ export class ProfilepicService {
       }
     );
   }
+  getPicFromApi = () => {
+    return this.http.get(this.url + "/tags/BeerissimoProfilepic")
+    .map(
+      res =>
+        res.json()
+      
+      );
+  };
 
   getProfilePic = (image) => {
     let pic = image;

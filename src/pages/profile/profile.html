@@ -21,7 +21,8 @@
   <ion-item class="container">
     <div class="profile-wrapper">
       
-      <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" />
+      <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" [hidden]="!fileName" />
+      <button ion-button [hidden]="fileName" (click)="presentPopover($event)">Set profile picture</button>
       
       <p class="username">{{this.username}}</p>
       <p class="grade">{{this.grade}}</p>

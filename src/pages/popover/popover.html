@@ -6,26 +6,30 @@
 -->
 
 
-  <ion-navbar>
-    <ion-title>Change avatar</ion-title>
-  </ion-navbar>
+  
+    
+  
 
 
 
-<ion-content padding>
+<ion-content>
 <ion-list>
- <ion-item>Pölölöö</ion-item>
+ <ion-item><h2>Change avatar</h2></ion-item>
   <ion-item>
   <a ion-button (click)="presentActionSheet()">Choose file</a>
   </ion-item>
-   <ion-item>
-  </ion-item>
+   
+  
   <form class="pic-form" #picForm="ngForm" (ngSubmit)="changeProfilePic($event)">
+    <ion-item>
   <button ion-button (click)="changeProfilePic($event)">Post</button>
+  </ion-item><ion-item>
   <input type="file" name="file" accept="image/*|video/*" ngModel>
-  <button ion-button type="submit">POSTI</button>
+  </ion-item>
+  
+  <!--<button ion-button type="submit">POSTI</button>-->
   </form>
-  <ion-item>
+   <ion-item>
   <button ion-button (click)="close()">Cancel</button>
   </ion-item>
   </ion-list>

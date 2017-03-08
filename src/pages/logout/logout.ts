@@ -19,6 +19,7 @@ export class LogoutPage {
 
 logout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('filename');
     this.switchToMenu();
   }
 

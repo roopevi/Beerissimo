@@ -29,6 +29,7 @@ export class MediaService {
       );
   };
 
+
   getOwner = (userId: string) => {
     this.token = JSON.parse(localStorage.getItem("user")).token;
 
