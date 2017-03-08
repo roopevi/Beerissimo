@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { LoginService } from './../../providers/login-service';
 import { FrontPage } from './../front/front';
 import { RegisterService } from './../../providers/register-service';
@@ -27,6 +28,10 @@ export class RegisterPage {
 
   switchToMenu = () => {
     this.navCtrl.setRoot(FrontPage);
+  }
+
+  toLoginPage = () => {
+    this.navCtrl.setRoot(LoginPage);
   }
 
   ionViewDidLoad() {

@@ -1,3 +1,4 @@
+import { RegisterPage } from './../register/register';
 import { FrontPage } from './../front/front';
 import { LoginService } from './../../providers/login-service';
 import { Component } from '@angular/core';
@@ -28,6 +29,10 @@ export class LoginPage {
 
   switchToMenu = () => {
     this.navCtrl.setRoot(FrontPage);
+  }
+
+  toRegisterPage = () => {
+    this.navCtrl.setRoot(RegisterPage);
   }
 
 

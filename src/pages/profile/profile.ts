@@ -1,8 +1,11 @@
+import { PopoverPage } from './../popover/popover';
+import { ProfilepicService } from './../../providers/profilepic-service';
 import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, NgZone } from '@angular/core';
+import { NavController, NavParams, PopoverController, Events } from 'ionic-angular';
+
 
 /*
   Generated class for the Profile page.
@@ -16,18 +19,39 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
+  private profilePic: any;
   private username: any;
   private grade: any;
   public mediaFiles: any[];
   private userId: any;
+  private fileName: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) { }
+  constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, public profilepicService: ProfilepicService, public popoverCtrl: PopoverController) {
+    events.subscribe('pic:changed', () => {
+      this.getProfilePic();
+    });
+  }
 
   ionViewDidLoad() {
     this.getUserName();
     this.getGrade();
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
+    
+
+  }
+  ionViewWillEnter() {
+    this.getProfilePic();
+  }
+  ionPageDidEnter() {
+    
+  }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
   getPostsByUser = (userId) => {
@@ -55,6 +79,19 @@ export class ProfilePage {
     }
   }
 
+  getProfilePic = () => {
+
+    if (localStorage.getItem('filename')) {
+this.fileName = JSON.parse(localStorage.getItem('filename'));
+console.log(this.fileName);
+   
+    }
+    else {
+      this.fileName = "http://media.mw.metropolia.fi/wbma/uploads/03642ac1c39f45beb0480714727be0a7.png";
+    }
+
+  }
+
   getGrade = () => {
     if (localStorage.getItem('user')) {
       this.grade = JSON.parse(localStorage.getItem("user")).full_name;
@@ -68,5 +105,7 @@ export class ProfilePage {
       firstPassed: fileId,
     });
   }
+
+
 
 }

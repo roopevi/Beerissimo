@@ -60,6 +60,7 @@ page-profile {
       ion-item {
         height: auto;
         margin: 1em 0em;
+        display: flex;
         border-bottom: $border-grey;
         white-space: normal;
         overflow: hidden;
@@ -86,7 +87,8 @@ page-profile {
         p {
           display: inline-block;
           white-space: normal;
-          overflow: hidden;
+          max-width: 78%;
+
           span {
 
             &.heading {

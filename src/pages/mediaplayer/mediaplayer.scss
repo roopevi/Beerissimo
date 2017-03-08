@@ -117,6 +117,7 @@ page-mediaplayer {
           width: 100%;
         }*/
 
+
         button {
           height: 35px;
           width: 35px;
@@ -148,5 +149,20 @@ page-mediaplayer {
     }
     .comment-form {
       background-color: white;
+
+      ion-item {
+          max-width: 65%;
+          float: left;
+
+          button {
+            display: inline !important;
+          }
+      }
+
+      button.send {
+        float: right;
+        position: fixed;
+        margin: 0.5em 0em 0em 2em;
+      }
     }
 }
