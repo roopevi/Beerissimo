@@ -19,12 +19,16 @@ import { NavController, NavParams, PopoverController, Events } from 'ionic-angul
 })
 export class ProfilePage {
 
+
+  private profilePics: any[];
   private username: any;
   public mediaFiles: any[];
   private userId: any;
   private fileName: any;
 
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, public profilepicService: ProfilepicService, public popoverCtrl: PopoverController) {
+    /*Runs getProfilePic function after pic changed event is published in profilepic-service.ts. 
+    The usage of this event guarantees auto update of the profile page.*/
     events.subscribe('pic:changed', () => {
       this.getProfilePic();
     });
@@ -41,7 +45,7 @@ export class ProfilePage {
   ionViewWillEnter() {
     this.getProfilePic();
   }
-
+  /*Create and present Popover page when picture is clicked*/
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopoverPage);
     popover.present({
@@ -73,15 +77,49 @@ export class ProfilePage {
     }
   }
 
+  /*Get the filename of the profile picture from local storage*/
   getProfilePic = () => {
 
+    /*Get the filename of the profile picture from local storage. Filename is linked to the image in html template*/
     if (localStorage.getItem('filename')) {
       this.fileName = JSON.parse(localStorage.getItem('filename'));
-      console.log(this.fileName);
-
     }
+    /*If filename doesn't exist in local storage, this will run*/
     else {
-      this.fileName = "http://media.mw.metropolia.fi/wbma/uploads/03642ac1c39f45beb0480714727be0a7.png";
+
+      /*Gets a response as an array of getPicFromApi -function in profilepicService*/
+      this.profilepicService.getPicFromApi().subscribe(
+        res => {
+
+          /*Set response to a variable*/
+          this.profilePics = res;
+
+          /*Flip the order of the array to get the newest file first*/
+          this.profilePics.reverse();
+
+          /*Get the file from local storage filtered by user_id*/
+          this.profilePics = this.profilePics.filter(function (element) {
+            if (element.user_id === JSON.parse(localStorage.getItem('user')).user_id) {
+              return element;
+
+            }
+
+          });
+
+
+          /*If profilePics contains file(s) choose the newest one and set it to local storage*/
+          if (this.profilePics.length > 0) {
+            this.fileName = this.profilePics[0].filename;
+            localStorage.setItem('filename', JSON.stringify('http://media.mw.metropolia.fi/wbma/uploads/' + this.fileName));
+
+            /*Set the filename of the image to fileName variable*/
+            this.fileName = JSON.parse(localStorage.getItem('filename'));
+          }
+
+        }
+
+      )
+
     }
 
   }

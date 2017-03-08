@@ -23,6 +23,7 @@ export class LogoutPage {
   /*Remove user object fron local storage and navigate to LoginPage*/
   logout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('filename');
     this.switchToMenu();
   }
 
