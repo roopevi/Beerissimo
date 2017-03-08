@@ -20,7 +20,6 @@ import { NavController, NavParams, PopoverController, Events } from 'ionic-angul
 export class ProfilePage {
 
   private username: any;
-  private grade: any;
   public mediaFiles: any[];
   private userId: any;
   private fileName: any;
@@ -31,19 +30,16 @@ export class ProfilePage {
     });
   }
 
+  /*On view load, get username and get all posts made by user*/
   ionViewDidLoad() {
     this.getUserName();
-    this.getGrade();
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
-
-
   }
+
+  /*On enter, get profile pic*/
   ionViewWillEnter() {
     this.getProfilePic();
-  }
-  ionPageDidEnter() {
-
   }
 
   presentPopover(myEvent) {
@@ -68,6 +64,7 @@ export class ProfilePage {
     )
   }
 
+  /*Get username from local storage. If not exists, navigate to LoginPage*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.username = JSON.parse(localStorage.getItem("user")).username;
@@ -89,14 +86,7 @@ export class ProfilePage {
 
   }
 
-  getGrade = () => {
-    if (localStorage.getItem('user')) {
-      this.grade = JSON.parse(localStorage.getItem("user")).full_name;
-    } else {
-      this.grade = 'not defined';
-    }
-  }
-
+  /*On click open MediaplayerPage with id*/
   openPost = (fileId) => {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,

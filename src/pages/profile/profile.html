@@ -24,7 +24,6 @@
       <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" />
 
       <p class="username">{{this.username}}</p>
-      <p class="grade">{{this.grade}}</p>
       <div class="my-beers">
         <h3>My list of beers</h3>
         <ion-list *ngIf="mediaFiles?.length >= 1">
