@@ -20,13 +20,13 @@ export class FrontPage {
 
   private mediaFiles: any[];
   private myUserName: any;
-  private rating: any = 0;
-
+  private amountOfComments: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private mediaService: MediaService, private loginService: LoginService) { }
 
 
   ionViewWillEnter() {
+    /*If user object in login, load content. Otherwise navigate to login page*/
     if (localStorage.getItem('user')) {
       this.getAllMedia();
       this.getUserName();
@@ -44,16 +44,21 @@ export class FrontPage {
       }, 2000);
   }
 
+
+  /*Get all media with media service.*/
+
   getAllMedia = () => {
     this.mediaService.getMedia().subscribe(
       res => {
         this.mediaFiles = res;
         this.mediaFiles.reverse();
 
+        /*If mediaFiles exist, get usernames for posts.*/
         if (this.mediaFiles != null) {
           this.getUserToPost();
         }
 
+        /*Filter out posts with empty titles or descriptions, if any exist.*/
         this.mediaFiles = this.mediaFiles.filter(function (element) {
           if (element.title.trim() != '' || element.description.trim() != '') {
             return element;
@@ -64,6 +69,7 @@ export class FrontPage {
   };
 
   getUserToPost = () => {
+
     for (let user of this.mediaFiles) {
       this.mediaService.getOwner(user.user_id).subscribe(
         res => {
@@ -77,8 +83,17 @@ export class FrontPage {
     }
   }
 
+  getAmountOfComments = () => {
+    for (let file of this.mediaFiles) {
+      this.mediaService.getComment(file.file_id).subscribe(
+        res => {
+          this.amountOfComments = res.length;
+        }
+      )
+    }
+  }
 
-
+  /*Get username from local storage. If does not exist, navigate to login.*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
@@ -88,24 +103,12 @@ export class FrontPage {
     }
   }
 
-
+  /*Onclick navigate to MediaplayerPage*/
   openPost = (fileId) => {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
     });
   }
-
-  getRating = (fileId) => {
-    this.mediaService.getFileRating(fileId).subscribe(
-      resp => {
-        if (resp[0]) {
-          this.rating = resp[0].rating;
-        }
-      }
-    )
-  }
-
-
 }
 
 

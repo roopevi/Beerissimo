@@ -3,7 +3,7 @@ import { ProfilepicService } from './../../providers/profilepic-service';
 import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController, Events } from 'ionic-angular';
 
 
@@ -19,34 +19,33 @@ import { NavController, NavParams, PopoverController, Events } from 'ionic-angul
 })
 export class ProfilePage {
 
+
   private profilePics: any[];
   private username: any;
-  private grade: any;
   public mediaFiles: any[];
   private userId: any;
   private fileName: any;
 
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, public profilepicService: ProfilepicService, public popoverCtrl: PopoverController) {
+    /*Runs getProfilePic function after pic changed event is published in profilepic-service.ts. 
+    The usage of this event guarantees auto update of the profile page.*/
     events.subscribe('pic:changed', () => {
       this.getProfilePic();
     });
   }
 
+  /*On view load, get username and get all posts made by user*/
   ionViewDidLoad() {
     this.getUserName();
-    this.getGrade();
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
-    
-
   }
+
+  /*On enter, get profile pic*/
   ionViewWillEnter() {
     this.getProfilePic();
   }
-  ionPageDidEnter() {
-    
-  }
-
+  /*Create and present Popover page when picture is clicked*/
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopoverPage);
     popover.present({
@@ -65,12 +64,11 @@ export class ProfilePage {
             return element.user_id == userId;
           }
         });
-
-        console.log(this.mediaFiles.length);
       }
     )
   }
 
+  /*Get username from local storage. If not exists, navigate to LoginPage*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.username = JSON.parse(localStorage.getItem("user")).username;
@@ -79,59 +77,57 @@ export class ProfilePage {
     }
   }
 
+  /*Get the filename of the profile picture from local storage*/
   getProfilePic = () => {
 
+    /*Get the filename of the profile picture from local storage. Filename is linked to the image in html template*/
     if (localStorage.getItem('filename')) {
-this.fileName = JSON.parse(localStorage.getItem('filename'));
-console.log(this.fileName);
-   
+      this.fileName = JSON.parse(localStorage.getItem('filename'));
     }
+    /*If filename doesn't exist in local storage, this will run*/
     else {
-      //this.fileName = "http://media.mw.metropolia.fi/wbma/uploads/03642ac1c39f45beb0480714727be0a7.png";
 
+      /*Gets a response as an array of getPicFromApi -function in profilepicService*/
       this.profilepicService.getPicFromApi().subscribe(
         res => {
-          this.profilePics = res;
-          this.profilePics.reverse();
-        console.log(res);
-        this.profilePics = this.profilePics.filter(function (element) {
-          if (element.user_id === JSON.parse(localStorage.getItem('user')).user_id) {
-            return element;
-            
-          }
-        
-        });
-        console.log(this.profilePics);
 
-        if (this.profilePics.length > 0) {
-        this.fileName = this.profilePics[0].filename;
-        console.log(this.fileName);
-        localStorage.setItem('filename', JSON.stringify('http://media.mw.metropolia.fi/wbma/uploads/' + this.fileName));
-        this.fileName = JSON.parse(localStorage.getItem('filename'));
+          /*Set response to a variable*/
+          this.profilePics = res;
+
+          /*Flip the order of the array to get the newest file first*/
+          this.profilePics.reverse();
+
+          /*Get the file from local storage filtered by user_id*/
+          this.profilePics = this.profilePics.filter(function (element) {
+            if (element.user_id === JSON.parse(localStorage.getItem('user')).user_id) {
+              return element;
+
+            }
+
+          });
+
+
+          /*If profilePics contains file(s) choose the newest one and set it to local storage*/
+          if (this.profilePics.length > 0) {
+            this.fileName = this.profilePics[0].filename;
+            localStorage.setItem('filename', JSON.stringify('http://media.mw.metropolia.fi/wbma/uploads/' + this.fileName));
+
+            /*Set the filename of the image to fileName variable*/
+            this.fileName = JSON.parse(localStorage.getItem('filename'));
+          }
+
         }
 
-      }
-      
       )
-      
+
     }
 
   }
 
-  getGrade = () => {
-    if (localStorage.getItem('user')) {
-      this.grade = JSON.parse(localStorage.getItem("user")).full_name;
-    } else {
-      this.grade = 'not defined';
-    }
-  }
-
+  /*On click open MediaplayerPage with id*/
   openPost = (fileId) => {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
     });
   }
-
-
-
 }

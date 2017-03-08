@@ -24,9 +24,11 @@
   </div>
   <ion-item class="container" *ngFor="let file of mediaFiles">
     <div class="info">
-      <h2 class="username">{{file.username}}</h2>
-      <p class="time-added">{{(file.time_added | date: 'parse')}}</p>
-      <h2 class="title">{{file.title}}</h2>
+      <div class="file-info">
+        <h2 class="username">{{file.username}}</h2>
+        <p class="time-added">{{(file.time_added | date: 'parse')}}</p>
+        <h2 class="title">{{file.title}}</h2>
+      </div>
       <img *ngIf="file.media_type === 'image'" [alt]="file.title" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (file.filename | thumbnail: 'medium')"
         (click)="openPost(file.file_id)">
       <p *ngIf="file.media_type === 'audio'">

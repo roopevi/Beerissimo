@@ -1,7 +1,4 @@
-import { FrontPage } from './../pages/front/front';
-import { NavController } from 'ionic-angular';
 import { LoginService } from './login-service';
-import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -14,11 +11,12 @@ export class RegisterService {
 
   constructor(private http: Http, private loginService: LoginService) { }
 
+  /*Gets values from register.ts.*/
   setUser = (user) => {
     this.user = user;
-    console.log(this.user);
   }
 
+  /*Sends user information to API and returns the response*/
   register = () => {
     return this.http.post(this.url + '/users', this.user)
       .map(
@@ -26,8 +24,6 @@ export class RegisterService {
         return resp;
       }, error => {
         return error;
-      }
-      );
+      });
   }
-
 }

@@ -18,7 +18,6 @@ export class MediaService {
   };
 
   constructor(public http: Http) {
-    console.log('Hello MediaService Provider');
   }
 
   getMedia = () => {
@@ -107,7 +106,6 @@ export class MediaService {
   }
 
   postComment = (comment: any) => {
-    console.log(comment);
     return this.http.post(this.url + `/comments?token=` + JSON.parse(localStorage.getItem('user')).token, comment).map(
       res =>
         res.json()
@@ -115,7 +113,6 @@ export class MediaService {
   }
 
   getComment = (fileId) => {
-    console.log(fileId);
     return this.http.get(this.url + '/comments/file/' + fileId).map(
       res =>
         res.json()

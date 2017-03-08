@@ -17,7 +17,6 @@ export class UploadService {
   private id: number;
 
   constructor(public http: Http, private loginService: LoginService) {
-    console.log('Hello UploadService Provider');
     this.token = this.loginService.getUser().token;
   }
 
@@ -48,7 +47,6 @@ export class UploadService {
     return this.http.post(this.url + `/tags?token=` + JSON.parse(localStorage.getItem('user')).token, tagObject).subscribe(
       resp => {
         resp.json();
-        console.log(resp);
       }
     );
   }
@@ -62,7 +60,6 @@ export class UploadService {
     return this.http.post(this.url + `/ratings?token=` + JSON.parse(localStorage.getItem('user')).token, ratingObject).subscribe(
       resp => {
         resp.json();
-        console.log(resp);
       }
     );
   }

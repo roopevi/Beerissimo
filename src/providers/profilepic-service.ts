@@ -12,14 +12,14 @@ import 'rxjs/add/operator/map';
 export class ProfilepicService {
 
   private url: string = 'http://media.mw.metropolia.fi/wbma';
-  private token: string = '';
   private id: number;
 
   constructor(public http: Http) {
-    console.log('Hello ProfilepicService Provider');
+
   }
 
-    addTag = (id, tag) => {
+  /*Create a tag object that contains file_id and tag*/
+  addTag = (id, tag) => {
     const tagObject = {
       file_id: id,
       tag: tag
@@ -28,41 +28,39 @@ export class ProfilepicService {
     return this.http.post(this.url + `/tags?token=` + JSON.parse(localStorage.getItem('user')).token, tagObject).subscribe(
       resp => {
         resp.json();
-        console.log(resp);
       }
     );
   }
 
+  /*Takes parameter from popover.ts and sends chosen image to API*/
   changeProfilePic = (formData: any) => {
-    console.log(formData);
     return this.http.post(this.url + '/media?token=' + JSON.parse(localStorage.getItem('user')).token,
-    formData).map(
+      formData).map(
       resp => {
 
+        /*Sets the response to a variable*/
         const dataFromServer = resp.json();
-        
+
+        /*Sets the file_id from the response to a variable*/
         this.id = dataFromServer.file_id;
-        console.log("pölölöö");
-        console.log(resp);
+
+        /*Creates a tag for profile pictures of the app*/
         const tag: string = 'BeerissimoProfilepic';
 
+        /*Runs addTag function to connect id and tag to one object*/
         this.addTag(this.id, tag);
-        console.log(dataFromServer);
-        //localStorage.setItem('image', JSON.stringify(resp));
-        
-        
 
         return this.id;
 
-      }
-    );
+      });
   }
+  /*Return all files with a tag "BeerissimoProfilepic"*/
   getPicFromApi = () => {
     return this.http.get(this.url + "/tags/BeerissimoProfilepic")
-    .map(
+      .map(
       res =>
         res.json()
-      
+
       );
   };
 
@@ -70,8 +68,4 @@ export class ProfilepicService {
     let pic = image;
     return pic;
   }
-
-
-
-
 }

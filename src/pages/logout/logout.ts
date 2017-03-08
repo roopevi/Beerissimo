@@ -1,5 +1,4 @@
 import { LoginPage } from './../login/login';
-import { FrontPage } from './../front/front';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -15,23 +14,21 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LogoutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  /*On view load, run logout function*/
+  ionViewDidLoad() {
+    this.logout();
+  }
 
-logout = () => {
+  /*Remove user object fron local storage and navigate to LoginPage*/
+  logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('filename');
     this.switchToMenu();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LogoutPage');
-    this.logout();
-  }
-
+  /*Navigate to LoginPage*/
   switchToMenu = () => {
     this.navCtrl.setRoot(LoginPage);
   }
-
-
-
 }

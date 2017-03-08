@@ -16,33 +16,30 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  items: any[];
+  public items: any[];
   private mediaFiles: any[];
   private myUserName: any;
 
-
+  /*On constructor, get all media, create reference of media files*/
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService) {
     this.getMedia();
     this.initializeItems()
   }
-
+  /*On view load, get username*/
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
     this.getUserName();
   }
-
+  /*Create reference of media files and filter out empty results.*/
   initializeItems() {
 
     if (this.mediaFiles) {
-
       this.items = this.mediaFiles.filter(function (element) {
         return element.title.length > 0;
       });
-
     }
   }
 
-
+  /*Get all media files*/
   getMedia = () => {
     this.mediaService.getMedia().subscribe(
       res => {
@@ -51,7 +48,7 @@ export class SearchPage {
     )
   }
 
-
+  /*On search, get media files and filter out empty results. Display results below search bar. If no results, don't do anything.*/
   getItems(ev: any) {
     // Reset items back to all of the items
 
@@ -71,6 +68,7 @@ export class SearchPage {
     }
   }
 
+  /*Get username from local storage. If not exists, navigate to LoginPage*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
@@ -79,6 +77,7 @@ export class SearchPage {
     }
   }
 
+  /*On click open MediaplayerPage with id*/
   openPost = (fileId) => {
     this.navCtrl.push(MediaplayerPage, {
       firstPassed: fileId,
