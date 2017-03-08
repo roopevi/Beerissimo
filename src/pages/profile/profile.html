@@ -20,9 +20,9 @@
 <ion-content padding>
   <ion-item class="container">
     <div class="profile-wrapper">
-      
+
       <img class="profile-pic" (click)="presentPopover($event)" [src]="fileName" />
-      
+
       <p class="username">{{this.username}}</p>
       <p class="grade">{{this.grade}}</p>
       <div class="my-beers">
@@ -35,7 +35,6 @@
             <p>
               <span class="heading">{{file.title}}</span><br/>
               <span class="type">{{file.description}}</span><br/>
-              <!--<span class="alc">4.5%</span>-->
             </p>
           </ion-item>
         </ion-list>

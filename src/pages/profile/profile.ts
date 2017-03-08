@@ -3,7 +3,7 @@ import { ProfilepicService } from './../../providers/profilepic-service';
 import { MediaplayerPage } from './../mediaplayer/mediaplayer';
 import { LoginPage } from './../login/login';
 import { MediaService } from './../../providers/media-service';
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController, Events } from 'ionic-angular';
 
 
@@ -19,7 +19,6 @@ import { NavController, NavParams, PopoverController, Events } from 'ionic-angul
 })
 export class ProfilePage {
 
-  private profilePic: any;
   private username: any;
   private grade: any;
   public mediaFiles: any[];
@@ -37,14 +36,14 @@ export class ProfilePage {
     this.getGrade();
     this.userId = JSON.parse(localStorage.getItem("user")).user_id;
     this.getPostsByUser(this.userId);
-    
+
 
   }
   ionViewWillEnter() {
     this.getProfilePic();
   }
   ionPageDidEnter() {
-    
+
   }
 
   presentPopover(myEvent) {
@@ -65,8 +64,6 @@ export class ProfilePage {
             return element.user_id == userId;
           }
         });
-
-        console.log(this.mediaFiles.length);
       }
     )
   }
@@ -82,9 +79,9 @@ export class ProfilePage {
   getProfilePic = () => {
 
     if (localStorage.getItem('filename')) {
-this.fileName = JSON.parse(localStorage.getItem('filename'));
-console.log(this.fileName);
-   
+      this.fileName = JSON.parse(localStorage.getItem('filename'));
+      console.log(this.fileName);
+
     }
     else {
       this.fileName = "http://media.mw.metropolia.fi/wbma/uploads/03642ac1c39f45beb0480714727be0a7.png";
@@ -105,7 +102,4 @@ console.log(this.fileName);
       firstPassed: fileId,
     });
   }
-
-
-
 }

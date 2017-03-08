@@ -19,11 +19,6 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, private loginService: LoginService) { }
 
-  private email: string = '';
-  private username: string = '';
-  private password: string = '';
-  private response: any;
-  private errorMessage: any = 'Login failed';
   private loginFailed: boolean = false;
 
   switchToMenu = () => {
@@ -35,7 +30,6 @@ export class RegisterPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
   }
 
   register = (value) => {
@@ -49,11 +43,8 @@ export class RegisterPage {
       resp => {
         const originalData = user;
 
-        console.log(user, resp);
-
         // convert user object to string and save userdata to local storage
         delete originalData['email'];
-        console.log(originalData);
         this.loginService.setUser(originalData);
         this.loginService.login().subscribe(
           res => {
@@ -67,11 +58,10 @@ export class RegisterPage {
             }
           }
         );
-
       }
     );
+
     this.switchToMenu();
 
   }
-
 }

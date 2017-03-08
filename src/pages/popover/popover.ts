@@ -1,7 +1,6 @@
 import { MediaService } from './../../providers/media-service';
 import { Camera } from 'ionic-native';
 import { ProfilepicService } from './../../providers/profilepic-service';
-import { ProfilePage } from './../profile/profile';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, ActionSheetController, Events } from 'ionic-angular';
 
@@ -23,7 +22,6 @@ export class PopoverPage {
   constructor(public events: Events, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public navParams: NavParams, public viewCtrl: ViewController, private profilepicService: ProfilepicService, public mediaService: MediaService) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PopoverPage');
   }
 
   close() {
@@ -109,11 +107,8 @@ export class PopoverPage {
   }
 
   changeProfilePic = (event: any) => {
-  
-    //event.preventDefault();
 
     const fileElement = event.target.querySelector('input[type=file]');
-    console.log(fileElement);
     const file = fileElement.files[0];
 
     const formData = new FormData();
@@ -123,24 +118,17 @@ export class PopoverPage {
     } else {
       formData.append('file', file);
     }
-    console.log(formData);
     this.profilepicService.changeProfilePic(formData).subscribe(
       resp => {
         const file_id = resp;
         this.mediaService.getSingleMedia(file_id).subscribe(
           resp => {
-            console.log(resp);
             this.profilepicfilename = resp.filename;
-            console.log(this.profilepicfilename);
             localStorage.setItem('filename', JSON.stringify('http://media.mw.metropolia.fi/wbma/uploads/' + this.profilepicfilename));
-            //this.profilepicService.getProfilePic(this.profilepicfilename);
-            //this.navCtrl.setRoot(ProfilePage);
             this.viewCtrl.dismiss();
             this.events.publish('pic:changed');
           }
         );
-        console.log(file_id);
-        
       }
     );
   }

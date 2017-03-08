@@ -16,15 +16,12 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-
-  private errorMessage: any = 'Login failed';
   private loginFailed: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) { }
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   switchToMenu = () => {
@@ -55,8 +52,6 @@ export class LoginPage {
         }
       }
     );
-
-
   }
 
   logout = () => {

@@ -12,7 +12,6 @@ import { Camera } from 'ionic-native';
   Ionic pages and navigation.
 */
 
-
 @Component({
   selector: 'page-upload',
   templateUrl: 'upload.html'
@@ -23,14 +22,11 @@ export class UploadPage {
   private username: any;
   private beerRating:any;
 
-
-
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public uploadService: UploadService,
   public platform: Platform) { }
 
   ionViewDidLoad() {
     this.getUserName();
-    console.log('ionViewDidLoad UploadPage');
   }
 
   uploadPost = (event: any, value: any) => {
@@ -125,9 +121,7 @@ export class UploadPage {
 
   changeValue = (event) => {
     this.beerRating = event.value;
-    console.log(this.beerRating);
   }
-
 
   dataURItoBlob = (dataURI: any) => {
     'use strict'
@@ -149,10 +143,6 @@ export class UploadPage {
 
     return new Blob([new Uint8Array(content)], { type: mimestring });
   }
-
-
-
-
 }
 
 

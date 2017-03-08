@@ -12,7 +12,6 @@ import 'rxjs/add/operator/map';
 export class ProfilepicService {
 
   private url: string = 'http://media.mw.metropolia.fi/wbma';
-  private token: string = '';
   private id: number;
 
   constructor(public http: Http) {
@@ -28,42 +27,30 @@ export class ProfilepicService {
     return this.http.post(this.url + `/tags?token=` + JSON.parse(localStorage.getItem('user')).token, tagObject).subscribe(
       resp => {
         resp.json();
-        console.log(resp);
       }
     );
   }
 
   changeProfilePic = (formData: any) => {
-    console.log(formData);
     return this.http.post(this.url + '/media?token=' + JSON.parse(localStorage.getItem('user')).token,
     formData).map(
       resp => {
 
         const dataFromServer = resp.json();
-        
+
         this.id = dataFromServer.file_id;
-        console.log("pölölöö");
-        console.log(resp);
         const tag: string = 'BeerissimoProfilepic';
 
         this.addTag(this.id, tag);
-        console.log(dataFromServer);
         localStorage.setItem('image', JSON.stringify(resp));
-        
-        
 
         return this.id;
 
-      }
-    );
+      });
   }
 
   getProfilePic = (image) => {
     let pic = image;
     return pic;
   }
-
-
-
-
 }

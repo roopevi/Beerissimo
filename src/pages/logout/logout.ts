@@ -1,5 +1,4 @@
 import { LoginPage } from './../login/login';
-import { FrontPage } from './../front/front';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -23,14 +22,10 @@ logout = () => {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogoutPage');
     this.logout();
   }
 
   switchToMenu = () => {
     this.navCtrl.setRoot(LoginPage);
   }
-
-
-
 }

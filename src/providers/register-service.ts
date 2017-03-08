@@ -1,7 +1,4 @@
-import { FrontPage } from './../pages/front/front';
-import { NavController } from 'ionic-angular';
 import { LoginService } from './login-service';
-import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -16,7 +13,6 @@ export class RegisterService {
 
   setUser = (user) => {
     this.user = user;
-    console.log(this.user);
   }
 
   register = () => {
@@ -26,8 +22,6 @@ export class RegisterService {
         return resp;
       }, error => {
         return error;
-      }
-      );
+      });
   }
-
 }

@@ -33,7 +33,6 @@ export class MediaplayerPage {
   ionViewDidLoad() {
     this.getUserName();
     this.thisPostLiked = false;
-    console.log('ionViewDidLoad MediaplayerPage');
     this.viewPost(this.firstParam);
     this.showComments();
   }
@@ -42,7 +41,6 @@ export class MediaplayerPage {
     this.mediaService.getOwner(user).subscribe(
       resp => {
         this.user = resp;
-        console.log(resp);
       }
     );
   }
@@ -109,7 +107,6 @@ export class MediaplayerPage {
     this.commentCredentials.comment = value.comment;
     this.mediaService.postComment(this.commentCredentials).subscribe(
       res => {
-        console.log(res);
         this.showComments();
         this.onSubmit();
       },
@@ -122,7 +119,6 @@ export class MediaplayerPage {
   showComments = () => {
     this.mediaService.getComment(this.firstParam).subscribe(
       res => {
-        console.log(res);
         this.comments = res;
         this.getUserToComment();
       }
@@ -133,7 +129,6 @@ export class MediaplayerPage {
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
-      console.log('näkyyks tää');
     }
     else {
       this.navCtrl.setRoot(LoginPage);

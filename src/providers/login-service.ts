@@ -18,7 +18,6 @@ export class LoginService {
   private token: string = '';
 
   constructor(public http: Http) {
-    console.log('Hello LoginService Provider');
   }
 
 
@@ -30,7 +29,7 @@ export class LoginService {
     return this.user;
   }
 
-  login = () => {console.log('logging in', this.user);
+  login = () => {
     return this.http.post(this.url + '/login', this.user)
      .map(
        resp => {

@@ -27,7 +27,6 @@ export class SearchPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
     this.getUserName();
   }
 
@@ -38,7 +37,6 @@ export class SearchPage {
       this.items = this.mediaFiles.filter(function (element) {
         return element.title.length > 0;
       });
-
     }
   }
 

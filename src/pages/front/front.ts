@@ -73,7 +73,7 @@ export class FrontPage {
       this.mediaService.getComment(file.file_id).subscribe(
         res => {
           this.amountOfComments = res.length;
-          console.log(this.amountOfComments);
+          //console.log(this.amountOfComments);
         }
       )
     }

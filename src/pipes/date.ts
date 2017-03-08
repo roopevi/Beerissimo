@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DatePipe implements PipeTransform {
 
   private date:any;
-  private time:any;
 
   cleanDate = (date) => {
     date = date.split('-');
