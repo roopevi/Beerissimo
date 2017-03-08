@@ -19,7 +19,7 @@ export class MediaplayerPage {
   private user: any = [];
   public firstParam: any;
   private thisPostLiked: boolean;
-  buttonText: string;
+  public buttonText: string;
   private favourites = 0;
   private comments: any = [];
   private commentCredentials = { file_id: '', comment: '' };
@@ -30,6 +30,7 @@ export class MediaplayerPage {
     this.firstParam = navParams.get('firstPassed');
   }
 
+  /*On view load, get username, load post and show comments*/
   ionViewDidLoad() {
     this.getUserName();
     this.thisPostLiked = false;
@@ -37,14 +38,16 @@ export class MediaplayerPage {
     this.showComments();
   }
 
-  getName = (user: any) => {
-    this.mediaService.getOwner(user).subscribe(
+  /*Get username by user id*/
+  getName = (userId: any) => {
+    this.mediaService.getOwner(userId).subscribe(
       resp => {
         this.user = resp;
       }
     );
   }
 
+  /*Get beer rating by file id*/
   getRating = (fileId) => {
     this.mediaService.getFileRating(fileId).subscribe(
       resp => {
@@ -55,6 +58,7 @@ export class MediaplayerPage {
     )
   }
 
+  /*View media by filed id. Get name of posts creator, favourites and rating*/
   viewPost = (fileId) => {
     this.mediaService.getSingleMedia(fileId).subscribe(
       res => {
@@ -66,6 +70,7 @@ export class MediaplayerPage {
     );
   }
 
+  /*Get favourites by file id. Set like button to true or false according if post have been liked by user*/
   getFileFavourites = (fileId) => {
 
     this.mediaService.getFavourites(fileId).subscribe(
@@ -87,6 +92,7 @@ export class MediaplayerPage {
     );
   }
 
+  /*On click add file by file id to favourites. Load view again*/
   addFavourite = (fileId) => {
     this.mediaService.addToFavourites(fileId).subscribe(
       res => {
@@ -95,6 +101,7 @@ export class MediaplayerPage {
     );
   }
 
+  /*On click delete file by file id from favourites. Load view again*/
   deleteFavourite = (fileId) => {
     this.mediaService.deleteFromFavourites(fileId).subscribe(
       res => {
@@ -102,6 +109,7 @@ export class MediaplayerPage {
       });
   }
 
+  /*Build new comment and post according to file id. On submit load comments again*/
   makeComment = (value: any) => {
     this.commentCredentials.file_id = this.firstParam;
     this.commentCredentials.comment = value.comment;
@@ -109,13 +117,11 @@ export class MediaplayerPage {
       res => {
         this.showComments();
         this.onSubmit();
-      },
-      error => {
-        console.log(error);
       }
     );
   }
 
+  /*Load comments according to file id*/
   showComments = () => {
     this.mediaService.getComment(this.firstParam).subscribe(
       res => {
@@ -125,7 +131,7 @@ export class MediaplayerPage {
     );
   }
 
-
+  /*Get username from local storage. If does not exist, navigate to login.*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.myUserName = JSON.parse(localStorage.getItem("user")).username;
@@ -149,6 +155,7 @@ export class MediaplayerPage {
     }
   }
 
+  /*Reset comment credentials*/
   onSubmit(): void {
     this.commentCredentials.comment = '';
   }

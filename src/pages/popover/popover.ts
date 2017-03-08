@@ -19,7 +19,7 @@ export class PopoverPage {
   public base64Image: string;
   private profilepicfilename: string;
 
-  constructor(public events: Events, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public navParams: NavParams, public viewCtrl: ViewController, private profilepicService: ProfilepicService, public mediaService: MediaService) {}
+  constructor(public events: Events, public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public navParams: NavParams, public viewCtrl: ViewController, private profilepicService: ProfilepicService, public mediaService: MediaService) { }
 
   ionViewDidLoad() {
   }
@@ -70,7 +70,7 @@ export class PopoverPage {
   }
 
   takePicture = () => {
-        Camera.getPicture({
+    Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,
       quality: 100,
       allowEdit: true,
@@ -85,7 +85,7 @@ export class PopoverPage {
     });
   }
 
-    dataURItoBlob = (dataURI: any) => {
+  dataURItoBlob = (dataURI: any) => {
     'use strict'
     var byteString,
       mimestring

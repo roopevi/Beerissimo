@@ -20,26 +20,29 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService) { }
 
-
-  ionViewDidLoad() {
-  }
-
+  /*Navigate to FrontPage*/
   switchToMenu = () => {
     this.navCtrl.setRoot(FrontPage);
   }
 
+  /*Navigate to RegisterPage*/
   toRegisterPage = () => {
     this.navCtrl.setRoot(RegisterPage);
   }
 
-
+  /*Login function, takes values from login form as parameter*/
   login = (value) => {
+
+    /*Create reference to user*/
     const user = {
       username: value.username,
       password: value.password
     };
 
+    /*Create user object in LoginService*/
     this.loginService.setUser(user);
+
+    /*Login function. On success navigate to FrontPage. On error show error message*/
     this.loginService.login().subscribe(
       res => {
         this.loginFailed = false;
@@ -53,10 +56,4 @@ export class LoginPage {
       }
     );
   }
-
-  logout = () => {
-    localStorage.removeItem('user');
-    this.switchToMenu();
-  }
-
 }
