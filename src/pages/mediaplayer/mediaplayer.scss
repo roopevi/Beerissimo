@@ -1,4 +1,6 @@
 @import 'theme/variables.scss';
+@import "./src/theme/mixings.scss";
+
 .item-md.item-block .item-inner {
   padding: 0;
 }
@@ -22,6 +24,7 @@ page-mediaplayer {
       width: 55%;
       overflow: hidden;
       white-space: normal;
+      @include box-shadow-standard();
       @media screen and (max-width:768px) {
         width: 100%;
       }
