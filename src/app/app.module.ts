@@ -1,3 +1,4 @@
+import { Elastic } from './../components/elastic/elastic';
 import { PopoverPage } from './../pages/popover/popover';
 import { ProfilepicService } from './../providers/profilepic-service';
 import { DatePipe } from './../pipes/date';
@@ -32,6 +33,7 @@ import { MyApp } from './app.component';
     UploadPage,
     MediaplayerPage,
     PopoverPage,
+    Elastic
   ],
   imports: [
     IonicModule.forRoot(MyApp)
