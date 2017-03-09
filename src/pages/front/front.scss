@@ -29,4 +29,32 @@ page-front {
   img {
     margin-top: 0.5rem;
   }
+
+  .description {
+    text-align: left;
+    margin-top: 0.5em;
+  }
+
+  .comments-and-likes {
+
+    text-align: left;
+    margin-top: 1em;
+
+    .ion-md-chatboxes {
+      display: inline;
+      margin-left: 0.5em;
+      color: $grey-dark;
+    }
+
+    .ion-md-heart {
+      display: inline;
+      color: $grey-dark;
+    }
+
+    p {
+      display: inline;
+      margin-right: 2em;
+    }
+
+  }
 }
