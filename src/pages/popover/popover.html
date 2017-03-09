@@ -1,6 +1,5 @@
 <!--
   Generated template for the Popover page.
-
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -9,22 +8,22 @@
     <ion-item>
       <h2>Change avatar</h2>
     </ion-item>
-    <ion-item>
+    <div id="choose">
       <a ion-button (click)="presentActionSheet()">Choose file</a>
-    </ion-item>
+    <br><br><br>
+    </div>
 
 
     <form class="pic-form" #picForm="ngForm" (ngSubmit)="changeProfilePic($event)">
-      <ion-item>
-        <button ion-button (click)="changeProfilePic($event)">Post</button>
-      </ion-item>
+
       <ion-item>
         <input type="file" name="file" accept="image/*|video/*" ngModel>
       </ion-item>
-
-    </form>
-    <ion-item>
-      <button ion-button (click)="close()">Cancel</button>
+       <ion-item>
+         <button id="post" ion-button (click)="changeProfilePic($event)">Post</button>
+      <button id="cancel" ion-button (click)="close()">Cancel</button>
     </ion-item>
+    </form>
+   
   </ion-list>
 </ion-content>

@@ -15,6 +15,7 @@
   <div class="container">
     <div class="info">
       <form class="upload-form" #uploadForm="ngForm" (ngSubmit)="uploadPost($event, uploadForm.value)">
+<<<<<<< HEAD
         <ion-input class="title" type="text" name="title" ngModel placeholder="What are you drinking?" required></ion-input>
         <br>
         <ion-textarea elastic placeholder="How was your beer?" name="description" ngModel></ion-textarea>
@@ -27,10 +28,11 @@
         <button ion-button icon-left (click)="presentActionSheet()">
           <ion-icon name="camera"></ion-icon>Add Image
         </button>
-        <br>
-        <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
+          <br/><br/>
+          <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
+        </ion-list>
       </form>
-      <img [hidden]="!this.base64Image" [src]="base64Image"/>
+      <img [hidden]="!this.base64Image" [src]="base64Image" />
     </div>
   </div>
 </ion-content>
