@@ -22,6 +22,30 @@ page-upload {
     width: 80%;
   }
 
+  .title {
+
+    padding: 1rem;
+    border-radius: 5px;
+    text-transform: none;
+
+    .text-input {
+      margin: 0;
+    }
+  }
+
+  ion-textarea {
+    .text-input {
+      margin: 0;
+    }
+
+    padding: 1rem;
+    border-radius: 5px;
+
+    input[type="text"] {
+      margin: 0;
+    }
+  }
+
   input[type="file"] {
     display: none;
   }

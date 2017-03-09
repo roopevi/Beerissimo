@@ -31,7 +31,7 @@ import { MyApp } from './app.component';
     SearchPage,
     UploadPage,
     MediaplayerPage,
-    PopoverPage
+    PopoverPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
