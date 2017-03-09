@@ -17,7 +17,7 @@
       <form class="upload-form" #uploadForm="ngForm" (ngSubmit)="uploadPost($event, uploadForm.value)">
         <ion-input class="title" type="text" name="title" ngModel placeholder="What are you drinking?" required></ion-input>
         <br>
-        <ion-textarea autosize placeholder="How was your beer?" name="description" ngModel></ion-textarea>
+        <ion-textarea elastic placeholder="How was your beer?" name="description" ngModel></ion-textarea>
         <ion-item>
           <ion-range min="1" max="5" step="1" color="secondary" pin="true" snaps="true" (ionChange)="changeValue($event)"></ion-range>
         </ion-item>

@@ -4,7 +4,6 @@ import { UploadService } from './../../providers/upload-service';
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { Camera } from 'ionic-native';
-import { Autosize } from 'ionic2-autosize';
 
 /*
   Generated class for the Upload page.
