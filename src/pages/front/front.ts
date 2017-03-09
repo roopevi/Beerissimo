@@ -104,7 +104,6 @@ export class FrontPage {
       this.mediaService.getFavourites(file.file_id).subscribe(
         res => {
           this.amountOfLikes = res.length;
-          console.log(this.amountOfLikes);
           file.amountOfLikes = this.amountOfLikes;
         });
     }
