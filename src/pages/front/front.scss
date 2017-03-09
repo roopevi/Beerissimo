@@ -4,7 +4,7 @@ page-front {
     padding: 0 !important;
   }
   .file-info {
-    width: 320px;
+    max-width: 320px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -28,6 +28,12 @@ page-front {
   }
   img {
     margin-top: 0.5rem;
+  }
+
+  .additional-info {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .description {

@@ -80,7 +80,7 @@
         <h2>Comments:</h2>
         <form class="comment-form" #commentForm="ngForm" (ngSubmit)="makeComment(commentForm.value)" (ngSubmit)="onSubmit()">
           <ion-item>
-            <ion-input placeholder="Add comment" name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
+            <ion-input placeholder="Write comment..." name="comment" type="text" ngModel [(ngModel)]="commentCredentials.comment" required></ion-input>
           </ion-item>
           <button class="send" ion-button type="submit" [disabled]="!commentForm.valid">
             <ion-icon ios="ios-send" md="md-send"></ion-icon>

@@ -31,10 +31,6 @@
         <button ion-button type="submit" [disabled]="!uploadForm.valid">POST</button>
       </form>
       <img [hidden]="!this.base64Image" [src]="base64Image"/>
-      <video [hidden]="!this.video" controls width="320px" height="240px">
-        <source [src]="video">
-      </video>
-
     </div>
   </div>
 </ion-content>

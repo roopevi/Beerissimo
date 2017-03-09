@@ -81,11 +81,22 @@ page-mediaplayer {
       h2:first-child {
         margin: 1em 0 2em 0;
       }
+
+      h3:first-child {
+        margin-top: 0;
+        font-weight: bold;
+      }
+
+      p {
+        margin-top: 1rem;
+      }
+
       .comment-input {
         margin-left: auto;
         margin-right: auto;
         height: 3em;
         text-align: center;
+
         .item-md {
           padding: 0;
           width: 80%;
@@ -122,8 +133,11 @@ page-mediaplayer {
           max-width: 75%;
           float: left;
           button {
-            display: inline !important;
+            display: none !important;
 
+          }
+          .input-md .text-input-clear-icon {
+            margin-right: 0;
           }
       }
       button.send {

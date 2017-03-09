@@ -73,12 +73,6 @@ export class UploadPage {
           }
         },
         {
-          text: 'Add video',
-          handler: () => {
-            this.addVideo();
-          }
-        },
-        {
           text: 'Cancel',
           role: 'cancel'
         }
@@ -101,19 +95,6 @@ export class UploadPage {
     }, (err) => {
       console.log(err);
     });
-  }
-
-  addVideo() {
-    Camera.getPicture({
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: Camera.DestinationType.FILE_URI,
-      mediaType: Camera.MediaType.VIDEO,
-    }).then((videoData) => {
-      console.log(videoData);
-      this.video = videoData;
-    }, (err) => {
-      console.log(err);
-    })
   }
 
   takePicture() {
