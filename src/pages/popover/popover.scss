@@ -4,14 +4,33 @@ ion-list {
     display: none;
     
   }
+ page-popover {
+      max-width: 30%;
+  }
 
-  ion-item {
+  ion-label {
       text-align: center;
-
   }
   
+}
+.pic-form {
+    position: relative;
 }
 .scroll-content {
       margin: 0;
       overflow-y: auto !important;
   }
+
+  #choose {
+          background-color: white;
+          text-align: center;
+      }
+  #post {
+        float: right;
+      
+  }
+  #cancel {
+       float: left;
+        
+  }
+

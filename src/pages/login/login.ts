@@ -17,6 +17,7 @@ import { NavController, NavParams, MenuController } from 'ionic-angular';
 export class LoginPage {
 
   private loginFailed: boolean = false;
+  private errorMessage: string = "Login failed";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginService, private menu: MenuController) {
     this.menu.swipeEnable(false, 'menu');
@@ -53,7 +54,7 @@ export class LoginPage {
       },
       error => {
         const errorCode = error.status;
-        if (errorCode === 401) {
+        if (errorCode) {
           this.loginFailed = true;
         }
       }
