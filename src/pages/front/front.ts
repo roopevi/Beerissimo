@@ -36,6 +36,7 @@ export class FrontPage {
     }
   }
 
+  /*Refreshes the page by swiping from up to down*/
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
 

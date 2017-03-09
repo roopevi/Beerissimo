@@ -15,25 +15,26 @@ export class LoginService {
   private url: String = 'http://media.mw.metropolia.fi/wbma';
 
   private user: any = {};
-  private token: string = '';
 
   constructor(public http: Http) {
   }
 
-
+  /*Gets user as parameter and sets user to login-service*/
   setUser = (user) => {
     this.user = user;
   }
 
+  /*Returns user object*/
   getUser () {
     return this.user;
   }
-
+  
+  /*Is called from login.ts. Sends user object to API*/
   login = () => {
     return this.http.post(this.url + '/login', this.user)
      .map(
        resp => {
-         // convert user object to string and save userdata to local storage
+         /*convert user object to string and save userdata to local storage*/
          this.user = resp.json().user;
          this.user.token = resp.json().token;
          localStorage.setItem('user', JSON.stringify(this.user));

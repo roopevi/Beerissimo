@@ -20,6 +20,7 @@ export class MediaService {
   constructor(public http: Http) {
   }
 
+  /*Returns all the media from API which tag is "Beerissimo"*/
   getMedia = () => {
     return this.http.get(this.url + '/tags/Beerissimo')
       .map(
@@ -28,7 +29,7 @@ export class MediaService {
       );
   };
 
-
+  /*Gets UserId as a parameter and returns the user who sent the media*/
   getOwner = (userId: string) => {
     this.token = JSON.parse(localStorage.getItem("user")).token;
 
@@ -40,6 +41,7 @@ export class MediaService {
       );
   };
 
+  /*Gets UserId as a parameter and returns the media of the user*/
   getPostsByUser = (userId) => {
     this.token = JSON.parse(localStorage.getItem("user")).token;
 
@@ -50,6 +52,7 @@ export class MediaService {
       );
   }
 
+  /*Gets fileID as a parameter and returns the rating of the media*/
   getFileRating = (fileId) => {
     return this.http.get(this.url + '/ratings/file/' + fileId)
       .map(
