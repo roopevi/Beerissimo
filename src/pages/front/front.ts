@@ -36,6 +36,7 @@ export class FrontPage {
     }
   }
 
+  //refresh the front page
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
 

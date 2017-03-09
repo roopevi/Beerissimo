@@ -141,6 +141,7 @@ export class MediaplayerPage {
     }
   }
 
+  //get's author for every comment
   getUserToComment = () => {
     for (let user of this.comments) {
       this.mediaService.getOwner(user.user_id).subscribe(

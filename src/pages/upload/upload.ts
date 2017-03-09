@@ -80,6 +80,7 @@ export class UploadPage {
     actionSheet.present();
   }
 
+  //choose picture from mobile device photolibrary
   chooseFromGallery() {
     Camera.getPicture({
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
@@ -96,6 +97,7 @@ export class UploadPage {
     });
   }
 
+  //take picture with camera
   takePicture() {
     Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,

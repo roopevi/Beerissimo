@@ -4,6 +4,7 @@ import {HostListener, Directive} from '@angular/core';
     selector: '[elastic]'
 })
 
+//automatically increase textarea's height
 export class Elastic {
     @HostListener('input',['$event.target'])
     onInput(nativeElement: any): void {
