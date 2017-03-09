@@ -15,7 +15,6 @@ export class LoginService {
   private url: String = 'http://media.mw.metropolia.fi/wbma';
 
   private user: any = {};
-  private token: string = '';
 
   constructor(public http: Http) {
   }
