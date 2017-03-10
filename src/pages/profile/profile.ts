@@ -27,7 +27,7 @@ export class ProfilePage {
   private fileName: any;
 
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private mediaService: MediaService, public profilepicService: ProfilepicService, public popoverCtrl: PopoverController) {
-    /*Runs getProfilePic function after pic changed event is published in profilepic-service.ts. 
+    /*Runs getProfilePic function after pic changed event is published in profilepic-service.ts.
     The usage of this event guarantees auto update of the profile page.*/
     events.subscribe('pic:changed', () => {
       this.getProfilePic();
