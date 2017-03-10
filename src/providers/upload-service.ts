@@ -20,6 +20,7 @@ export class UploadService {
     this.token = this.loginService.getUser().token;
   }
 
+  /*Upload function, makes post request to api and returns response. Creates new tag for file and add the rating*/
   upload = (formData: any, rating) => {
     return this.http.post(this.url + '/media?token=' + JSON.parse(localStorage.getItem('user')).token,
     formData).map(
@@ -38,6 +39,7 @@ export class UploadService {
     );
   }
 
+  /*Create and send new tag*/
   addTag = (id, tag) => {
     const tagObject = {
       file_id: id,
@@ -50,7 +52,7 @@ export class UploadService {
       }
     );
   }
-
+  /*Create and send new rating*/
   addRating = (id, rating) => {
     const ratingObject = {
       file_id: id,

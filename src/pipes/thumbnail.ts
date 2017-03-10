@@ -5,16 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ThumbnailPipe implements PipeTransform {
 
-
+  /*Transform function, use thumbnail according to argument*/
   transform(value: any, args?: any): any {
 
-    if(args === 'small') {
+    if (args === 'small') {
       value = value.substr(0).slice(0, -4);
       return value + '-tn160.png';
-    } else if(args === 'medium') {
+    } else if (args === 'medium') {
       value = value.substr(0).slice(0, -4);
       return value + '-tn320.png';
-    } else if(args === 'large') {
+    } else if (args === 'large') {
       value = value.substr(0).slice(0, -4);
       return value + '-tn640.png';
     }
