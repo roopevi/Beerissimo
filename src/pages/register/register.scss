@@ -1,33 +1,33 @@
 page-register {
-     .container {
-     padding-top: 5em;
-     min-height: 60em;
-     height: 100%;
-     max-width: 100%;
-     margin: 0;
-     text-align: center;
-    @media screen and (min-width:768px) {
-      background-image: url(../assets/images/beerBar.jpg);
-      min-height: 60em;
-    }
-     @media screen and (max-width:768px) {
-       background-image: url(../assets/images/beerBar_medium.jpg);
-       min-height: 60em;
-    }
-     }
-     .register {
-         text-align: left;
-         margin: 0 auto;
-         border-style: none;
-         max-width: 50%;
-         height: auto;
-         text-align: center;
-         border-radius: 1em;
-         width: 22em;
-         padding: 0em 1em 1em 1em;
-         @media screen and (max-width:768px) {
-            max-width: 90%;
-         }
-    background-color: rgba(255, 255, 255, 0.8);
-     }
+	.container {
+		padding-top:5em;
+		min-height:60em;
+		height:100%;
+		max-width:100%;
+		margin:0;
+		text-align:center;
+		@media screen and (min-width:768px) {
+			background-image:url(../assets/images/beerBar.jpg);
+			min-height:60em;
+		}
+		@media screen and (max-width:768px) {
+			background-image:url(../assets/images/beerBar_medium.jpg);
+			min-height:60em;
+		}
+	}
+	.register {
+		text-align:left;
+		margin:0 auto;
+		border-style:none;
+		max-width:50%;
+		height:auto;
+		text-align:center;
+		border-radius:1em;
+		width:22em;
+		padding:0em 1em 1em 1em;
+		@media screen and (max-width:768px) {
+			max-width:90%;
+		}
+		background-color: rgba(255,255,255,0.8);
+	}
 }

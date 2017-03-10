@@ -1,66 +1,59 @@
 @import 'theme/variables.scss';
 page-front {
-  .scroll-content {
-    padding: 0 !important;
-  }
-  .file-info {
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .loading-gif {
-    text-align: center;
-    padding-top: 4em;
-  }
-  .username {
-    text-align: left;
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  .time-added {
-    text-align: left;
-    font-size: 1.2rem;
-  }
-  .title {
-    margin-top: 1.5rem;
-    color: $highlight-blue;
-    text-align: left;
-    font-size: 1.5rem;
-  }
-  img {
-    margin-top: 0.5rem;
-  }
-
-  .additional-info {
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .description {
-    text-align: left;
-    margin-top: 0.5em;
-  }
-
-  .comments-and-likes {
-    text-align: left;
-    margin-top: 1em;
-
-    .ion-md-chatboxes {
-      display: inline;
-      margin-left: 0.5em;
-      color: $grey-dark;
-    }
-
-    .ion-md-heart {
-      display: inline;
-      color: $grey-dark;
-    }
-
-    p {
-      display: inline;
-      margin-right: 2em;
-    }
-
-  }
+	.scroll-content {
+		padding:0 !important;
+	}
+	.file-info {
+		max-width:32em;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.loading-gif {
+		text-align:center;
+		padding-top:4em;
+	}
+	.username {
+		text-align:left;
+		font-weight:bold;
+		font-size:1.5rem;
+	}
+	.time-added {
+		text-align:left;
+		font-size:1.2rem;
+	}
+	.title {
+		margin-top:1.5rem;
+		color:$highlight-blue;
+		text-align:left;
+		font-size:1.5rem;
+	}
+	img {
+		margin-top:0.5rem;
+	}
+	.additional-info {
+		max-width:32em;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.description {
+		text-align:left;
+		margin-top:0.5em;
+	}
+	.comments-and-likes {
+		text-align:left;
+		margin-top:1em;
+		.ion-md-chatboxes {
+			display:inline;
+			margin-left:0.5em;
+			color:$grey-dark;
+		}
+		.ion-md-heart {
+			display:inline;
+			color:$grey-dark;
+		}
+		p {
+			display:inline;
+			margin-right: 2em;
+		}
+	}
 }

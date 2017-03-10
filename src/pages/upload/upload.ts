@@ -96,7 +96,6 @@ export class UploadPage {
       // imageData is a base64 encoded string
       this.base64Image = "data:image/jpeg;base64," + imageData;
     }, (err) => {
-      console.log(err);
     });
   }
 
@@ -113,7 +112,6 @@ export class UploadPage {
       this.base64Image = "data:image/jpeg;base64," + imageData;
 
     }, (err) => {
-      console.log(err);
     });
   }
 
