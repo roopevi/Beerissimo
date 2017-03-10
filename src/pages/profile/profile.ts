@@ -80,6 +80,7 @@ export class ProfilePage {
   /*Get the filename of the profile picture from local storage*/
   getProfilePic = () => {
 
+  
     /*Get the filename of the profile picture from local storage. Filename is linked to the image in html template*/
     if (localStorage.getItem('filename')) {
       this.fileName = JSON.parse(localStorage.getItem('filename'));

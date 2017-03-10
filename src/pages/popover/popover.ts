@@ -113,6 +113,8 @@ export class PopoverPage {
   /*Function runs when "Post" is pressed*/
   changeProfilePic = (event: any) => {
 
+     // event.preventDefault();
+
     /*Sets chosen file to a variable*/
     const fileElement = event.target.querySelector('input[type=file]');
     const file = fileElement.files[0];
@@ -152,6 +154,10 @@ export class PopoverPage {
         );
       }
     );
+  }
+
+  submitProfilePic = (event: any) => {
+
   }
 
 }

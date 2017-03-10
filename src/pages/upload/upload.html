@@ -15,17 +15,22 @@
   <div class="container">
     <div class="info">
       <form class="upload-form" #uploadForm="ngForm" (ngSubmit)="uploadPost($event, uploadForm.value)">
+        <ion-list>
+          <ion-item>
+            <ion-input class="title" placeholder="What are you drinking?" type="text" name="title" ngModel required></ion-input>
+          </ion-item>
+          <br/>
+          <ion-item>
+            <ion-textarea elastic placeholder="How was your beer?" name="description" ngModel required></ion-textarea>
+          </ion-item>
 
-        <ion-input class="title" type="text" name="title" ngModel placeholder="What are you drinking?" required></ion-input>
-        <br>
-        <ion-textarea elastic placeholder="How was your beer?" name="description" ngModel></ion-textarea>
-        <ion-item>
-          <ion-range min="1" max="5" step="1" color="secondary" pin="true" snaps="true" (ionChange)="changeValue($event)"></ion-range>
-        </ion-item>
-        <br>
-        <input type="file" name="file" accept="image/*|video/*" ngModel>
-        <br>
-        <button ion-button icon-left (click)="presentActionSheet()">
+          <ion-item>
+            <ion-range min="1" max="5" step="1" color="secondary" pin="true" snaps="true" (ionChange)="changeValue($event)"></ion-range>
+          </ion-item>
+
+          <input type="file" name="file" accept="image/*|video/*" ngModel>
+
+          <button ion-button icon-left (click)="presentActionSheet()">
           <ion-icon name="camera"></ion-icon>Add Image
         </button>
           <br/><br/>
