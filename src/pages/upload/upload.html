@@ -23,7 +23,7 @@
           <ion-item>
             <ion-textarea elastic placeholder="How was your beer?" name="description" ngModel required></ion-textarea>
           </ion-item>
-
+          <p>Rate your beer (1-5):</p>
           <ion-item>
             <ion-range min="1" max="5" step="1" color="secondary" pin="true" snaps="true" (ionChange)="changeValue($event)"></ion-range>
           </ion-item>

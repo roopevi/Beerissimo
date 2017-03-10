@@ -1,3 +1,6 @@
+@import 'theme/variables.scss';
+@import "./src/theme/mixings.scss";
+
 page-upload {
 	.container .info {
 		width:90%;
@@ -37,6 +40,11 @@ page-upload {
 			margin:0;
 		}
 	}
+
+  p {
+    margin-top: 3em;
+  }
+
 	input[type="file"] {
 		display: none;
 	}
