@@ -9,11 +9,19 @@
 	background:color($colors,grey-dark);
 	color:color($colors,secondary);
 	text-align:center;
+	ion-icon {
+		display:block;
+		margin-bottom:0.25em;
+	}
 }
 .menu-item:hover {
 	background:color($colors,secondary);
 	color:white;
 	text-align:center;
+	ion-icon {
+		display:block;
+		margin-bottom:0.25em;
+	}
 }
 .list-md .item-block .item-inner {
 	border-bottom:none;
@@ -35,28 +43,28 @@
 	padding:0;
 	white-space:normal;
 	p {
-		overflow:hidden;
+			overflow:hidden;
 	}
 	.label-md {
-		padding:1em;
-		margin:0;
+			padding:1em;
+			margin:0;
 	}
 	.info {
-		margin:0em auto 2em auto;
-		background-color:white;
-		clear:both;
-		border:$border-grey;
-		border-radius:0.5%;
-		padding:1em;
-		margin:0em auto 0.6em auto;
-		height:auto;
-		text-align:center;
-		width:55%;
-		white-space:normal;
-		@media screen and (max-width:768px) {
-			width:100%;
+			margin:0em auto 2em auto;
+			background-color:white;
+			clear:both;
+			border:$border-grey;
+			border-radius:0.5%;
+			padding:1em;
+			margin:0em auto 0.6em auto;
+			height:auto;
+			text-align:center;
+			width:55%;
+			white-space:normal;
+			@media screen and (max-width:768px) {
+					width:100%;
 		}
-		@include box-shadow-standard();
+			@include box-shadow-standard();
 	}
 }
 .title-image {

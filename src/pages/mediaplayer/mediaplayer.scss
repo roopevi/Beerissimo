@@ -69,9 +69,16 @@ page-mediaplayer {
 		padding:0;
 		overflow:hidden;
 		white-space:normal;
-		p:nth-child(3) {
+
+		p:nth-child(2) {
 			font-size:0.7em;
+      margin: 0;
 		}
+
+    p:nth-child(3) {
+      margin-top: 1.5rem;
+    }
+
 		@media screen and (max-width:768px) {
 			width:100%;
 		}
