@@ -10,20 +10,20 @@
     </ion-item>
     <div id="choose">
       <a ion-button (click)="presentActionSheet()">Choose file</a>
-    <br><br><br>
+      <br><br><br>
     </div>
 
 
     <form class="pic-form" #picForm="ngForm" (ngSubmit)="changeProfilePic($event)">
 
-     
-        <input type="file" name="file" accept="image/*|video/*" ngModel>
-      
-       <ion-item>
-         <button id="post" ion-button type="submit">Post</button>
-      
-    </ion-item>
+
+      <input type="file" name="file" accept="image/*|video/*" ngModel>
+
+      <ion-item>
+        <button id="post" ion-button type="submit">Post</button>
+
+      </ion-item>
     </form>
-   
+
   </ion-list>
 </ion-content>

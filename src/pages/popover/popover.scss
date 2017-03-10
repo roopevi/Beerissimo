@@ -1,35 +1,26 @@
 ion-list {
-    margin-bottom: 0!important;
-    input[type="file"] {
-    display: none;
-
-  }
- page-popover {
-      max-width: 30%;
-      ion-label {
-      text-align: center;
-  }
-  }
-
+	margin-bottom:0!important;
+	input[type="file"] {
+		display:none;
+	}
+	page-popover {
+		max-width:30%;
+		ion-label {
+			text-align:center;
+		}
+	}
 }
 .pic-form {
-    position: relative;
-    ion-item{
-        text-align: center;
-    }
-    
+	position:relative;
+	ion-item {
+		text-align:center;
+	}
 }
 .scroll-content {
-      margin: 0;
-      overflow-y: auto !important;
-  }
-
-  #choose {
-          background-color: white;
-          text-align: center;
-      }
-  #post {
-        
-
-  }
-  
+	margin:0;
+	overflow-y:auto !important;
+}
+#choose {
+	background-color:white;
+	text-align: center;
+}

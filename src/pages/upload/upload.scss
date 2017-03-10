@@ -1,53 +1,43 @@
 page-upload {
-
-  .container .info {
-    width: 90%;
-    margin-top: 1em;
-    margin-bottom: 1.75em;
-  }
-
-  .range-md .range-tick {
-    position: absolute;
-    top: 0.9em;
-    z-index: 1;
-    margin-left: -0.1em;
-    width: 0.2em;
-    height: 1em;
-    border-radius: 50%;
-    background: $grey-dark;
-    pointer-events: none;
-  }
-
-  .item-range ion-range {
-    width: 80%;
-  }
-
-  .title {
-
-    padding: 1rem;
-    border-radius: 5px;
-    text-transform: none;
-    text-align: left;
-
-    .text-input {
-      margin: 0;
-    }
-  }
-
-  ion-textarea {
-    .text-input {
-      margin: 0;
-    }
-
-    padding: 1rem;
-    border-radius: 5px;
-
-    input[type="text"] {
-      margin: 0;
-    }
-  }
-
-  input[type="file"] {
-    display: none;
-  }
+	.container .info {
+		width:90%;
+		margin-top:1em;
+		margin-bottom:1.75em;
+	}
+	.range-md .range-tick {
+		position:absolute;
+		top:0.9em;
+		z-index:1;
+		margin-left:-0.1em;
+		width:0.2em;
+		height:1em;
+		border-radius:50%;
+		background:$grey-dark;
+		pointer-events:none;
+	}
+	.item-range ion-range {
+		width:80%;
+	}
+	.title {
+		padding:1rem;
+		border-radius:5px;
+		text-transform:none;
+		text-align:left;
+		.text-input {
+			margin:0;
+		}
+	}
+	ion-textarea {
+		.text-input {
+			margin:0;
+		}
+		padding:1rem;
+		border-radius:5px;
+		input[type="text"] {
+			margin:0;
+		}
+	}
+	input[type="file"] {
+		display: none;
+	}
 }

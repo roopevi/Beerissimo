@@ -1,72 +1,71 @@
 @import "./src/theme/mixings.scss";
-
 .content {
-  background: color($colors, grey-light);
+	background:color($colors,grey-light);
 }
-.menu-holder{
-  background: color($colors, grey-dark);
+.menu-holder {
+	background:color($colors,grey-dark);
 }
 .menu-item {
-  background: color($colors, grey-dark);
-  color: color($colors, secondary);
-  text-align: center;
+	background:color($colors,grey-dark);
+	color:color($colors,secondary);
+	text-align:center;
 }
 .menu-item:hover {
-  background: color($colors, secondary);
-  color: white;
-  text-align: center;
+	background:color($colors,secondary);
+	color:white;
+	text-align:center;
 }
 .list-md .item-block .item-inner {
-    border-bottom: none;
+	border-bottom:none;
 }
 .item-md.item-block .item-inner {
-  border-bottom: none;
+	border-bottom:none;
 }
 .toolbar-md-grey-dark .bar-button-default-md {
-  color: $orange;
+	color:$orange;
 }
 .toolbar-md-grey-dark .bar-button-default-md:hover {
-  color: $orange;
+	color:$orange;
 }
 .container {
-  overflow: auto;
-  background: color($colors, grey-light);
-  height: auto;
-  margin: 0;
-  padding: 0;
-  white-space: normal;
-  p {
-    overflow: hidden;
-  }
-  .label-md {
-    padding: 1em;
-    margin: 0;
-  }
-  .info {
-    margin: 0em auto 2em auto;
-    background-color: white;
-    clear: both;
-    border: $border-grey;
-    border-radius: 0.5%;
-    padding: 1em;
-    margin: 0em auto 0.6em auto;
-    height: auto;
-    text-align: center;
-    width: 55%;
-    white-space: normal;
-    @media screen and (max-width:768px) {
-      width: 100%;
-    }
-    @include box-shadow-standard();
-  }
+	overflow:auto;
+	background:color($colors,grey-light);
+	height:auto;
+	margin:0;
+	padding:0;
+	white-space:normal;
+	p {
+		overflow:hidden;
+	}
+	.label-md {
+		padding:1em;
+		margin:0;
+	}
+	.info {
+		margin:0em auto 2em auto;
+		background-color:white;
+		clear:both;
+		border:$border-grey;
+		border-radius:0.5%;
+		padding:1em;
+		margin:0em auto 0.6em auto;
+		height:auto;
+		text-align:center;
+		width:55%;
+		white-space:normal;
+		@media screen and (max-width:768px) {
+			width:100%;
+		}
+		@include box-shadow-standard();
+	}
 }
 .title-image {
-  display: inline-block;
+	display:inline-block;
 }
 .logged-in-as {
-  color: white;
-  display: inline-block;
-  position: fixed;
-  top: 2em;
-  margin: 0;
+	color:white;
+	display:inline-block;
+	position:fixed;
+	top:2em;
+	margin: 0;
 }

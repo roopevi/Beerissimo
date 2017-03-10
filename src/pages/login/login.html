@@ -8,28 +8,28 @@
 <ion-content>
   <div class="container">
     <form class="login" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
-    <br>
-    <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="120">
+      <br>
+      <object type="image/svg+xml" data="assets/images/beerissimo_logo.svg" class="title-image" height="120">
       <img src="assets/images/beerissimo_logo.png" class="title-image" />
     </object>
-    <br>
-    <h4>Login here!</h4>
-    <p class="error" *ngIf="loginFailed">{{this.errorMessage}}</p>
-    <br>
-    <p *ngFor='let item of response'>
+      <br>
+      <h4>Login here!</h4>
+      <p class="error" *ngIf="loginFailed">{{this.errorMessage}}</p>
+      <br>
+      <p *ngFor='let item of response'>
         {{item}}
       </p>
-    <label><b>Username</b></label>
-    <br>
-    <input type="text" placeholder="Enter Username" name="username" ngModel minlength="1" required>
-    <br><br>
-    <label><b>Password</b></label>
-    <br>
-    <input type="password" placeholder="Enter Password" name="password" ngModel minlength="1" required>
-    <br><br>
-    <button ion-button type="submit" [disabled]="!loginForm.valid">Login</button>
-    <br><br>
-    <a href="#" (click)="toRegisterPage()"> Don't have an account yet? Register here!</a>
+      <label><b>Username</b></label>
+      <br>
+      <input type="text" placeholder="Enter Username" name="username" ngModel minlength="1" required>
+      <br><br>
+      <label><b>Password</b></label>
+      <br>
+      <input type="password" placeholder="Enter Password" name="password" ngModel minlength="1" required>
+      <br><br>
+      <button ion-button type="submit" [disabled]="!loginForm.valid">Login</button>
+      <br><br>
+      <a href="#" (click)="toRegisterPage()"> Don't have an account yet? Register here!</a>
     </form>
   </div>
 
