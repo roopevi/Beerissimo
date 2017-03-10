@@ -26,7 +26,7 @@ export class LoginService {
     this.user = user;
   }
 
-  
+
   /*Is called from login.ts. Sends user object to API*/
   /*Return user object*/
   getUser () {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import { Http, Headers, RequestOptions } from "@angular/http";
 import 'rxjs/add/operator/map';
 
 /*
@@ -61,7 +61,7 @@ export class MediaService {
       );
   }
 
-  
+
   getSingleMedia = (fileId) => {
     return this.http.get(this.url + '/media/' + fileId).map(
       res =>

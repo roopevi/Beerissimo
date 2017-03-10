@@ -158,9 +158,4 @@ export class PopoverPage {
       }
     );
   }
-
-  submitProfilePic = (event: any) => {
-
-  }
-
 }
