@@ -16,17 +16,14 @@
 
     <form class="pic-form" #picForm="ngForm" (ngSubmit)="changeProfilePic($event)">
 
-      <ion-item>
+     
         <input type="file" name="file" accept="image/*|video/*" ngModel>
-      </ion-item>
+      
        <ion-item>
          <button id="post" ion-button type="submit">Post</button>
       
     </ion-item>
     </form>
-    <ion-item>
-      <button id="cancel" ion-button (click)="close()">Cancel</button>
-    </ion-item>
    
   </ion-list>
 </ion-content>

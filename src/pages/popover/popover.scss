@@ -14,6 +14,10 @@ ion-list {
 }
 .pic-form {
     position: relative;
+    ion-item{
+        text-align: center;
+    }
+    
 }
 .scroll-content {
       margin: 0;
@@ -25,10 +29,7 @@ ion-list {
           text-align: center;
       }
   #post {
-        float: right;
+        
 
   }
-  #cancel {
-       float: left;
-
-  }
+  
