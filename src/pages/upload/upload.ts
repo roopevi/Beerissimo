@@ -30,6 +30,7 @@ export class UploadPage {
     this.getUserName();
   }
 
+  //function for uploading file to the server
   uploadPost = (event: any, value: any) => {
 
     event.preventDefault();
@@ -55,6 +56,8 @@ export class UploadPage {
 
   }
 
+  //presents actionsheet where user can select whether to take
+  //a picture with camera or choose from gallery
   public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
@@ -80,6 +83,7 @@ export class UploadPage {
     actionSheet.present();
   }
 
+  //choose picture from mobile device photolibrary
   chooseFromGallery() {
     Camera.getPicture({
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
@@ -96,6 +100,7 @@ export class UploadPage {
     });
   }
 
+  //take picture with camera
   takePicture() {
     Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,
@@ -112,6 +117,7 @@ export class UploadPage {
     });
   }
 
+  /*Get username from local storage. If does not exist, navigate to login.*/
   getUserName = () => {
     if (localStorage.getItem('user')) {
       this.username = JSON.parse(localStorage.getItem("user")).username;
@@ -120,10 +126,12 @@ export class UploadPage {
     }
   }
 
+  //listens change events and modifies beer rating
   changeValue = (event) => {
     this.beerRating = event.value;
   }
 
+  //decodes data URI and creates new blob object
   dataURItoBlob = (dataURI: any) => {
     'use strict'
     var byteString,

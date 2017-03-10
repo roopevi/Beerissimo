@@ -36,6 +36,7 @@ export class FrontPage {
     }
   }
 
+
   /*Refreshes the page by swiping from up to down*/
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -105,7 +106,6 @@ export class FrontPage {
       this.mediaService.getFavourites(file.file_id).subscribe(
         res => {
           this.amountOfLikes = res.length;
-          console.log(this.amountOfLikes);
           file.amountOfLikes = this.amountOfLikes;
         });
     }

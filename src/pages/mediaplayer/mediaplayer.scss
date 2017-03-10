@@ -70,6 +70,11 @@ page-mediaplayer {
       padding: 0;
       overflow: hidden;
       white-space: normal;
+
+       p:nth-child(3) {
+          font-size: 0.7em;
+       }
+
       @media screen and (max-width:768px) {
         width: 100%;
       }
@@ -91,6 +96,10 @@ page-mediaplayer {
         margin-top: 1rem;
       }
 
+      .time-added {
+        font-weight: 100;
+      }
+
       .comment-input {
         margin-left: auto;
         margin-right: auto;
@@ -102,6 +111,7 @@ page-mediaplayer {
           width: 80%;
           float: left;
         }
+
         button {
           height: 3.5em;
           width: 3.5em;

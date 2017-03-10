@@ -57,6 +57,7 @@ export class PopoverPage {
     actionSheet.present();
   }
 
+  //choose picture from mobile devices photolibrary
   chooseFromGallery() {
     Camera.getPicture({
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
@@ -73,6 +74,7 @@ export class PopoverPage {
     });
   }
 
+  //take a picture with the camera
   takePicture = () => {
     Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,
@@ -89,6 +91,7 @@ export class PopoverPage {
     });
   }
 
+  //decodes data URI and creates new blob object
   dataURItoBlob = (dataURI: any) => {
     'use strict'
     var byteString,
