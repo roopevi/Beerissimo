@@ -39,9 +39,11 @@ export class FrontPage {
 
   /*Refreshes the page by swiping from up to down*/
   doRefresh(refresher) {
-      setTimeout(() => {
-        refresher.complete();
-      }, 2000);
+    setTimeout(() => {
+      refresher.complete();
+      this.getAllMedia();
+      this.getUserName();
+    }, 2000);
   }
 
 

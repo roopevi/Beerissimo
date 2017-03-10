@@ -70,6 +70,7 @@ export class PopoverPage {
       // imageData is a base64 encoded string
       this.base64Image = "data:image/jpeg;base64," + imageData;
     }, (err) => {
+      
     });
   }
 
@@ -86,6 +87,7 @@ export class PopoverPage {
       this.base64Image = "data:image/jpeg;base64," + imageData;
 
     }, (err) => {
+      console.log(err);
     });
   }
 
@@ -155,10 +157,6 @@ export class PopoverPage {
         );
       }
     );
-  }
-
-  submitProfilePic = (event: any) => {
-
   }
 
 }
