@@ -64,6 +64,7 @@ export class ProfilepicService {
       );
   };
 
+  /*Return profile picture*/
   getProfilePic = (image) => {
     let pic = image;
     return pic;

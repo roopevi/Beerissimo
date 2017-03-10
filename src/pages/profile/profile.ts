@@ -53,6 +53,7 @@ export class ProfilePage {
     });
   }
 
+  /*Filter posts according to users id*/
   getPostsByUser = (userId) => {
     this.mediaService.getMedia().subscribe(
       res => {

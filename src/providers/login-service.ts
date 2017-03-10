@@ -19,17 +19,21 @@ export class LoginService {
   constructor(public http: Http) {
   }
 
+
   /*Gets user as parameter and sets user to login-service*/
+  /*Set user object from parameter*/
   setUser = (user) => {
     this.user = user;
   }
 
-  /*Returns user object*/
+  
+  /*Is called from login.ts. Sends user object to API*/
+  /*Return user object*/
   getUser () {
     return this.user;
   }
-  
-  /*Is called from login.ts. Sends user object to API*/
+
+  /*Login function, makes post request to api and returns response*/
   login = () => {
     return this.http.post(this.url + '/login', this.user)
      .map(
