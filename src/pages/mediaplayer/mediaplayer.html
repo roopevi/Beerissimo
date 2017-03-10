@@ -48,8 +48,8 @@
         <ion-item *ngFor="let comment of comments">
           <div class="comment-box">
             <h3>{{comment.username}}</h3>
-            <p>{{comment.comment}}</p>
             <p>{{(comment.time_added | date: 'parse')}}</p>
+            <p>{{comment.comment}}</p>
           </div>
         </ion-item>
       </ion-list>
@@ -89,8 +89,8 @@
         <ion-item *ngFor="let comment of comments">
           <div class="comment-box">
             <h3>{{comment.username}}</h3>
-            <p>{{comment.comment}}</p>
             <p class="time-added">{{comment.time_added}}</p>
+            <p>{{comment.comment}}</p>
           </div>
         </ion-item>
       </ion-list>
