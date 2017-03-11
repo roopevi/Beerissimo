@@ -20,6 +20,7 @@ page-front {
 	.time-added {
 		text-align:left;
 		font-size:1.2rem;
+    color: $grey;
 	}
 	.title {
 		margin-top:1.5rem;
@@ -34,10 +35,12 @@ page-front {
 		max-width:20em;
 		margin-left:auto;
 		margin-right:auto;
+
 	}
 	.description {
 		text-align:left;
 		margin-top:0.5em;
+    color: $grey-dark;
 	}
 	.comments-and-likes {
 		text-align:left;

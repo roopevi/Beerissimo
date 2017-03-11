@@ -27,6 +27,10 @@ page-mediaplayer {
 		@media screen and (max-width:768px) {
 			width:100%;
 		}
+
+    p {
+      color: $grey-dark;
+    }
 	}
 	.rating-list {
 		list-style-type:none;

@@ -1,4 +1,12 @@
 @import "./src/theme/mixings.scss";
+h1, h2, h3, h4, p, b {
+  color: $grey-dark;
+}
+
+ion-input, input, textarea, ion-textarea {
+  color: $grey-dark !important;
+}
+
 .content {
 	background:color($colors,grey-light);
 }

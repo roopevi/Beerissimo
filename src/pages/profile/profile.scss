@@ -7,6 +7,7 @@ page-profile {
 		font-size:1.25em;
 		margin:0;
 		margin:1em 0em 0em 0em;
+    color: $grey;
 	}
 	.grade {
 		color:$grey-dark;
@@ -75,14 +76,11 @@ page-profile {
 						span {
 							&.heading {
 								font-size:0.9em;
+                color: $grey;
 							}
 							&.type {
 								font-size:0.7em;
 								color:$grey;
-							}
-							&.alc {
-								font-size:0.7em;
-								color: $grey;
 							}
 						}
 					}
