@@ -1,5 +1,15 @@
 
 page-login {
+  ion-content {
+  @media screen and (min-width:768px) {
+			background:url(../assets/images/beerBar.jpg) !important;
+		}
+		@media screen and (max-width:768px) {
+			background:url(../assets/images/beerBar_medium.jpg) !important;
+		}
+
+    }
+
 	.form-container {
 		padding-top:5em;
 		height:100%;
@@ -7,14 +17,6 @@ page-login {
 		margin:0;
 		text-align:center;
 		background-repeat:no-repeat;
-		@media screen and (min-width:768px) {
-			background-image:url(../assets/images/beerBar.jpg);
-			max-height:94.6em;
-		}
-		@media screen and (max-width:768px) {
-			background-image:url(../assets/images/beerBar_medium.jpg);
-			max-height:94.6em;
-		}
 	}
 	.login {
 		text-align:left;
