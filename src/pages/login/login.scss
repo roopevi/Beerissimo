@@ -32,6 +32,14 @@ page-login {
 		p.error {
 			color:red;
 		}
+
+    ion-input {
+      border-bottom: $border-grey;
+      input::-webkit-input-placeholder {
+        color: $grey;
+      }
+    }
+
 		background-color: rgba(255,255,255,0.8);
 	}
 }
