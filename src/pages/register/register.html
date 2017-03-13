@@ -25,15 +25,15 @@
       </p>
       <label><b>Username</b></label>
       <br>
-      <ion-input type="text" placeholder="Enter Username" name="username" ngModel minlength="4" required maxlength="15" required></ion-input>
+      <ion-input type="text" placeholder="Enter Username (at least 4 characters)" name="username" ngModel minlength="4" required maxlength="15" required></ion-input>
       <br><br>
       <label><b>Password</b></label>
       <br>
-      <ion-input type="password" placeholder="Enter Password" name="password" ngModel minlength="8" required></ion-input>
+      <ion-input type="password" placeholder="Enter Password (at least 8 characters)" name="password" ngModel minlength="8" required></ion-input>
       <br><br>
-      <label><b>E-mail</b></label>
+      <label><b>Email</b></label>
       <br>
-      <ion-input type="email" placeholder="Enter E-mail address" name="email" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+      <ion-input type="email" placeholder="Enter Email address" name="email" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         required></ion-input>
       <br><br>
       <button ion-button type="submit" [disabled]="!registerForm.valid">Register</button>
