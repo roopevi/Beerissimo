@@ -14,3 +14,4 @@ Join now and be part of social network of beer lovers.
 4. Run 'ionic run android' to upload the app to your device.
 5. Enjoy!
 "# Beerissimo" 
+"# Beerissimo" 
